@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANHSLink</title>
+    <link rel="icon" href="{% static 'pictures/ANHSLink_logo.png' %}" type="image/x-icon" width="64" height="64">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <style>
+        .picture {
+            display: block;
+            filter: brightness(80%);
+        }
+        
+    </style>
+</head>
+
+{% if message%}
+    <div> {{message}}</div>
+{% endif%}
+
+<body>
+    <div class="head_container">
+        <div class="branding">
+            <img class="logo" src="{% static 'pictures/ANHSLink_logo.png' %}" alt="ANHS LOGO" width="7%">
+            <div class="site-identity">
+                <p class="site-title">ANHSLink</p>
+                <p class="site-description">"Linking Education Through Innovative Web Solutions"</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="h-screen flex items-center justify-center">
+        <div class="image_container bg-white p-4 md:p-8 rounded-lg shadow-md w-full md:w-1/2 lg:w-1/3 mx-auto">
+            <img class="w-full picture" src="{% static 'pictures/login_page.png' %}" alt="Pic of ANHS">
+            <div class="image_text p-4 text-center">
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username"
+                        class="w-full px-2 py-1 md:px-4 md:py-2 border rounded-lg mb-2 blacktext">
+                    <input type="password" name="password" placeholder="Password"
+                        class="w-full px-2 py-1 md:px-4 md:py-2 border rounded-lg mb-2 blacktext">
+                    <button type="submit"
+                        class="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-indigo-700">
+                        Log in</button> 
+                </form>
+                <p class="text-sm text-gray-200">Don't have an account? <a href="/sign_up" class="text-green-600 underline">Sign up here</a></p>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+<footer>
+    <div class="footer_container">
+        <div class="branding_footer_whole">
+            <div class="branding_footer">
+                <img class="logo" src="{% static 'pictures/ANHSLink_logo.png' %}" alt="ANHS LOGO" width="5%"
+                    height="10%">
+                <div class="site-identity_footer">
+                    <p class="site-title_footer">ANHSLink</p>
+                    <p class="site-description_footer">"Linking Education Through Innovative Web Solutions"</p>
+                </div>
+            </div>
+            <div class="branding_footer_motto">
+                Dream it. Believe it. Achieve it.
+            </div>
+            <div class="socials_footer">
+                <div class="heading">
+                    <div class="quick_email">
+                        <img class="contact_logo" src="{% static 'pictures/GMAIL_LOGO.png' %}" alt="gmail_logo"
+                            width="1rem">
+                        <p class="contacts">302985argaonhs@gmail.com</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</html>

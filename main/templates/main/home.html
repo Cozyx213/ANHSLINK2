@@ -1,12 +1,30 @@
-    {% extends "main/base.html" %}
-    {% load static %}
-    {% block body %}
+{% extends "main/base.html" %}
+{% load static %}
+{% block body %}
+<div class="image_container">
+    <img class="picture" src="{% static 'pictures/News_sign.png' %}" alt="Pic of ANHS" width="100%">
+    <div class="image_text hidden">
+        FLATAPS: Make learning fun and easy.
+    </div>
+</div>
+{% for post in posts %}
+<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+  <div class="md:flex">
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{post.author.username}}</div>
+      <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{post.title}}</a>
+      <p class="mt-2 text-gray-500">{{post.description}}</p>
+    </div>
+  </div>
+  <div class="px-4 py-2 bg-gray-200 text-right">
+    <span class="text-sm text-gray-600">{{post.created_at}}</span>
+  </div>
+</div>
+{% empty %}
+<p class="m-3 text-center text-gray-500">No posts</p>
+{% endfor %}
 
-        <div class="image_container">
-            <img class="picture" src="{% static 'pictures/flash_home.jpg' %}" alt="Pic of ANHS" width="100%" > 
-            <div class="image_text">
-                FLATAPS: Make learning fun and easy.
-            </div>
-        </div>
-        <script src="{% static 'js/flashcard.js' %}"></script>
+
+
+<script src="{% static 'js/flashcard.js' %}"></script>
 {% endblock %}

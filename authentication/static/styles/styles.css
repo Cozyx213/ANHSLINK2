@@ -3,7 +3,9 @@ body {
     padding: 0;
 
 }
-
+.green{
+    background-color: green;
+}
 .flashcard {
     border: 1px solid #ccc;
     padding: 10px;
@@ -11,7 +13,7 @@ body {
     text-align: center;
 }
 .blacktext{
-    color:red;
+    color:green;
 }
 .back1 {
     display: none;

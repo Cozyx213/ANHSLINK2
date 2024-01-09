@@ -30,13 +30,18 @@
                 <a href="{% url 'history' %}">
                     <p>History</p>
                 </a>
-                <a href="{% url 'logout' %}">
-                    <p>Logout</p>
+                <a>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Logout">
+                    </form>
                 </a>
+                
                 <a href="{% url 'create_post' %}">
                     <p>Post</p>
                 </a>
             </div>
+            
         </div>
         {% block body %} {% endblock %}
         <hr>

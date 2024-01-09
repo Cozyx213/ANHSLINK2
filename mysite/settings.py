@@ -26,8 +26,10 @@ SECRET_KEY = 'django-insecure-o0p57(+0e5+kkil00e9%d^wm=ldes+lzr^3zy7vf(&ddnmbi!_
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "192.168.1.5",
     "192.168.1.8",
-    "127.0.0.1"
+    "127.0.0.1",
+    "192.168.1.12"
 ]
 
 
@@ -129,4 +131,4 @@ LOGOUT_REDIRECT_URL= '/login'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+FAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

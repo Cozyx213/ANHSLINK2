@@ -5,8 +5,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
 # Create your views here.
-def index(request):
-    return render("registration/hi.html")
+
+def anhs(request):
+    if request.method == "GET":
+        return render(request, "registration/landingpage.html")
+    print("asdf")
 def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]

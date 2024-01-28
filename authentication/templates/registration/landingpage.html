@@ -7,12 +7,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANHSLink</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="icon" href="{% static 'pictures/ANHSLink_logo.png' %}" type="image/x-icon" width="64" height="64">
+    <style>
+        .hello {
+        color:green;
+        }
+    </style>
 </head>
 
 <body>
-    <img src="{% static 'pictures/LOGO_ANHS.png' %}" alt="ANHS LOGO" width="5%" height="10%">
+    <div class="flex justify-center items-center min-h-1/2-screen bg-gray-100">
+        <div class="w-full max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+            <!-- Profile Header -->
+            <div class="flex items-center space-x-4 p-4 border-b border-gray-200">
+                <!-- Profile Picture -->
+                <img class="h-24 w-24 rounded-full object-cover" src="{% static 'pictures/ANHSLink_logo.png' %}"
+                    alt="ANHS LOGO">
+                <!-- Profile Info -->
+                <div>
+                    <h2 class="text-xl font-semibold">ANHSLink</h2>
+                    <p class="text-gray-600 hello">Hello Nationalistas! Welcome to ANHSLink</p>
+                </div>
+            </div>
+
+            <!-- Background Image -->
+            <div class="mt-4">
+                <img class="w-full h-48 object-cover rounded-lg" src="{% static 'pictures/login_page.png' %}"
+                    alt="Background">
+            </div>
+
+            <!-- Additional Content or Links -->
+            <div><a href="sign_up">Sign in to ANHSLINK</a></div>
+            <div>
+                ----Programs----
+                <img src="https://cit.edu/wp-content/uploads/2023/08/SHS-Cover-Photo-1.png">
+                stem
+                <img src="{% static 'pictures/jude.jpg' %}" </div>
+                <div><a href="admin">Admin</a></div>
+                <!-- Add here any additional content or links you want to include -->
+            </div>
+        </div>
+
+
 </body>
 
 

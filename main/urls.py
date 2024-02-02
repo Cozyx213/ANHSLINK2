@@ -8,5 +8,6 @@ urlpatterns = [
     path("map", views.map, name="map"),
     path('history', views.history, name="history"),
     path('create_post', views.create_post, name='create_post'),
-    path('logout', LogoutView.as_view(), name='logout')
+    path('logout', LogoutView.as_view(), name='logout'),
+    path("library", views.library, name="library")
 ]

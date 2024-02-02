@@ -4,3 +4,6 @@ git clone https://github.com/CozyCove/ANHSLINK2.git
 
 Run npx tailwindcss -i authentication/static/src/input.css -o authentication/static/css/main.css --watch
 if you want to edit tailwind css
+
+cd to the folder and then in your terminal ,
+python manage.py runserver <ipconfig>

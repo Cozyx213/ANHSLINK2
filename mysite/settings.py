@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'authentication.apps.AuthenticationConfig',
+    'library.apps.LibraryConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +131,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL= '/home'
-LOGOUT_REDIRECT_URL= '/login'
+LOGOUT_REDIRECT_URL= '/anhs'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

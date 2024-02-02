@@ -41,3 +41,7 @@ def create_post(request):
     else:
         form = PostForm()
     return render(request,"main/create_post.html", {"form":form})
+def library(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("anhs"))
+    return render(request,"main/library.html")

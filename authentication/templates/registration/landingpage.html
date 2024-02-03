@@ -12,23 +12,24 @@
     <link rel="icon" href="{% static 'pictures/ANHSLink_logo.png' %}" type="image/x-icon" width="64" height="64">
     <style>
         .hello {
-        color:green;
+            color: green;
         }
     </style>
 </head>
 
 <body>
+
     <div class="flex justify-center items-center min-h-1/2-screen bg-gray-100">
         <div class="w-full max-w-2xl mx-auto p-2 bg-white shadow-lg rounded-lg">
             <!-- Profile Header -->
-            <div class="flex items-center space-x-4 p-4 border-b border-gray-200">
+            <div class="flex items-center space-x-4 p-4 border-b bg-green-100 border-green-200">
                 <!-- Profile Picture -->
                 <img class="h-24 w-24 rounded-full object-cover" src="{% static 'pictures/ANHSLink_logo.png' %}"
                     alt="ANHS LOGO">
                 <!-- Profile Info -->
                 <div>
-                    <h2 class="text-xl font-semibold">ANHSLink</h2>
-                    <p class="text-gray-600 hello">Hello Nationalistas! Welcome to ANHSLink</p>
+                    <h2 class="text-xl font-semibold">ANHSLINK</h2>
+                    <p class="text-gray-600 hello">Hello Nationalistas! Welcome to ANHSLINK</p>
                 </div>
             </div>
 
@@ -39,12 +40,16 @@
             </div>
 
             <!-- Additional Content or Links -->
-            <div><a href="sign_up">Sign in to ANHSLINK</a></div>
-            <div>
+
+
+            <div class="text-center rounded-xl   bg-green-300 "><a href="sign_up">
+                    <p>Sign in to ANHSLINK</p>
+            </div>
+            <div class="border-red-200">
                 <h1 class="text-center text-pretty font-bold text-lg">Strand Offerings</h1>
-                <img class="p-4"src="https://cit.edu/wp-content/uploads/2023/08/SHS-Cover-Photo-1.png">
-               
-                <img class="rounded-3xl"src="{% static 'pictures/stem.png' %}" </div>
+                <img class="p-4" src="https://cit.edu/wp-content/uploads/2023/08/SHS-Cover-Photo-1.png">
+
+                <img class="rounded-3xl" src="{% static 'pictures/stem2.jpg' %}">
                 <div><a href="admin">Admin</a></div>
                 <!-- Add here any additional content or links you want to include -->
             </div>

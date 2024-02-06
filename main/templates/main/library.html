@@ -2,6 +2,23 @@
 {% load static %}
 
 {% block body %}
-<h1>Library</h1>
+<h1 class="block bg-white-300">Library</h1>
 <a>Grade</a>
+
+<div> Upload</div>
+
+<form method="post" action="{% url 'upload_view' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label for="file">File</label>
+    <input name="file" type="file" placeholder="Place file">
+    <label for="grade">grade</label>
+    <select name="grade">
+        <option>grade9</option>
+        <option>grade10</option>
+        <option>grade11</option>
+    </select>
+
+    <input type="submit" value="Upload File">
+</form>
 {% endblock %}

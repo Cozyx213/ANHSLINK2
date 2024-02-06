@@ -6,6 +6,9 @@ from django.template import RequestContext
 from django.shortcuts import redirect
 from .forms import PostForm
 from .models import Post
+from .forms import ResourceForm
+from .models import Resources
+import os
 # Create your views here.
 
 def home (request):
@@ -41,7 +44,19 @@ def create_post(request):
     else:
         form = PostForm()
     return render(request,"main/create_post.html", {"form":form})
+
+
 def library(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("anhs"))
     return render(request,"main/library.html")
+def upload_view(request):
+    if request.method=='POST':
+        form = ResourceForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = form.save(commit=False)
+            file.author = request.user
+            file.save()
+            return redirect("/library")
+        
+        

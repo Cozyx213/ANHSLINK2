@@ -33,7 +33,8 @@ ALLOWED_HOSTS = [
     "192.168.1.14",
     "192.168.1.2",
     "192.168.1.15",
-
+    "192.168.154.195",
+    "192.168.154.197",
 ]
 
 
@@ -49,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'authentication.apps.AuthenticationConfig',
-    'library.apps.LibraryConfig',
+    
 ]
 
 MIDDLEWARE = [

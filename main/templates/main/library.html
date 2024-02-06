@@ -4,6 +4,46 @@
 {% block body %}
 <h1 class="block bg-white-300">Library</h1>
 <a>Grade</a>
+<style>
+    .nine {
+        background: rgb(255, 121, 121);
+    }
+
+    .ten {
+        background: rgb(152, 200, 255);
+    }
+
+    .eleven {
+        background: rgb(255, 165, 81);
+    }
+
+    #hiddenNine {
+        display: none;
+    }
+</style>
+
+<div class=" text-xl flex-wrap text-center">
+    <div id="nine" class="nine w-full h-48 p-4 font-bold font">
+        <button>Grade 9</button>
+        
+    </div>
+    <div id="hiddenNine">
+        <p>sub1</p>
+        <p>sub1</p>
+        <p>sub1</p>
+        <p>sub1</p>
+        <p>sub1</p>
+    </div>
+    <div class="ten w-full h-48 p-4">
+        <p>Grade 10</p>
+    </div>
+    <div class="eleven w-full h-48 p-4">
+        <p>Grade 11</p>
+    </div>
+</div>
+
+
+
 
 <div> Upload</div>
 
@@ -21,4 +61,16 @@
 
     <input type="submit" value="Upload File">
 </form>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const nineDiv = document.getElementById('nine');
+        const hiddenNine = document.getElementById('hiddenNine')
+
+        nineDiv.addEventListener('click', (event) => {
+            hiddenNine.style.display = (hiddenNine.style.display === 'none' ? "block" : 'none')
+
+        });
+    });
+
+</script>
 {% endblock %}

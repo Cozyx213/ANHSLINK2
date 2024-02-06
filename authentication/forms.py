@@ -10,7 +10,8 @@ class RegisterForm(UserCreationForm):
             "username",
             "password1",
             "password2",
-            "email"
+            "email",
+
         ]
     error_messages = {
         'password_mismatch': "The two password fields didn't match.",

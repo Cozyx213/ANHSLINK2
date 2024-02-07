@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block body %}
+
+{% for resource in resources %}
+
+<tb></tb>
+{{resource.author}}
+{{resource.file}}
+{{resource.uploaded_at}}
+{% empty %}
+<p class="m-3 text-center text-gray-500">No posts</p>
+
+{%endfor%}
+
+
+{% endblock %}

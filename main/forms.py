@@ -11,4 +11,4 @@ class PostForm(forms.ModelForm):
 class ResourceForm (forms.ModelForm):
     class Meta:
         model = Resources
-        fields = ["grade", "file"]
+        fields = ["grade", "subject", "file"]

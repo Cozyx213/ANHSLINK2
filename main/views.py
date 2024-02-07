@@ -9,13 +9,23 @@ from .models import Post
 from .forms import ResourceForm
 from .models import Resources
 import os
+from django.conf import settings
 # Create your views here.
+
+
+
 
 def home (request):
     posts = Post.objects.all().order_by('-created_at')
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("anhs"))
     return render(request,"main/home.html", {"posts":posts})
+
+def show_resource(request):
+
+    resources = Resources.objects.all().order_by('-uploaded_at')
+    return render(request,"main/resource.html",{"resources":resources})
+    
 def map(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("anhs"))
@@ -58,5 +68,14 @@ def upload_view(request):
             file.author = request.user
             file.save()
             return redirect("/library")
+
         
+def download_file(request,filename):
+    file_path = os.path.join(settings.MEDIA_ROOT, filename)
+
+    with open(file_path,'rb') as fh:
+        response = HttpResponse(fh.read(), content_type="application/octet-stream")
+        response['Content-Disposition'] = 'attachment; filename="{}"'.format(os.path.basename(file_path))
         
+        # Return the response
+        return response

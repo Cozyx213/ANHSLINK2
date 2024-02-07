@@ -5,6 +5,18 @@
 <h1 class="block bg-white-300">Library</h1>
 <a>Grade</a>
 <style>
+    @keyframes sub {
+        0% {
+            size: 0;
+            opacity: 0;
+        }
+
+        100% {
+            size: 100%;
+            opacity: 1;
+        }
+    }
+
     .nine {
         background: rgb(255, 121, 121);
     }
@@ -17,23 +29,44 @@
         background: rgb(255, 165, 81);
     }
 
-    #hiddenNine {
+    .sub {
         display: none;
     }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', event => {
 
-<div class=" text-xl flex-wrap text-center">
-    <div id="nine" class="nine w-full h-48 p-4 font-bold font">
-        <button>Grade 9</button>
-        
+        document.addEventListener('click', event => {
+            const element = event.target;
+            if (element.classList.contains('grade')) {
+                console.log("clicked")
+            }
+
+        });
+    });
+
+
+</script>
+<div class="grade text-xl flex-wrap text-center">
+    <a href="{% url 'show_resource' %}">
+        <div id="nine" class="grade">
+            <p>Grade 9</p>
+
+        </div>
+    </a>
+    <div class="sub" id="hiddenNine">
+        <p>Science</p>
+        <p>Esp</p>
+        <p>MAPEH</p>
+        <p>Research</p>
+        <p>Consumer Chemistry</p>
+        <p>Filipino</p>
+        <p>English</p>
+        <p>AP</p>
+        <p>Math</p>
     </div>
-    <div id="hiddenNine">
-        <p>sub1</p>
-        <p>sub1</p>
-        <p>sub1</p>
-        <p>sub1</p>
-        <p>sub1</p>
-    </div>
+
+
     <div class="ten w-full h-48 p-4">
         <p>Grade 10</p>
     </div>
@@ -53,24 +86,21 @@
     <label for="file">File</label>
     <input name="file" type="file" placeholder="Place file">
     <label for="grade">grade</label>
+
     <select name="grade">
         <option>grade9</option>
         <option>grade10</option>
         <option>grade11</option>
     </select>
 
+    <label for="subject">Sub</label>
+
+    <select name="subject">
+        <option>s9</option>
+        <option>s10</option>
+        <option>s11</option>
+    </select>
     <input type="submit" value="Upload File">
 </form>
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const nineDiv = document.getElementById('nine');
-        const hiddenNine = document.getElementById('hiddenNine')
 
-        nineDiv.addEventListener('click', (event) => {
-            hiddenNine.style.display = (hiddenNine.style.display === 'none' ? "block" : 'none')
-
-        });
-    });
-
-</script>
 {% endblock %}

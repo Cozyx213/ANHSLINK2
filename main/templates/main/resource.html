@@ -5,10 +5,37 @@
 
 {% for resource in resources %}
 
-<tb></tb>
-{{resource.author}}
-{{resource.file}}
-{{resource.uploaded_at}}
+<table>
+    <tr>
+        <th>
+            author
+        </th>
+        <th>
+            file
+        </th>
+        <th>
+            uploaded at
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            {{resource.author}}
+        </td>
+        <td>
+            
+                <a href="{% url 'download' uuid=resource.uuid %}">{{ resource.file }}</a>
+            
+            
+        </td>
+        <td>
+            {{resource.uploaded_at}}
+        </td>
+
+    </tr>
+</table>
+
+
 {% empty %}
 <p class="m-3 text-center text-gray-500">No posts</p>
 

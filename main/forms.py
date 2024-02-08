@@ -9,6 +9,7 @@ class PostForm(forms.ModelForm):
         fields = ["title", "description"]
         
 class ResourceForm (forms.ModelForm):
+    
     class Meta:
         model = Resources
-        fields = ["grade", "subject", "file"]
+        fields = ["grade", "subject", "file","name"]

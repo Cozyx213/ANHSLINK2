@@ -29,50 +29,54 @@
         background: rgb(255, 165, 81);
     }
 
-    .sub {
+    .hidden {
         display: none;
     }
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', event => {
 
-        document.addEventListener('click', event => {
-            const element = event.target;
-            if (element.classList.contains('grade')) {
-                console.log("clicked")
-            }
-
+        document.querySelectorAll('.grade-button').forEach(button => {
+            button.addEventListener('click', event => {
+                const gradeId = button.getAttribute('data-grade');
+                const subjectsDiv = document.getElementById(gradeId)
+            })
         });
     });
 
 
 </script>
-<div class="grade text-xl flex-wrap text-center">
-    <a href="{% url 'show_resource' %}">
-        <div id="nine" class="grade">
-            <p>Grade 9</p>
+<div class="grades-container text-xl flex-wrap text-center">
+    <!-- Grade 9 Button -->
+    <button class="grade-button" data-grade="grade9">Grade 9</button>
+    <a href="{% url 'show_resource' grade='grade9' subject='Research' %}">Grade 1 Math Resources</a>
+    <!-- Grade 9 Subjects -->
+    <div id="grade9" class="grade-subjects w-full h-48 p-4 hidden">
+        
+        <div class="sub">
 
+            <p>Esp</p>
+            <p>MAPEH</p>
+            <p>Research</p>
+            <p>Consumer Chemistry</p>
+            <p>Filipino</p>
+            <p>English</p>
+            <p>AP</p>
+            <p>Math</p>
         </div>
-    </a>
-    <div class="sub" id="hiddenNine">
-        <p>Science</p>
-        <p>Esp</p>
-        <p>MAPEH</p>
-        <p>Research</p>
-        <p>Consumer Chemistry</p>
-        <p>Filipino</p>
-        <p>English</p>
-        <p>AP</p>
-        <p>Math</p>
     </div>
 
+    <!-- Repeat for other grades as needed -->
+</div>
 
-    <div class="ten w-full h-48 p-4">
-        <p>Grade 10</p>
-    </div>
-    <div class="eleven w-full h-48 p-4">
-        <p>Grade 11</p>
-    </div>
+
+
+<div class="ten w-full h-48 p-4">
+    <p>Grade 10</p>
+</div>
+<div class="eleven w-full h-48 p-4">
+    <p>Grade 11</p>
+</div>
 </div>
 
 
@@ -85,9 +89,10 @@
 
     <label for="file">File</label>
     <input name="file" type="file" placeholder="Place file">
+    <input name="name" type="text" required placeholder="Name your file">
     <label for="grade">grade</label>
 
-    <select name="grade">
+    <select name="grade" >
         <option>grade9</option>
         <option>grade10</option>
         <option>grade11</option>
@@ -96,9 +101,13 @@
     <label for="subject">Sub</label>
 
     <select name="subject">
-        <option>s9</option>
-        <option>s10</option>
-        <option>s11</option>
+        <option>Esp</option>
+        <option>MAPEH</option>
+        <option>Research</option>
+        <option>Consumer Chemistry</option>
+        <option>Filipino</option>
+        <option>English</option>
+        <option>Math</option>
     </select>
     <input type="submit" value="Upload File">
 </form>

@@ -1,5 +1,4 @@
-from django.contrib import admin
-from .models import Post
+
 from django.contrib import admin
 from .models import Post, Resources
 
@@ -12,8 +11,9 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Resources)
 class ResourcesAdmin(admin.ModelAdmin):
-    list_display = ('file', 'author', 'uploaded_at')
+    list_display = ('file','name','author', 'uploaded_at','uuid')
     search_fields = ('subject', 'grade')
-    list_filter = ('uploaded_at', 'author')
+    list_filter = ('uploaded_at', 'author','grade','subject')
     date_hierarchy = 'uploaded_at'
 # Register your models here.
+ 

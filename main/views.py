@@ -10,6 +10,12 @@ from .forms import ResourceForm
 from .models import Resources
 import os
 from django.conf import settings
+from django.http import FileResponse, Http404
+from django.shortcuts import get_object_or_404
+from .models import Resources
+import os
+from django.conf import settings
+
 # Create your views here.
 
 
@@ -21,11 +27,11 @@ def home (request):
         return HttpResponseRedirect(reverse("anhs"))
     return render(request,"main/home.html", {"posts":posts})
 
-def show_resource(request):
+def show_resource(request,grade,subject):
 
-    resources = Resources.objects.all().order_by('-uploaded_at')
+    resources = Resources.objects.filter(grade=grade,subject=subject).order_by('-uploaded_at')
     return render(request,"main/resource.html",{"resources":resources})
-    
+
 def map(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("anhs"))
@@ -70,12 +76,15 @@ def upload_view(request):
             return redirect("/library")
 
         
-def download_file(request,filename):
-    file_path = os.path.join(settings.MEDIA_ROOT, filename)
+def download(request,uuid):
+   resource = get_object_or_404(Resources, uuid=uuid)
+   file_path = os.path.join(settings.MEDIA_ROOT, resource.file.name)
 
-    with open(file_path,'rb') as fh:
-        response = HttpResponse(fh.read(), content_type="application/octet-stream")
-        response['Content-Disposition'] = 'attachment; filename="{}"'.format(os.path.basename(file_path))
-        
-        # Return the response
+   if os.path.exists(file_path):
+        # Serve the file for downloading
+        response = FileResponse(open(file_path, 'rb'))
+        response['Content-Disposition'] = f'attachment; filename="{os.path.basename(file_path)}"'
         return response
+   else:
+        # Return 404 if the file does not exist
+        raise Http404("File does not exist")

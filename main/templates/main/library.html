@@ -2,17 +2,24 @@
 {% load static %}
 
 {% block body %}
-<h1 class="block bg-white-300">Library</h1>
-<a>Grade</a>
+
 <style>
-    @keyframes sub {
+    @keyframes appear {
         0% {
-            size: 0;
+            font-size: 0px;
+            padding: 0;
             opacity: 0;
+            height: 0;
+
         }
 
+
         100% {
-            size: 100%;
+
+
+            height: auto;
+            font-size: 20px;
+            padding: 1px;
             opacity: 1;
         }
     }
@@ -30,6 +37,10 @@
     }
 
     .hidden {
+        animation-name: appear;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+
         display: none;
     }
 </style>
@@ -39,42 +50,117 @@
         document.querySelectorAll('.grade-button').forEach(button => {
             button.addEventListener('click', event => {
                 const gradeId = button.getAttribute('data-grade');
-                const subjectsDiv = document.getElementById(gradeId)
-            })
+                const subjectsDiv = document.getElementById(gradeId);
+                if (subjectsDiv.style.display === 'block') {
+                    subjectsDiv.style.display = 'none';
+                } else {
+                    subjectsDiv.style.display = 'block';
+                    subjectsDiv.style.animationPlayState = 'running';
+                    subjectsDiv.addEventListener('animationend', () => {
+                        subjectsDiv.style.display = 'block';
+                    });
+                }
+
+                console.log(subjectsDiv);
+            });
         });
     });
 
 
 </script>
+<!-- Library Header -->
+
+<img src="{% static 'pictures/libraryImage.webp' %}" class=" flex justify-center">
+<!-- Grade Link -->
+<p class="text-blue-500 hover:text-blue-700 font-semibold text-lg p-2 transition duration-300 ease-in-out">
+    Grade</p>
+</a>
+
 <div class="grades-container text-xl flex-wrap text-center">
     <!-- Grade 9 Button -->
-    <button class="grade-button" data-grade="grade9">Grade 9</button>
-    <a href="{% url 'show_resource' grade='grade9' subject='Research' %}">Grade 1 Math Resources</a>
+    <button
+        class="grade-button nine w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-lg rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
+        data-grade="grade9">
+        Grade 9
+    </button>
+
+
     <!-- Grade 9 Subjects -->
     <div id="grade9" class="grade-subjects w-full h-48 p-4 hidden">
-        
+
+
         <div class="sub">
 
-            <p>Esp</p>
-            <p>MAPEH</p>
-            <p>Research</p>
-            <p>Consumer Chemistry</p>
-            <p>Filipino</p>
-            <p>English</p>
-            <p>AP</p>
-            <p>Math</p>
+            <a href="show_resource/grade9/AP">
+                <p>AP</p>
+            </a>
+            <a href="show_resource/grade9/Consumer Chemistry">
+                <p>Consumer Chemistry</p>
+            </a>
+            <a href="show_resource/grade9/English">
+                <p>English</p>
+            </a>
+
+            <a href="show_resource/grade9/Esp">
+                <p>Esp</p>
+            </a>
+            <a href="show_resource/grade9/Filipino">
+                <p>Filipino</p>
+            </a>
+            <a href="show_resource/grade9/MAPEH">
+                <p>MAPEH</p>
+            </a><a href="show_resource/grade9/Math">
+                <p>Math</p>
+            </a>
+            <a href="show_resource/grade9/Research">
+                <p>Research</p>
+            </a>
+            <a href="show_resource/grade9/Science">
+                <p>Science</p>
+            </a>
+        </div>
+    </div>
+    <button class="grade-button ten w-full h-48 p-4" data-grade="grade10">Grade 10</button>
+    <!-- Grade 9 Subjects -->
+    <div id="grade10" class="grade-subjects w-full h-48 p-4 hidden">
+
+
+        <div class="sub">
+
+            <a href="show_resource/grade10/AP">
+                <p>AP</p>
+            </a>
+            <a href="show_resource/grade10/Advanced Chemistry">
+                <p>Advanced Chemistry</p>
+            </a>
+            <a href="show_resource/grade10/English">
+                <p>English</p>
+            </a>
+            <a href="show_resource/grade10/Esp">
+                <p>Esp</p>
+            </a>
+            <a href="show_resource/grade10/Filipino">
+                <p>Filipino</p>
+            </a>
+            <a href="show_resource/grade10/MAPEH">
+                <p>MAPEH</p>
+            </a><a href="show_resource/grade10/Math">
+                <p>Math</p>
+            </a>
+            <a href="show_resource/grade10/Research">
+                <p>Research</p>
+            </a>
+            <a href="show_resource/grade10/Science">
+                <p>Science</p>
+            </a>
         </div>
     </div>
 
-    <!-- Repeat for other grades as needed -->
 </div>
 
 
 
-<div class="ten w-full h-48 p-4">
-    <p>Grade 10</p>
-</div>
-<div class="eleven w-full h-48 p-4">
+<div class="eleven w-full h-48 ">
     <p>Grade 11</p>
 </div>
 </div>
@@ -88,11 +174,11 @@
     {% csrf_token %}
 
     <label for="file">File</label>
-    <input name="file" type="file" placeholder="Place file">
+    <input name="file" type="file" required placeholder="Place file">
     <input name="name" type="text" required placeholder="Name your file">
     <label for="grade">grade</label>
 
-    <select name="grade" >
+    <select name="grade" required>
         <option>grade9</option>
         <option>grade10</option>
         <option>grade11</option>
@@ -100,7 +186,8 @@
 
     <label for="subject">Sub</label>
 
-    <select name="subject">
+    <select name="subject" required>
+        <option>Science</option>
         <option>Esp</option>
         <option>MAPEH</option>
         <option>Research</option>

@@ -29,7 +29,7 @@ def home (request):
 
 def show_resource(request,grade,subject):
 
-    resources = Resources.objects.filter(grade=grade,subject=subject).order_by('-uploaded_at')
+    resources = Resources.objects.filter(grade=grade,subject=subject, is_approved=True).order_by('-uploaded_at')
     return render(request,"main/resource.html",{"resources":resources})
 
 def map(request):

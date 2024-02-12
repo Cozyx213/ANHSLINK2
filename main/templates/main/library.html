@@ -54,6 +54,17 @@
     }
 </style>
 <script>
+    fileValidation = () => {
+        const fi = document.getElementById('file');
+        if(fi.files.length >0){
+            const fsize = fi.files.item.size;
+            const file = Math.round((fsize/1024))
+            if ( file >= 16,384){
+                alert("File is too big. Pls select less than 16MB. Sorry for the inconvience. We, the researchers, only have limited space on our server.");
+                fi.value = '';
+            }
+        }
+    }
     document.addEventListener('DOMContentLoaded', event => {
 
         document.querySelectorAll('.grade-button').forEach(button => {
@@ -182,19 +193,20 @@
 
     <div id="grade11" class="grade-subjects w-full h-48 p-4 hidden">
         <div class="sub">
+
+
             <button
-            class="grade-button eleven  w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
-            data-grade="grade11">Grade 11</button>
+                class="strand-button abm w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
+                data-grade="grade11">ABM</button>
             <button
-        class="grade-button eleven  w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
-        data-grade="grade11">ABM</button>
-        <button
-        class="grade-button eleven  w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
-        data-grade="grade11">STEM</button>
-        <button
-        class="grade-button eleven  w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
-        data-grade="grade11">Grade 11</button>
-            
+                class="strand-button stem  w-full h-48 p-4 bg-gradient-to-r from-red-500 to-red-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-red-600 hover:to-red-800 transition duration-300 ease-in-out transform"
+                data-grade="grade11">STEM</button>
+
+            <button
+                class="strand-button humss  w-full h-48 p-4 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-purple-600 hover:to-purple-800 transition duration-300 ease-in-out transform"
+                data-grade="grade11">HUMSS</button>
+
+
         </div>
     </div>
 </div>
@@ -206,14 +218,13 @@
 
 
 
-
 <div> Upload</div>
 
 <form method="post" action="{% url 'upload_view' %}" enctype="multipart/form-data">
     {% csrf_token %}
 
     <label for="file">File</label>
-    <input name="file" type="file" required placeholder="Place file">
+    <input id ="file" name="file" type="file" required placeholder="Place file" onchange="fileValidation()">
     <input name="name" type="text" required placeholder="Name your file">
     <label for="grade">grade</label>
 

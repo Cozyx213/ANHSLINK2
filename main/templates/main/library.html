@@ -56,15 +56,16 @@
 <script>
     fileValidation = () => {
         const fi = document.getElementById('file');
-        if(fi.files.length >0){
-            const fsize = fi.files.item.size;
-            const file = Math.round((fsize/1024))
-            if ( file >= 16,384){
-                alert("File is too big. Pls select less than 16MB. Sorry for the inconvience. We, the researchers, only have limited space on our server.");
-                fi.value = '';
-            }
+        const fsize = fi.item.size;
+        console.log(fsize);
+        const file = Math.round((fsize / 1024));
+        console.log(file);
+        if (file >= 16, 384) {
+            alert("File is too big. Pls select less than 16MB. Sorry for the inconvience. We, the researchers, only have limited space on our server.");
+            fi.value = '';
         }
     }
+    
     document.addEventListener('DOMContentLoaded', event => {
 
         document.querySelectorAll('.grade-button').forEach(button => {
@@ -224,7 +225,7 @@
     {% csrf_token %}
 
     <label for="file">File</label>
-    <input id ="file" name="file" type="file" required placeholder="Place file" onchange="fileValidation()">
+    <input id="file" name="file" type="file" required placeholder="Place file" onchange="fileValidation()">
     <input name="name" type="text" required placeholder="Name your file">
     <label for="grade">grade</label>
 

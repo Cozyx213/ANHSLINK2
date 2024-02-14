@@ -63,11 +63,19 @@ document.addEventListener('DOMContentLoaded', event => {
     });
 
 
-    form.addEventListener('submit', validateForm);
+    form.addEventListener("onsubmit", validateForm);
 
-    function validateForm(event){
-    
+    function validateForm() {
+        let grade = document.forms["myForm"]["grade"].value;
+        if (grade === '') {
+            console.log(grade)
+            alert("way sulod");
+
+        }else{
+            console.log(grade)
+        }
     }
+
 
     function changesub(gradelvl) {
         subject.innerHTML = ''

@@ -38,7 +38,7 @@
 
     .hidden {
         animation-name: appear;
-        animation-duration: .1s;
+        animation-duration: .5s;
         animation-fill-mode: forwards;
 
         display: none;
@@ -79,11 +79,8 @@
                 data-grade="grade9">
                 Grade 9
             </button>
-
-
             <!-- Grade 9 Subjects -->
             <div id="grade9" class="grade-subjects w-full h-48 p-4 hidden">
-
 
                 <div class="sub">
 
@@ -121,10 +118,7 @@
                 data-grade="grade10">Grade 10</button>
             <!-- Grade 9 Subjects -->
             <div id="grade10" class="grade-subjects w-full h-48 p-4 hidden">
-
-
                 <div class="sub">
-
                     <a href="show_resource/grade10/AP">
                         <p>AP</p>
                     </a>
@@ -160,32 +154,122 @@
                 data-grade="grade11">Grade 11</button>
 
             <div id="grade11" class="grade-subjects w-full h-48 p-4 hidden">
-                <div class="sub">
 
-
-                    <button
-                        class="strand-button abm w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
-                        data-grade="grade11">ABM</button>
-                    <button
-                        class="strand-button stem  w-full h-48 p-4 bg-gradient-to-r from-red-500 to-red-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-red-600 hover:to-red-800 transition duration-300 ease-in-out transform"
-                        data-grade="grade11">STEM</button>
-
-                    <button
-                        class="strand-button humss  w-full h-48 p-4 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-purple-600 hover:to-purple-800 transition duration-300 ease-in-out transform"
-                        data-grade="grade11">HUMSS</button>
-
-
+                <!-- ABM BUTTON -->
+                <button
+                    class="grade-button abm w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
+                    data-grade="ABM">ABM</button>
+                <!-- ABM SUBS -->
+                <div id="ABM" class="grade-subjects w-full h-48 p-4 hidden">
+                    <a href="show_resource/grade10/AP">
+                        <p>AP</p>
+                    </a>
+                    <a href="show_resource/grade10/Advanced Chemistry">
+                        <p>Advanced Chemistry</p>
+                    </a>
+                    <a href="show_resource/grade10/English">
+                        <p>English</p>
+                    </a>
+                    <a href="show_resource/grade10/Esp">
+                        <p>Esp</p>
+                    </a>
+                    <a href="show_resource/grade10/Filipino">
+                        <p>Filipino</p>
+                    </a>
+                    <a href="show_resource/grade10/MAPEH">
+                        <p>MAPEH</p>
+                    </a><a href="show_resource/grade10/Math">
+                        <p>Math</p>
+                    </a>
+                    <a href="show_resource/grade10/Research">
+                        <p>Research</p>
+                    </a>
+                    <a href="show_resource/grade10/Science">
+                        <p>Science</p>
+                    </a>
                 </div>
+
+                <!-- STEM BUTTON -->
+                <button
+                    class="grade-button stem w-full h-48 p-4 bg-gradient-to-r from-pink-500 to-pink-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-pink-600 hover:to-pink-800 transition duration-300 ease-in-out transform"
+                    data-grade="STEM">STEM</button>
+                <!-- STEM SUBS -->
+                <div id="STEM" class="grade-subjects w-full h-48 p-4 hidden">
+                    <a href="show_resource/grade11/Basic Calculus">
+                        <p>Basic Calculus</p>
+                    </a>
+                    <a href="show_resource/grade11/Gen Biology 2">
+                        <p>Gen Biology 2</p>
+                    </a>
+                    <a href="show_resource/grade11/Reading and Writing">
+                        <p>Reading and Writing</p>
+                    </a>
+                    <a href="show_resource/grade11/Pagbasa at Pagsusuring ibat-ibang teksto tungo sa Pananaliksik">
+                        <p>Pagbasa at Pagsusuring ibat-ibang teksto tungo sa Pananaliksik</p>
+                    </a>
+                    <a href="show_resource/grade11/Disaster and Risk Reduction">
+                        <p>Disaster and Risk Reduction</p>
+                    </a>
+                    <a href="show_resource/grade11/Pe and Health 1">
+                        <p>Physical Education and Health 1</p>
+                    </a><a href="show_resource/grade11/Statistics and Probability">
+                        <p>Statistics and Probability</p>
+                    </a>
+                    <a href="show_resource/grade11/Practical Research 1">
+                        <p>Practical Research 1</p>
+                    </a>
+                    <a href="show_resource/grade11/Understanding Culture Society and Politics">
+                        <p>Understanding Culture Society and Politics</p>
+                    </a>
+                </div>
+
+                <!-- HUMSS BUTTON -->
+                <button
+                    class="grade-button humss w-full h-48 p-4 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-purple-600 hover:to-purple-800 transition duration-300 ease-in-out transform"
+                    data-grade="HUMSS">HUMSS</button>
+                <!-- HUMSS SUBS -->
+                <div id="HUMSS" class="grade-subjects w-full h-48 p-4 hidden">
+                    <a href="show_resource/grade10/AP">
+                        <p>AP</p>
+                    </a>
+                    <a href="show_resource/grade10/Advanced Chemistry">
+                        <p>Advanced Chemistry</p>
+                    </a>
+                    <a href="show_resource/grade10/English">
+                        <p>English</p>
+                    </a>
+                    <a href="show_resource/grade10/Esp">
+                        <p>Esp</p>
+                    </a>
+                    <a href="show_resource/grade10/Filipino">
+                        <p>Filipino</p>
+                    </a>
+                    <a href="show_resource/grade10/MAPEH">
+                        <p>MAPEH</p>
+                    </a><a href="show_resource/grade10/Math">
+                        <p>Math</p>
+                    </a>
+                    <a href="show_resource/grade10/Research">
+                        <p>Research</p>
+                    </a>
+                    <a href="show_resource/grade10/Science">
+                        <p>Science</p>
+                    </a>
+                </div>
+
+
+
             </div>
         </div>
 
 
 
         <div id="upload" class="bg-green-300 text-center font-extrabold">
-            <p  class="text-3xl p-4 text-green-800">Contribute to the community</p>
+            <p class="text-3xl p-4 text-green-800">Contribute to the community</p>
 
             <div class="flex justify-center h-48">
-                <form name= "myForm" id='upload' method="post" action="{% url 'upload_view' %}" enctype="multipart/form-data">
+                <form name="myForm" id='upload' method="post" action="{% url 'upload_view' %}"
+                    enctype="multipart/form-data">
                     {% csrf_token %}
 
                     <select id="grade" name="grade" required>

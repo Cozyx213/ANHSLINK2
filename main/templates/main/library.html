@@ -13,7 +13,6 @@
 
         }
 
-
         100% {
 
 
@@ -53,6 +52,50 @@
         font-size: 1.4rem;
     }
 </style>
+
+<div id="upload" class="bg-green-300 text-center font-extrabold">
+    <p class="text-3xl p-4 text-green-800">Contribute to the community</p>
+
+
+    <div class="flex justify-center h-48">
+        <form name="myForm" id='upload' method="post" action="{% url 'upload_view' %}" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <select id="grade" name="grade" required>
+                <option selected disabled value="">Grade</option>
+                <option value="grade9">Grade9</option>
+                <option value="grade10">Grade10</option>
+                <option value="grade11">Grade11</option>
+            </select>
+
+
+            <select id="subject" name="subject" required>
+                <option selected disabled>Subject</option>
+                <option>Science</option>
+                <option>Esp</option>
+                <option>MAPEH</option>
+                <option>Research</option>
+                <option>Filipino</option>
+                <option>English</option>
+                <option>Math</option>
+                <option>Consumer Chemistry</option>
+            </select>
+
+            <input id="file" name="file" type="file" required placeholder="Place file" accept=".pdf, .docx, .pptx">
+
+            <div id="fileSize"></div>
+
+            <input name="name" type="text" required placeholder="Name your file">
+
+
+
+
+            <input type="submit" value="Upload File">
+        </form>
+    </div>
+
+</div>
 <script src="{% static 'js/library.js' %}"></script>
 <!-- Library Header -->
 <div class="bod  flex justify-center">
@@ -160,41 +203,42 @@
                     class="grade-button abm w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
                     data-grade="ABM">ABM</button>
                 <!-- ABM SUBS -->
-                <div id="ABM" class="grade-subjects w-full h-48 p-4 hidden">
-                    <a href="show_resource/grade11/Applied Economics">
+                <div id="ABM" class="grade-subjects w-full h-48 p-4 hidden space-y-10">
+                    <a href="show_resource/grade11/Applied Economics" class="block">
                         <p>Applied Economics</p>
                     </a>
-                    <a href="show_resource/grade11/Fundamentals of Accountance and Business Management">
-                        <p>Fundamentals of Accountance and Business Management</p>
+                    <a href="show_resource/grade11/Fundamentals of ABM" class="block">
+                        <p>Fundamentals of ABM</p>
                     </a>
-                    <a href="show_resource/grade11/Reading and Writing">
+                    <a href="show_resource/grade11/Reading and Writing" class="block">
                         <p>Reading and Writing</p>
                     </a>
-                    <a href="show_resource/grade11/Pagbasa at Pagsusuring ibat-ibang teksto tungo sa Pananaliksik">
-                        <p>Pagbasa at Pagsusuring ibat-ibang teksto tungo sa Pananaliksik</p>
+                    <a href="show_resource/grade11/Pagbasa at Pagsusuri.." class="block">
+                        <p>Pagbasa at Pagsusuri..</p>
                     </a>
-                    <a href="show_resource/grade11/Disaster and Risk Reduction">
+                    <a href="show_resource/grade11/Disaster and Risk Reduction" class="block">
                         <p>Disaster and Risk Reduction</p>
                     </a>
-                    <a href="show_resource/grade11/Pe and Health">
+                    <a href="show_resource/grade11/Pe and Health" class="block">
                         <p>Physical Education and Health 1</p>
-                    </a><a href="show_resource/grade11/Statistics and Probability">
+                    </a><a href="show_resource/grade11/Statistics and Probability" class="block">
                         <p>Statistics and Probability</p>
                     </a>
-                    <a href="show_resource/grade11/Practical Research 1">
+                    <a href="show_resource/grade11/Practical Research 1" class="block">
                         <p>Practical Research 1</p>
                     </a>
-                    <a href="show_resource/grade11/Understanding Culture, Society, Politics ">
-                        <p>Understanding Culture, Society, Politics </p>
+                    <a href="show_resource/grade11/Understanding Culture, Society, and Politics " class="block">
+                        <p>Understanding Culture, Society, and Politics </p>
                     </a>
                 </div>
 
                 <!-- STEM BUTTON -->
                 <button
-                    class="grade-button stem w-full h-48 p-4 bg-gradient-to-r from-pink-500 to-pink-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-pink-600 hover:to-pink-800 transition duration-300 ease-in-out transform"
-                    data-grade="STEM">STEM</button>
+                    class="grade-button stem w-full h-48  bg-gradient-to-r from-pink-500 to-pink-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-pink-600 hover:to-pink-800 transition duration-300 ease-in-out transform"
+                    data-grade="STEM"><img src="{% static 'pictures/picker2.jpg' %}"></button>
                 <!-- STEM SUBS -->
-                <div id="STEM" class="grade-subjects w-full h-48 p-4 hidden">
+                <div id="STEM" class="grade-subjects w-full h-48 p-4 hidden  ">
+
                     <a href="show_resource/grade11/Basic Calculus">
                         <p>Basic Calculus</p>
                     </a>
@@ -204,8 +248,8 @@
                     <a href="show_resource/grade11/Reading and Writing">
                         <p>Reading and Writing</p>
                     </a>
-                    <a href="show_resource/grade11/Pagbasa at Pagsusuring ibat-ibang teksto tungo sa Pananaliksik">
-                        <p>Pagbasa at Pagsusuring ibat-ibang teksto tungo sa Pananaliksik</p>
+                    <a href="show_resource/grade11/Pagbasa at Pagsusuri..">
+                        <p>Pagbasa at Pagsusuri..</p>
                     </a>
                     <a href="show_resource/grade11/Disaster and Risk Reduction">
                         <p>Disaster and Risk Reduction</p>
@@ -218,8 +262,8 @@
                     <a href="show_resource/grade11/Practical Research 1">
                         <p>Practical Research 1</p>
                     </a>
-                    <a href="show_resource/grade11/Understanding Culture, Society, Politics ">
-                        <p>Understanding Culture, Society, Politics </p>
+                    <a href="show_resource/grade11/Understanding Culture, Society, and Politics ">
+                        <p>Understanding Culture, Society, and Politics </p>
                     </a>
                 </div>
 
@@ -230,17 +274,23 @@
                     data-grade="HUMSS">HUMSS</button>
                 <!-- HUMSS SUBS -->
                 <div id="HUMSS" class="grade-subjects w-full h-48 p-4 hidden">
-                    <a href="show_resource/grade11/Discipline in Applied Social Sciences">
-                        <p>Discipline in Applied Social Sciences</p>
+                    <a href="show_resource/grade11/Creative Writing/ Malikhaing Pagsulat">
+                        <p>Creative Writing/ Malikhaing Pagsulat</p>
+                    </a>
+                    <a href="show_resource/grade11/Disciplines and Ideas in the Applied Sciences">
+                        <p>Disciplines and Ideas in the Applied Sciences</p>
                     </a>
                     <a href="show_resource/grade11/Reading and Writing">
                         <p>Reading and Writing</p>
                     </a>
-                    <a href="show_resource/grade11/Pagbasa at Pagsusuring ibat-ibang teksto tungo sa Pananaliksik">
-                        <p>Pagbasa at Pagsusuring ibat-ibang teksto tungo sa Pananaliksik</p>
+                    <a href="show_resource/grade11/Pagbasa at Pagsusuri..">
+                        <p>Pagbasa at Pagsusuri..</p>
                     </a>
-                    <a href="show_resource/grade11/Understanding Culture, Society, Politics">
-                        <p>Understanding Culture, Society, Politics</p>
+                    <a href="show_resource/grade11/Understanding Culture, Society, and Politics">
+                        <p>Understanding Culture, Society, and Politics</p>
+                    </a>
+                    <a href="show_resource/grade11/Pe and Health">
+                        <p>Physical Education and Health 1</p>
                     </a>
                     <a href="show_resource/grade11/Physical Science">
                         <p>Physical Science </p>
@@ -251,6 +301,7 @@
                         <p>Practical Research 1</p>
                     </a>
 
+
                 </div>
 
 
@@ -260,48 +311,7 @@
 
 
 
-        <div id="upload" class="bg-green-300 text-center font-extrabold">
-            <p class="text-3xl p-4 text-green-800">Contribute to the community</p>
 
-            <div class="flex justify-center h-48">
-                <form name="myForm" id='upload' method="post" action="{% url 'upload_view' %}"
-                    enctype="multipart/form-data">
-                    {% csrf_token %}
-
-                    <select id="grade" name="grade" required>
-                        <option selected disabled value="">Grade</option>
-                        <option value="grade9">Grade9</option>
-                        <option value="grade10">Grade10</option>
-                        <option value="grade11">Grade11</option>
-                    </select>
-
-
-                    <select id="subject" name="subject" required>
-                        <option selected disabled>Subject</option>
-                        <option>Science</option>
-                        <option>Esp</option>
-                        <option>MAPEH</option>
-                        <option>Research</option>
-                        <option>Filipino</option>
-                        <option>English</option>
-                        <option>Math</option>
-                        <option>Consumer Chemistry</option>
-                    </select>
-
-                    <input id="file" name="file" type="file" required placeholder="Place file"
-                        accept=".pdf, .docx, .pptx">
-                    <div class="fileSize"></div>
-
-                    <input name="name" type="text" required placeholder="Name your file">
-
-
-
-
-                    <input type="submit" value="Upload File">
-                </form>
-            </div>
-
-        </div>
     </div>
 
 </div>

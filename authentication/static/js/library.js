@@ -22,6 +22,24 @@ document.addEventListener('DOMContentLoaded', event => {
         { text: "Math", value: "Math" },
         { text: "Advance Chemistry", value: "Advance Chemistry" },
     ]
+    var grade11Options = [
+        { text: "Subject", value: "Subject", disabled: "disabled", selected: "selected" },
+        { text: "Reading and Writing", value: "Reading and Writing" },
+        { text: "Pagbasa at Pagsusuri..", value: "Pagbasa at Pagsusuri.." },
+        { text: "Disaster and Risk Reduction", value: "Disaster and Risk Reduction" },
+        { text: "Physical Education and Health 1", value: "Physical Education and Health 1" },
+        { text: "Statistics and Probability", value: "Statistics and Probability" },
+        { text: "Practical Research 1", value: "Practical Research 1" },
+        { text: "Understanding Culture, Society, and Politics", value: "Understanding Culture, Society, and Politics" },
+        { text: "Applied Economics", value: "Applied Economics" },
+        { text: "Fundamentals of ABM", value: "Fundamentals of ABM" },
+        { text: "Basic Calculus", value: "Basic Calculus" },
+        { text: "Gen Biology 2", value: "Gen Biology 2" },
+        { text: "Disciplines and Ideas in Applied Social Sciences", value: "Discipline and Ideas in Applied Social Sciences" },
+        { text: "Creative Writing/ Malikhaing Pagsulat", value: "Creative Writing/ Malikhaing Pagsulat" },
+    ]
+
+
     const form = document.getElementById('upload');
     const file = document.getElementById('file');
     const grade = document.getElementById('grade');
@@ -38,10 +56,11 @@ document.addEventListener('DOMContentLoaded', event => {
 
 
         } else if (gradeVal === "grade10") {
-            changesub(grade10Options)
+            changesub(grade10Options);
             console.log("10");
 
         } else if (gradeVal === "grade11") {
+            changesub(grade11Options);
             console.log("11");
 
         }
@@ -53,11 +72,16 @@ document.addEventListener('DOMContentLoaded', event => {
 
         if (file) {
             console.log(file.size / (1024 * 1024));
+            var siz = sizeWithUnit(file.size);
+            console.log(siz);
             var sizeMB = file.size / (1024 * 1024);
             if (sizeMB > 16) {
-                alert("Upload only limited to 16MB. Sorry for the inconvience.")
-                document.getElementById('file').value = ''
+                alert("Upload only limited to 16MB. Sorry for the inconvience.");
+                document.getElementById('file').value = '';
+            } else {
+                document.getElementById("fileSize").innerHTML = `Size = ${siz}`;
             }
+
 
         }
     });
@@ -65,14 +89,30 @@ document.addEventListener('DOMContentLoaded', event => {
 
     form.addEventListener("onsubmit", validateForm);
 
+
+
+
+    function sizeWithUnit(bytes) {
+        if (bytes > 1024 * 1024) {
+            var siz = Math.round((bytes / (1024 * 1024)) * 10) / 10;
+            var sizeU = `${siz}MB`;
+            return sizeU;
+        } else if (bytes > 1024) {
+            var siz = Math.round((bytes / (1024)) * 10) / 10;
+            var sizeU = `${siz}KB`;
+            return sizeU;
+        }
+
+
+    }
     function validateForm() {
         let grade = document.forms["myForm"]["grade"].value;
         if (grade === '') {
-            console.log(grade)
+            console.log(grade);
             alert("way sulod");
 
-        }else{
-            console.log(grade)
+        } else {
+            console.log(grade);
         }
     }
 

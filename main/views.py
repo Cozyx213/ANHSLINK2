@@ -28,9 +28,9 @@ def home (request):
     return render(request,"main/home.html", {"posts":posts})
 
 def show_resource(request,grade,subject):
-
+    
     resources = Resources.objects.filter(grade=grade,subject=subject, is_approved=True).order_by('-uploaded_at')
-    return render(request,"main/resource.html",{"resources":resources})
+    return render(request,"main/resource.html",{"resources":resources,"subject":subject,"grade":grade,})
 
 def map(request):
     if not request.user.is_authenticated:

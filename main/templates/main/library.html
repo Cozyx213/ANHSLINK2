@@ -53,45 +53,54 @@
     }
 </style>
 
-<div id="upload" class="bg-green-300 text-center font-extrabold">
-    <p class="text-3xl p-4 text-green-800">Contribute to the community</p>
+<div id="upload" class="bg-green-300 text-center p-5 font-extrabold">
+    <p class="text-3xl pb-4 text-green-800">Upload</p>
 
 
-    <div class="flex justify-center h-48">
+    <div class="flex justify-center  h-fit text-center">
         <form name="myForm" id='upload' method="post" action="{% url 'upload_view' %}" enctype="multipart/form-data">
 
             {% csrf_token %}
-
-            <select id="grade" name="grade" required>
-                <option selected disabled value="">Grade</option>
-                <option value="grade9">Grade9</option>
-                <option value="grade10">Grade10</option>
-                <option value="grade11">Grade11</option>
-            </select>
-
-
-            <select id="subject" name="subject" required>
-                <option selected disabled>Subject</option>
-                <option>Science</option>
-                <option>Esp</option>
-                <option>MAPEH</option>
-                <option>Research</option>
-                <option>Filipino</option>
-                <option>English</option>
-                <option>Math</option>
-                <option>Consumer Chemistry</option>
-            </select>
-
-            <input id="file" name="file" type="file" required placeholder="Place file" accept=".pdf, .docx, .pptx">
-
-            <div id="fileSize"></div>
-
-            <input name="name" type="text" required placeholder="Name your file">
+            <div><select id="grade" name="grade" required
+                    class="bg-green-50 border border-green-300  text-green-900 text-base  text-center rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected disabled value="">Grade</option>
+                    <option value="Grade 9">Grade 9</option>
+                    <option value="Grade 10">Grade 10</option>
+                    <option value="Grade 11">Grade 11</option>
+                </select>
 
 
+                <select id="subject" name="subject" required
+                    class="bg-green-50 border border-green-300 text-green-900 text-base  text-center rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected disabled>Subject</option>
+                    <option>Science</option>
+                    <option>Esp</option>
+                    <option>MAPEH</option>
+                    <option>Research</option>
+                    <option>Filipino</option>
+                    <option>English</option>
+                    <option>Math</option>
+                    <option>Consumer Chemistry</option>
+                </select>
 
 
-            <input type="submit" value="Upload File">
+                <input
+                    class="block w-full  text-green-900 border border-green-300 text-base rounded-lg cursor-pointer bg-green-50 dark:text-green-400 focus:outline-none dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400"
+                    id="file" name="file" type="file" required placeholder="Place file" accept=".pdf, .docx, .pptx">
+
+                <div id="fileSize"></div>
+
+                <input
+                    class="bg-green-50 border border-green-300 text-green-900 text-base text-center rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    name="name" type="text" required placeholder="Name your file">
+            </div>
+
+
+
+
+            <input
+                class="bg-green-50 border border-green-300 text-green-900 text-base text-center rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="submit" value="Upload File">
         </form>
     </div>
 
@@ -119,73 +128,74 @@
             <!-- Grade 9 Button -->
             <button
                 class=" grade-button nine w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
-                data-grade="grade9">
+                data-grade="Grade 9">
                 Grade 9
             </button>
             <!-- Grade 9 Subjects -->
-            <div id="grade9" class="grade-subjects w-full h-48 p-4 hidden">
+            <div id="Grade 9" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
 
-                <div class="sub">
+                <div
+                    class="sub border-t-4                                                                                    7">
 
-                    <a href="show_resource/grade9/AP">
+                    <a href="show_resource/Grade 9/AP">
                         <p>AP</p>
                     </a>
-                    <a href="show_resource/grade9/Consumer Chemistry">
+                    <a href="show_resource/Grade 9/Consumer Chemistry">
                         <p>Consumer Chemistry</p>
                     </a>
-                    <a href="show_resource/grade9/English">
+                    <a href="show_resource/Grade 9/English">
                         <p>English</p>
                     </a>
 
-                    <a href="show_resource/grade9/Esp">
+                    <a href="show_resource/Grade 9/Esp">
                         <p>Esp</p>
                     </a>
-                    <a href="show_resource/grade9/Filipino">
+                    <a href="show_resource/Grade 9/Filipino">
                         <p>Filipino</p>
                     </a>
-                    <a href="show_resource/grade9/MAPEH">
+                    <a href="show_resource/Grade 9/MAPEH">
                         <p>MAPEH</p>
-                    </a><a href="show_resource/grade9/Math">
+                    </a><a href="show_resource/Grade 9/Math">
                         <p>Math</p>
                     </a>
-                    <a href="show_resource/grade9/Research">
+                    <a href="show_resource/Grade 9/Research">
                         <p>Research</p>
                     </a>
-                    <a href="show_resource/grade9/Science">
+                    <a href="show_resource/Grade 9/Science">
                         <p>Science</p>
                     </a>
                 </div>
             </div>
             <button
                 class="grade-button ten  w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
-                data-grade="grade10">Grade 10</button>
+                data-grade="Grade 10">Grade 10</button>
             <!-- Grade 9 Subjects -->
-            <div id="grade10" class="grade-subjects w-full h-48 p-4 hidden">
+            <div id="Grade 10" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
                 <div class="sub">
-                    <a href="show_resource/grade10/AP">
+                    <a href="show_resource/Grade 10/AP">
                         <p>AP</p>
                     </a>
-                    <a href="show_resource/grade10/Advanced Chemistry">
+                    <a href="show_resource/Grade 10/Advanced Chemistry">
                         <p>Advanced Chemistry</p>
                     </a>
-                    <a href="show_resource/grade10/English">
+                    <a href="show_resource/Grade 10/English">
                         <p>English</p>
                     </a>
-                    <a href="show_resource/grade10/Esp">
+                    <a href="show_resource/Grade 10/Esp">
                         <p>Esp</p>
                     </a>
-                    <a href="show_resource/grade10/Filipino">
+                    <a href="show_resource/Grade 10/Filipino">
                         <p>Filipino</p>
                     </a>
-                    <a href="show_resource/grade10/MAPEH">
+                    <a href="show_resource/Grade 10/MAPEH">
                         <p>MAPEH</p>
-                    </a><a href="show_resource/grade10/Math">
+                    </a><a href="show_resource/Grade 10/Math">
                         <p>Math</p>
                     </a>
-                    <a href="show_resource/grade10/Research">
+                    <a href="show_resource/Grade 10/Research">
                         <p>Research</p>
                     </a>
-                    <a href="show_resource/grade10/Science">
+                    <a href="show_resource/Grade 10/Science">
                         <p>Science</p>
                     </a>
                 </div>
@@ -194,40 +204,40 @@
 
             <button
                 class="grade-button eleven  w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
-                data-grade="grade11">Grade 11</button>
+                data-grade="Grade 11">Grade 11</button>
 
-            <div id="grade11" class="grade-subjects w-full h-48 p-4 hidden">
+            <div id="Grade 11" class="grade-subjects w-full h-48 p-4 hidden">
 
                 <!-- ABM BUTTON -->
                 <button
                     class="grade-button abm w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform"
                     data-grade="ABM">ABM</button>
                 <!-- ABM SUBS -->
-                <div id="ABM" class="grade-subjects w-full h-48 p-4 hidden space-y-10">
-                    <a href="show_resource/grade11/Applied Economics" class="block">
+                <div id="ABM" class="grade-subjects w-full h-48 p-5 hidden space-y-5">
+                    <a href="show_resource/Grade 11/Applied Economics" class="block">
                         <p>Applied Economics</p>
                     </a>
-                    <a href="show_resource/grade11/Fundamentals of ABM" class="block">
+                    <a href="show_resource/Grade 11/Fundamentals of ABM" class="block">
                         <p>Fundamentals of ABM</p>
                     </a>
-                    <a href="show_resource/grade11/Reading and Writing" class="block">
+                    <a href="show_resource/Grade 11/Reading and Writing" class="block">
                         <p>Reading and Writing</p>
                     </a>
-                    <a href="show_resource/grade11/Pagbasa at Pagsusuri.." class="block">
+                    <a href="show_resource/Grade 11/Pagbasa at Pagsusuri.." class="block">
                         <p>Pagbasa at Pagsusuri..</p>
                     </a>
-                    <a href="show_resource/grade11/Disaster and Risk Reduction" class="block">
+                    <a href="show_resource/Grade 11/Disaster and Risk Reduction" class="block">
                         <p>Disaster and Risk Reduction</p>
                     </a>
-                    <a href="show_resource/grade11/Pe and Health" class="block">
+                    <a href="show_resource/Grade 11/Pe and Health" class="block">
                         <p>Physical Education and Health 1</p>
-                    </a><a href="show_resource/grade11/Statistics and Probability" class="block">
+                    </a><a href="show_resource/Grade 11/Statistics and Probability" class="block">
                         <p>Statistics and Probability</p>
                     </a>
-                    <a href="show_resource/grade11/Practical Research 1" class="block">
+                    <a href="show_resource/Grade 11/Practical Research 1" class="block">
                         <p>Practical Research 1</p>
                     </a>
-                    <a href="show_resource/grade11/Understanding Culture, Society, and Politics " class="block">
+                    <a href="show_resource/Grade 11/Understanding Culture, Society, and Politics " class="block">
                         <p>Understanding Culture, Society, and Politics </p>
                     </a>
                 </div>
@@ -237,32 +247,32 @@
                     class="grade-button stem w-full h-48  bg-gradient-to-r from-pink-500 to-pink-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-pink-600 hover:to-pink-800 transition duration-300 ease-in-out transform"
                     data-grade="STEM"><img src="{% static 'pictures/picker2.jpg' %}"></button>
                 <!-- STEM SUBS -->
-                <div id="STEM" class="grade-subjects w-full h-48 p-4 hidden  ">
+                <div id="STEM" class="grade-subjects w-full h-48 p-4 hidden space-y-4  ">
 
-                    <a href="show_resource/grade11/Basic Calculus">
+                    <a href="show_resource/Grade 11/Basic Calculus">
                         <p>Basic Calculus</p>
                     </a>
-                    <a href="show_resource/grade11/Gen Biology 2">
+                    <a href="show_resource/Grade 11/Gen Biology 2">
                         <p>Gen Biology 2</p>
                     </a>
-                    <a href="show_resource/grade11/Reading and Writing">
+                    <a href="show_resource/Grade 11/Reading and Writing">
                         <p>Reading and Writing</p>
                     </a>
-                    <a href="show_resource/grade11/Pagbasa at Pagsusuri..">
+                    <a href="show_resource/Grade 11/Pagbasa at Pagsusuri..">
                         <p>Pagbasa at Pagsusuri..</p>
                     </a>
-                    <a href="show_resource/grade11/Disaster and Risk Reduction">
+                    <a href="show_resource/Grade 11/Disaster and Risk Reduction">
                         <p>Disaster and Risk Reduction</p>
                     </a>
-                    <a href="show_resource/grade11/Pe and Health">
+                    <a href="show_resource/Grade 11/Pe and Health">
                         <p>Physical Education and Health 1</p>
-                    </a><a href="show_resource/grade11/Statistics and Probability">
+                    </a><a href="show_resource/Grade 11/Statistics and Probability">
                         <p>Statistics and Probability</p>
                     </a>
-                    <a href="show_resource/grade11/Practical Research 1">
+                    <a href="show_resource/Grade 11/Practical Research 1">
                         <p>Practical Research 1</p>
                     </a>
-                    <a href="show_resource/grade11/Understanding Culture, Society, and Politics ">
+                    <a href="show_resource/Grade 11/Understanding Culture, Society, and Politics ">
                         <p>Understanding Culture, Society, and Politics </p>
                     </a>
                 </div>
@@ -273,31 +283,31 @@
                     class="grade-button humss w-full h-48 p-4 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-purple-600 hover:to-purple-800 transition duration-300 ease-in-out transform"
                     data-grade="HUMSS">HUMSS</button>
                 <!-- HUMSS SUBS -->
-                <div id="HUMSS" class="grade-subjects w-full h-48 p-4 hidden">
-                    <a href="show_resource/grade11/Creative Writing/ Malikhaing Pagsulat">
+                <div id="HUMSS" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
+                    <a href="show_resource/Grade 11/Creative Writing/ Malikhaing Pagsulat">
                         <p>Creative Writing/ Malikhaing Pagsulat</p>
                     </a>
-                    <a href="show_resource/grade11/Disciplines and Ideas in the Applied Sciences">
+                    <a href="show_resource/Grade 11/Disciplines and Ideas in the Applied Sciences">
                         <p>Disciplines and Ideas in the Applied Sciences</p>
                     </a>
-                    <a href="show_resource/grade11/Reading and Writing">
+                    <a href="show_resource/Grade 11/Reading and Writing">
                         <p>Reading and Writing</p>
                     </a>
-                    <a href="show_resource/grade11/Pagbasa at Pagsusuri..">
+                    <a href="show_resource/Grade 11/Pagbasa at Pagsusuri..">
                         <p>Pagbasa at Pagsusuri..</p>
                     </a>
-                    <a href="show_resource/grade11/Understanding Culture, Society, and Politics">
+                    <a href="show_resource/Grade 11/Understanding Culture, Society, and Politics">
                         <p>Understanding Culture, Society, and Politics</p>
                     </a>
-                    <a href="show_resource/grade11/Pe and Health">
+                    <a href="show_resource/Grade 11/Pe and Health">
                         <p>Physical Education and Health 1</p>
                     </a>
-                    <a href="show_resource/grade11/Physical Science">
+                    <a href="show_resource/Grade 11/Physical Science">
                         <p>Physical Science </p>
-                    </a><a href="show_resource/grade11/Statistics and Probability">
+                    </a><a href="show_resource/Grade 11/Statistics and Probability">
                         <p>Statistics and Probability</p>
                     </a>
-                    <a href="show_resource/grade11/Practical Research 1">
+                    <a href="show_resource/Grade 11/Practical Research 1">
                         <p>Practical Research 1</p>
                     </a>
 

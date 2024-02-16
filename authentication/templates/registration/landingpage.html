@@ -15,6 +15,7 @@
             color: green;
         }
     </style>
+    <script src="{% static 'js/landing.js' %}"></script>
 </head>
 
 <body>
@@ -56,7 +57,17 @@
                 <div class="rounded-3xl"><img class="p-4 rounded-3xl"
                         src="https://cit.edu/wp-content/uploads/2023/08/SHS-Cover-Photo-1.png">
                 </div>
-                <img class="rounded-3xl" src="{% static 'pictures/stem2.jpg' %}">
+                <div class="strandsDiv">
+
+                    <button id="left" class="size-40" > &#10094;</button>
+                    <button id ="right" class="size-40"> &#10095; </button>
+                    
+                    <img class="rounded-3xl strands" src="{% static 'pictures/stem2.jpg' %}">
+                    <img class="rounded-3xl strands" src="{% static 'pictures/abm.png' %}">
+                    <img class="rounded-3xl strands" src="{% static 'pictures/humss.png' %}">
+                    
+                </div>
+
                 <div><a href="admin">Admin</a></div>
                 <!-- Add here any additional content or links you want to include -->
             </div>

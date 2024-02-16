@@ -50,16 +50,16 @@ document.addEventListener('DOMContentLoaded', event => {
 
     grade.addEventListener("change", function (event) {
         var gradeVal = grade.value;
-        if (gradeVal === "grade9") {
+        if (gradeVal === "Grade 9") {
             changesub(grade9Options)
             console.log("9");
 
 
-        } else if (gradeVal === "grade10") {
+        } else if (gradeVal === "Grade 10") {
             changesub(grade10Options);
             console.log("10");
 
-        } else if (gradeVal === "grade11") {
+        } else if (gradeVal === "Grade 11") {
             changesub(grade11Options);
             console.log("11");
 
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', event => {
                 alert("Upload only limited to 16MB. Sorry for the inconvience.");
                 document.getElementById('file').value = '';
             } else {
-                document.getElementById("fileSize").innerHTML = `Size = ${siz}`;
+                //document.getElementById("fileSize").innerHTML = `Size = ${siz}`
             }
 
 

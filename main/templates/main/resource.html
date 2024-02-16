@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block body %}
+<div class="text-center p-5"><p>Resources for {{grade}} {{subject}}</p></div>
+
 
 {% for resource in resources %}
 
@@ -37,7 +39,8 @@
 
 
 {% empty %}
-<p class="m-3 text-center text-gray-500">No resources yet!</p>
+<div class="flex align-middle min-h-screen"><p class="m-3 text-center align-text-bottom text-gray-500">No resources yet. You can be the first one to upload in this directory!</p></div>
+
 
 {%endfor%}
 

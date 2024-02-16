@@ -2,47 +2,64 @@
 {% load static %}
 
 {% block body %}
-<div class="text-center p-5"><p>Resources for {{grade}} {{subject}}</p></div>
+<div class="text-center p-5">
+    <p>Resources for {{grade}} {{subject}}</p>
+</div>
 
 
-{% for resource in resources %}
-
-<table>
-    <tr>
-        <th>
-            author
-        </th>
-        <th>
-            file
-        </th>
-        <th>
-            uploaded at
-        </th>
-    </tr>
-
-    <tr>
-        <td>
-            {{resource.author}}
-        </td>
-        <td>
-
-            <a href="{% url 'download' uuid=resource.uuid %}">{{ resource.file }}</a>
 
 
-        </td>
-        <td>
-            {{resource.uploaded_at}}
-        </td>
 
-    </tr>
-</table>
+<div class="relative overflow-x-auto">
+
+    <table class="w-full text-sm text-left rtl:text-right text-black-500 dark:text-black-400 ">
+
+        <thead class="text-xs text-sky-700 uppercase bg-sky-100 dark:bg-sky-700 dark:text-sky-400">
+            <tr>
+                <th scope="col" class="px-6 py-3 rounded-s-lg">
+                    Author
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    File
+                </th>
+                <th scope="col" class="px-6 py-3 rounded-e-lg">
+                    Uploaded at
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for resource in resources %}
+            <tr>
+                <td>
+                    {{resource.author}}
+                </td>
+                <td>
+                    <a href="{% url 'download' uuid=resource.uuid %}" class="text-blue-500">{{ resource.name }}</a>
+                </td>
+                <td>
+                    {{resource.uploaded_at}}
+                </td>
+
+            </tr>
+
+            {% empty %}
+            <div class="flex align-middle min-h-screen">
+                <p class="m-3 text-center align-text-bottom text-sky-500">No resources yet. You can be the first one to
+                    upload in
+                    this directory!</p>
+            </div>
 
 
-{% empty %}
-<div class="flex align-middle min-h-screen"><p class="m-3 text-center align-text-bottom text-gray-500">No resources yet. You can be the first one to upload in this directory!</p></div>
+            {%endfor%}
+
+        </tbody>
+
+    </table>
+</div>
 
 
-{%endfor%}
+
 
 
 {% endblock %}

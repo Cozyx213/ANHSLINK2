@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', event => {
         { text: "Basic Calculus", value: "Basic Calculus" },
         { text: "Gen Biology 2", value: "Gen Biology 2" },
         { text: "Disciplines and Ideas in Applied Social Sciences", value: "Discipline and Ideas in Applied Social Sciences" },
-        { text: "Creative Writing/ Malikhaing Pagsulat", value: "Creative Writing/ Malikhaing Pagsulat" },
+        { text: "Creative Writing, Malikhaing Pagsulat", value: "Creative Writing, Malikhaing Pagsulat" },
     ]
 
 

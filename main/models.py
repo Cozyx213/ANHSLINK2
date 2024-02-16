@@ -27,7 +27,7 @@ class Resources (models.Model):
     file = models.FileField(upload_to= upload_to_function)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    
+
     is_approved = models.BooleanField(default=False)
     
     def __str__(self):

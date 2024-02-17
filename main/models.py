@@ -33,6 +33,12 @@ class Resources (models.Model):
     def __str__(self):
         return self.grade +''+ self.subject
     
-
-
+class Forum (models.Model):
+    title = models.CharField(max_length=20, default="")
+    description = models.CharField(max_length=20, default="")
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.title
 # Create your models here.

@@ -13,4 +13,5 @@ urlpatterns = [
     path("show_resource/<grade>/<subject>/",views.show_resource, name="show_resource" ),
     path("upload_view", views.upload_view, name="upload_view"),
     path("download/<uuid:uuid>/", views.download, name = "download"),
+    path("forum", views.forum, name="forum")
   ]

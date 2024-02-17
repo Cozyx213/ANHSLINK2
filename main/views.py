@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from .forms import PostForm
 from .models import Post
 from .forms import ResourceForm
-from .models import Resources
+from .models import Resources, Forum
 import os
 from django.conf import settings
 from django.http import FileResponse, Http404
@@ -24,6 +24,11 @@ from django.conf import settings
 def home (request):
     posts = Post.objects.all().order_by('-created_at')
     return render(request,"main/home.html", {"posts":posts})
+
+@login_required(login_url="/login")
+def forum(request):
+    forums = Forum.objects.all().order_by('uploaded_at')
+    return render(request,"main/forum.html",{"forums":forums} )
 
 @login_required(login_url="/login")
 def show_resource(request,grade,subject):

@@ -38,6 +38,9 @@
                 <a href="{% url 'create_post' %}">
                     <p>Post</p>
                 </a>
+                <a href="{% url 'forum' %}">
+                    <p>Forum</p>
+                </a>
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
                     <button type="submit"><p>Log Out</p></button>

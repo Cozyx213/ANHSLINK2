@@ -20,27 +20,27 @@ from django.conf import settings
 
 
 
-
+@login_required(login_url="/anhs")
 def home (request):
     posts = Post.objects.all().order_by('-created_at')
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("anhs"))
     return render(request,"main/home.html", {"posts":posts})
 
+@login_required(login_url="/login")
 def show_resource(request,grade,subject):
-    
     resources = Resources.objects.filter(grade=grade,subject=subject, is_approved=True).order_by('-uploaded_at')
     return render(request,"main/resource.html",{"resources":resources,"subject":subject,"grade":grade,})
 
+@login_required(login_url="/login")
 def map(request):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("anhs"))
     return render(request,"main/map.html")
     
+@login_required(login_url="/login")
 def history(request):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("anhs"))
     return render(request,"main/history.html")
+
+@login_required(login_url="/anhs")
+def library(request):
+    return render(request,"main/library.html")
 
 
 def not_found(request, exception):
@@ -62,10 +62,7 @@ def create_post(request):
     return render(request,"main/create_post.html", {"form":form})
 
 
-def library(request):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("anhs"))
-    return render(request,"main/library.html")
+
 def upload_view(request):
     if request.method=='POST':
         form = ResourceForm(request.POST, request.FILES)

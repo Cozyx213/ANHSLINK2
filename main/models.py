@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 import uuid, os
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
-
+from django.utils.text import slugify
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField (max_length=200)
@@ -34,11 +34,13 @@ class Resources (models.Model):
         return self.grade +''+ self.subject
     
 class Forum (models.Model):
-    title = models.CharField(max_length=20, default="")
-    description = models.CharField(max_length=20, default="")
+    title = models.CharField(max_length=50, default="")
+    description = models.CharField(max_length=400, default="")
     uploaded_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.title
+    
+    
 # Create your models here.

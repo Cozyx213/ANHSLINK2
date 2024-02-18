@@ -11,12 +11,14 @@
 <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
   <div class="md:flex">
     <div class="p-8">
-      <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{forum.author.username}}</div>
+      <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{forum.author.username}}</div>
       <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{forum.title}}</a>
       <p class="mt-2 text-gray-500">{{forum.description}}</p>
     </div>
   </div>
-  <div class="px-4 py-2 bg-gray-200 text-right">
+
+  <div class="px-4 py-2 bg-gray-200 flex justify-between">
+    <span class="text-sm text-gray-600"><a href="{% url 'forum_comment'  forum.id %}">Message</a></span>
     <span class="text-sm text-gray-600">{{forum.uploaded_at}}</span>
   </div>
 </div>

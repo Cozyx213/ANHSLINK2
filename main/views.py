@@ -27,13 +27,19 @@ def home (request):
 
 @login_required(login_url="/login")
 def forum(request):
-    forums = Forum.objects.all().order_by('uploaded_at')
+    forums = Forum.objects.all().order_by('-uploaded_at')
     return render(request,"main/forum.html",{"forums":forums} )
 
 @login_required(login_url="/login")
 def show_resource(request,grade,subject):
     resources = Resources.objects.filter(grade=grade,subject=subject, is_approved=True).order_by('-uploaded_at')
     return render(request,"main/resource.html",{"resources":resources,"subject":subject,"grade":grade,})
+
+@login_required(login_url="/login")
+def forum_comment(request, id):
+    
+    forum = Forum.objects.filter(id=id)
+    return render(request,"main/forum.html",{"forums":forum})
 
 @login_required(login_url="/login")
 def map(request):
@@ -90,3 +96,4 @@ def download(request,uuid):
    else:
         # Return 404 if the file does not exist
         raise Http404("File does not exist")
+   

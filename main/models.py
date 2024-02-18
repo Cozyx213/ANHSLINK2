@@ -38,9 +38,12 @@ class Forum (models.Model):
     description = models.CharField(max_length=400, default="")
     uploaded_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    
+    comments = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
     def __str__(self):
         return self.title
-    
+class comment(models.Model):
+    text = models.CharField(max_length=200, default="")
+    likes = models.IntegerField(default=0)
     
 # Create your models here.

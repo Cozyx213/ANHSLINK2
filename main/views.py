@@ -39,7 +39,7 @@ def show_resource(request,grade,subject):
 def forum_comment(request, id):
     
     forum = Forum.objects.filter(id=id)
-    return render(request,"main/forum.html",{"forums":forum})
+    return render(request,"main/forum_about.html",{"forums":forum})
 
 @login_required(login_url="/login")
 def map(request):

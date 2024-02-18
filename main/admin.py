@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import Post, Resources
+from .models import Post, Resources, Forum
 from django.urls import reverse
 from django.utils.html import format_html
 @admin.register(Post)
@@ -25,5 +25,10 @@ class ResourcesAdmin(admin.ModelAdmin):
     def download_link(self, obj):
         return format_html(f'<a href = "{reverse("download", args=[obj.uuid])}" >Download </a>')
     approve_posts.short_description = "Mark selected posts is approved"
+    
+@admin.register(Forum)
+class ResourcesAdmin(admin.ModelAdmin):
+    list_display = ("title","author", "uploaded_at")
+    actions = ["approve_posts"]
 # Register your models here.
  

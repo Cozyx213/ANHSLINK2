@@ -11,7 +11,7 @@
 <a href="{% url 'forum_comment'  forum.id %}">
   <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
     <div class="md:flex">
-      <div class="p-8 bg-green-100 ">
+      <div class="p-8 bg-gray-200 ">
         <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{forum.author.username}}</div>
         <div class="block mt-1 text-lg leading-tight font-medium text-black ">{{forum.title}}</div>
         <p class="mt-2 text-gray-500">{{forum.description}}</p>
@@ -20,8 +20,8 @@
 </a>
 <div class="px-4 py-2 bg-gray-200 flex justify-between">
   <span class="text-sm text-gray-500 bg bg-gray-300 rounded-lg"><button
-      class="px-2 py-1 text-lg font-extrabold bg-gray-300 rounded-full">&#8593;
-    </button>{{forum.likes}}<button class="px-2  py-1 text-lg font-extrabold bg-gray-300 rounded-full">&#8595;
+      class="px-2 py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8593;
+    </button>{{forum.likes}}<button class="px-2  py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8595;
     </button></span>
     <a href="{% url 'forum_comment'  forum.id %}" class="flex items-center"><span class="text-sm text-gray-500 bg-gray-300 rounded-lg flex items-center px-2"><img src="{% static 'pictures/comment.png' %}" class="size-7">{{forum.comment_count}}</span></a>
   

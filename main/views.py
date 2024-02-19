@@ -6,7 +6,7 @@ from django.template import RequestContext
 from django.shortcuts import redirect
 from .forms import PostForm
 from .models import Post, Comment
-from .forms import ResourceForm, CommentForm
+from .forms import ResourceForm, CommentForm, ForumForm
 from .models import Resources, Forum
 import os
 from django.conf import settings
@@ -60,7 +60,7 @@ def not_found(request, exception):
     response.status_code = 404
     return response
 
-@login_required(login_url="/anhs")
+@login_required(login_url="/login")
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -72,6 +72,19 @@ def create_post(request):
     else:
         form = PostForm()
     return render(request,"main/create_post.html", {"form":form})
+
+@login_required(login_url="/login")
+def create_forum(request):
+    if request.method == 'POST':
+        form = ForumForm(request.POST)
+        if form.is_valid():
+            forum = form.save(commit=False)
+            forum.author = request.user
+            forum.save()
+            return redirect("/forum")
+    else:
+        form = PostForm()
+    return render(request,"main/create_forum.html", {"form":form})
 
 @login_required(login_url="/anhs")
 def comment(request):

@@ -8,6 +8,7 @@ urlpatterns = [
     path("map", views.map, name="map"),
     path('history', views.history, name="history"),
     path('create_post', views.create_post, name='create_post'),
+    path('create_forum', views.create_forum, name='create_forum'),
     path('logout', LogoutView.as_view(), name='logout'),
     path("library", views.library, name="library"),
     path("show_resource/<grade>/<subject>/",views.show_resource, name="show_resource" ),

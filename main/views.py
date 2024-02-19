@@ -6,7 +6,7 @@ from django.template import RequestContext
 from django.shortcuts import redirect
 from .forms import PostForm
 from .models import Post, Comment
-from .forms import ResourceForm
+from .forms import ResourceForm, CommentForm
 from .models import Resources, Forum
 import os
 from django.conf import settings
@@ -39,7 +39,7 @@ def show_resource(request,grade,subject):
 def forum_comment(request, id):
     forums = Forum.objects.filter(id=id)
     forum_instance = Forum.objects.get(id=id)
-    comments = forum_instance.comments.all()  
+    comments = forum_instance.comments.all().order_by('-uploaded_at')  
     return render(request,"main/forum_about.html",{"forums":forums,"comments":comments})
 
 @login_required(login_url="/login")
@@ -73,8 +73,23 @@ def create_post(request):
         form = PostForm()
     return render(request,"main/create_post.html", {"form":form})
 
-
-
+@login_required(login_url="/anhs")
+def comment(request):
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            id = request.POST.get("id")
+            
+            comment = form.save(commit=False)
+            comment.forum = Forum.objects.get(id=id)
+            comment.author = request.user
+            comment.save()
+            return redirect(f"/forum/{id}")
+        else:
+            return redirect("/library")
+    else:
+        form = CommentForm()
+    return render(request,"main/forum.html",{"form":form})
 def upload_view(request):
     if request.method=='POST':
         form = ResourceForm(request.POST, request.FILES)
@@ -85,6 +100,7 @@ def upload_view(request):
             return redirect("/library")
 
         
+            
 def download(request,uuid):
    resource = get_object_or_404(Resources, uuid=uuid)
    file_path = os.path.join(settings.MEDIA_ROOT, resource.file.name)
@@ -97,4 +113,5 @@ def download(request,uuid):
    else:
         # Return 404 if the file does not exist
         raise Http404("File does not exist")
-   
+
+        

@@ -44,6 +44,8 @@ class Forum (models.Model):
     def __str__(self):
         return self.title
     
+    def comment_count(self):
+        return self.comments.count()
 class Comment(models.Model):
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE, default="", related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
@@ -53,4 +55,18 @@ class Comment(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
     
+class Like(models.Model):
+    forum = models.ForeignKey(Forum, on_delete=models.CASCADE, default="", related_name='Likes',null=True)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, default="", related_name='Likes',null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default="", null=True)
+    
+    like = models.BooleanField()
+class Dislike(models.Model):
+    forum = models.ForeignKey(Forum, on_delete=models.CASCADE, default="", related_name='Dislikes', null=True)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, default="", related_name='Dislikes',null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
+    
+    Dislike = models.BooleanField()
+    
 # Create your models here.
+

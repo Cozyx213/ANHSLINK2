@@ -14,5 +14,6 @@ urlpatterns = [
     path("upload_view", views.upload_view, name="upload_view"),
     path("download/<uuid:uuid>/", views.download, name = "download"),
     path("forum", views.forum, name="forum"),
-    path("forum/<int:id>/", views.forum_comment, name="forum_comment")
+    path("forum/<int:id>/", views.forum_comment, name="forum_comment"),
+    path("comment/", views.comment, name="comment")
   ]

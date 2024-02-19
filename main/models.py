@@ -4,6 +4,7 @@ import uuid, os
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
 from django.utils.text import slugify
+from django.utils.timezone import timezone
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField (max_length=200)
@@ -34,16 +35,22 @@ class Resources (models.Model):
         return self.grade +''+ self.subject
     
 class Forum (models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, default="")
     description = models.CharField(max_length=400, default="")
+    
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    comments = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     def __str__(self):
         return self.title
-class comment(models.Model):
-    text = models.CharField(max_length=200, default="")
+    
+class Comment(models.Model):
+    forum = models.ForeignKey(Forum, on_delete=models.CASCADE, default="", related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
+    
+    text = models.CharField(max_length=200)
+    
+    uploaded_at = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
     
 # Create your models here.

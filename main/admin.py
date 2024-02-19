@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import Post, Resources, Forum
+from .models import Post, Resources, Forum, Comment
 from django.urls import reverse
 from django.utils.html import format_html
 @admin.register(Post)
@@ -30,5 +30,10 @@ class ResourcesAdmin(admin.ModelAdmin):
 class ResourcesAdmin(admin.ModelAdmin):
     list_display = ("title","author", "uploaded_at")
     actions = ["approve_posts"]
+    
+@admin.register(Comment)
+class CommentsAdmin(admin.ModelAdmin):
+    list_display = ("text","author", "uploaded_at")
+    
 # Register your models here.
  

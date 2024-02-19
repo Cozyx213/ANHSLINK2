@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.shortcuts import redirect
 from .forms import PostForm
-from .models import Post
+from .models import Post, Comment
 from .forms import ResourceForm
 from .models import Resources, Forum
 import os
@@ -37,9 +37,10 @@ def show_resource(request,grade,subject):
 
 @login_required(login_url="/login")
 def forum_comment(request, id):
-    
-    forum = Forum.objects.filter(id=id)
-    return render(request,"main/forum_about.html",{"forums":forum})
+    forums = Forum.objects.filter(id=id)
+    forum_instance = Forum.objects.get(id=id)
+    comments = forum_instance.comments.all()  
+    return render(request,"main/forum_about.html",{"forums":forums,"comments":comments})
 
 @login_required(login_url="/login")
 def map(request):

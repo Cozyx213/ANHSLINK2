@@ -37,7 +37,7 @@ class Resources (models.Model):
 class Forum (models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, default="")
-    description = models.CharField(max_length=400, default="")
+    description = models.CharField(max_length=240, default="")
     
     uploaded_at = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
@@ -67,6 +67,6 @@ class Dislike(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
     
     Dislike = models.BooleanField()
+
     
 # Create your models here.
-

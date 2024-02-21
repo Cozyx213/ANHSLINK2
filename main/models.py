@@ -63,8 +63,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
-    def replies(self):
-        return self.replies
+    def reply_ordered(self):
+        return self.replies.all().order_by('-uploaded_at')
     
     
 class Like(models.Model):

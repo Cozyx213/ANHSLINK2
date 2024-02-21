@@ -25,10 +25,6 @@ def home (request):
     posts = Post.objects.all().order_by('-created_at')
     return render(request,"main/home.html", {"posts":posts})
 
-@login_required(login_url="/login")
-def forum(request):
-    forums = Forum.objects.all().order_by('-uploaded_at')
-    return render(request,"main/forum.html",{"forums":forums} )
 
 @login_required(login_url="/login")
 def show_resource(request,grade,subject):
@@ -38,10 +34,8 @@ def show_resource(request,grade,subject):
 @login_required(login_url="/login")
 def forum_comment(request, id):
     forums = Forum.objects.filter(id=id)
-    forum_instance = Forum.objects.get(id=id)
-    comments = forum_instance.comments.all().order_by('-uploaded_at')  
-    return render(request,"main/forum_about.html",{"forums":forums,"comments":comments})
-
+    return render(request,"main/forum_about.html",{"forums":forums})
+    
 @login_required(login_url="/login")
 def map(request):
     return render(request,"main/map.html")
@@ -86,13 +80,12 @@ def create_forum(request):
         form = PostForm()
     return render(request,"main/create_forum.html", {"form":form})
 
-@login_required(login_url="/anhs")
+@login_required(login_url="/login")
 def comment(request):
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             id = request.POST.get("id")
-            
             comment = form.save(commit=False)
             comment.forum = Forum.objects.get(id=id)
             comment.author = request.user
@@ -103,6 +96,34 @@ def comment(request):
     else:
         form = CommentForm()
     return render(request,"main/forum.html",{"form":form})
+
+
+@login_required(login_url="/login")
+def reply(request):
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            id = request.POST.get("comment_id")
+            fid =request.POST.get("fid")
+            comment = form.save(commit=False)
+            comment.parent = Comment.objects.get(id=id)
+            
+            comment.author = request.user
+            comment.save()
+            return redirect(f"/forum/{fid}")
+        else:
+            return redirect("/library")
+    else:
+        form = CommentForm()
+    return render(request,"main/forum.html",{"form":form})
+
+
+@login_required(login_url="/login")
+def forum(request):
+    forums = Forum.objects.all().order_by('-uploaded_at')
+    return render(request,"main/forum.html",{"forums":forums} )
+
+
 def upload_view(request):
     if request.method=='POST':
         form = ResourceForm(request.POST, request.FILES)

@@ -16,5 +16,6 @@ urlpatterns = [
     path("download/<uuid:uuid>/", views.download, name = "download"),
     path("forum", views.forum, name="forum"),
     path("forum/<int:id>/", views.forum_comment, name="forum_comment"),
-    path("comment/", views.comment, name="comment")
+    path("comment/", views.comment, name="comment"),
+    path("reply/", views.reply, name="reply")
   ]

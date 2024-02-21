@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_delete
 from django.utils.text import slugify
 from django.utils.timezone import timezone
+
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField (max_length=200)
@@ -46,14 +47,23 @@ class Forum (models.Model):
     
     def comment_count(self):
         return self.comments.count()
+    def comments_ordered(self):
+        return self.comments.all().order_by('-uploaded_at')
+    
 class Comment(models.Model):
-    forum = models.ForeignKey(Forum, on_delete=models.CASCADE, default="", related_name='comments')
+    forum = models.ForeignKey(Forum, on_delete=models.CASCADE, null=True, blank=True, default="", related_name='comments')
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, null= True, blank=True, related_name ="replies")
     author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
     
     text = models.CharField(max_length=200)
     
     uploaded_at = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
+ 
+
+    def replies(self):
+        return self.replies
+    
     
 class Like(models.Model):
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE, default="", related_name='Likes',null=True)

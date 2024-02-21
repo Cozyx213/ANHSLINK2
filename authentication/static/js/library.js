@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', event => {
         { text: "Filipino", value: "Filipino" },
         { text: "English", value: "English" },
         { text: "Math", value: "Math" },
-        { text: "Advance Chemistry", value: "Advance Chemistry" },
+        { text: "Advanced Chemistry", value: "Advanced Chemistry" },
     ]
     var grade11Options = [
         { text: "Subject", value: "Subject", disabled: "disabled", selected: "selected" },

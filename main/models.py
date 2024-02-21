@@ -61,6 +61,8 @@ class Comment(models.Model):
     likes = models.IntegerField(default=0)
  
 
+    def __str__(self):
+        return self.text
     def replies(self):
         return self.replies
     

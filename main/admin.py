@@ -33,7 +33,7 @@ class ResourcesAdmin(admin.ModelAdmin):
     
 @admin.register(Comment)
 class CommentsAdmin(admin.ModelAdmin):
-    list_display = ("text","author", "uploaded_at")
-    
+    list_display = ("text","author","parent", "forum", "uploaded_at")
+    list_filter = ("parent","forum","uploaded_at")
 # Register your models here.
  

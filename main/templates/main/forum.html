@@ -14,7 +14,7 @@
       <div class="p-8  ">
         <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{forum.author.username}}</div>
         <div class="block mt-1 text-lg leading-tight font-medium text-black ">{{forum.title}}</div>
-        <p class="mt-2 text-gray-500">{{forum.description}}</p>
+        
       </div>
     </div>
 </a>
@@ -25,7 +25,7 @@
     </button></span>
     <a href="{% url 'forum_comment'  forum.id %}" class="flex items-center"><span class="text-sm text-gray-500 bg-gray-300 rounded-lg flex items-center px-2"><img src="{% static 'pictures/comment.png' %}" class="size-7">{{forum.comment_count}}</span></a>
   
-  <span class="text-sm text-gray-600 flex items-center px-2">{{forum.uploaded_at}}</span>
+  <span class="time text-sm text-gray-600 flex items-center px-2">{{forum.uploaded_at}}</span>
 </div>
 </div>
 
@@ -35,5 +35,5 @@
 
 
 
-<script src="{% static 'js/flashcard.js' %}"></script>
+<script src="{% static 'js/forum.js' %}"></script>
 {% endblock %}

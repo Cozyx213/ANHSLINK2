@@ -11,14 +11,13 @@
 <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
   <div class="md:flex">
     <div class="p-8">
-      <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{forum.author.username}} </div>
-      <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{ forum.author.profile.grade }} {{ forum.author.profile.section }}</div>
+      <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{forum.author.username}}</div>
       <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{forum.title}}</a>
       <p class="mt-2 text-gray-600 ">{{forum.description}}</p>
     </div>
   </div>
 
-  <div class="px-4 py-2 bg-gray-200 flex justify-between">
+  <div class="px-4  bg-gray-200 flex justify-between">
     <span class="text-sm text-gray-700 bg bg-gray-300 rounded-lg"><button
         class="px-2 py-1 text-lg font-extrabold bg-gray-300 rounded-full">&#8593;
       </button>{{forum.likes}}<button class="px-2  py-1 text-lg font-extrabold bg-gray-300 rounded-full">&#8595;
@@ -42,27 +41,28 @@
       <div class="p-8 ">
         <div class="uppercase tracking-wide text-sm text-blue-500 font-semibold author">{{comment.author.username}}
         </div>
-        <div class="uppercase tracking-wide text-sm text-blue-500 font-semibold author">{{comment.author.profile.grade}} {{comment.author.profile.section}}
-        </div>
+
         <p class="mt-2 text-gray-500 size-fit ">{{comment.text}}</p>
       </div>
     </div>
 
-    <div class="px-4 py-2 bg-gray-200 text-right ">
+      <div class="px-4 py-2 bg-gray-200 text-right ">
 
-      <span class="text-sm text-gray-600  ">{{comment.uploaded_at}}</span>
+        <span class="text-sm text-gray-600  ">{{comment.uploaded_at}}</span>
+      </div>
+
+      <div>
+        <form method="POST" class="px-4 py-2 bg-green-200 flex justify-between" action="{% url 'reply'  %}">
+          {% csrf_token %}
+          <textarea name="text" type="text" placeholder="Add a comment" class="rounded-md px-4 text-left "></textarea>
+          <input name="comment_id" value="{{comment.id}}" hidden>
+          <input name="fid" value="{{forum.id}}" hidden>
+          <button type="submit" class="text-green-700 bg-green-300 px-3 rounded-lg">Comment</button>
+
+        </form>
+      </div>
     </div>
 
-    <div>
-      <form method="POST" class="px-4 py-2 bg-green-200 flex justify-between" action="{% url 'reply'  %}">
-        {% csrf_token %}
-        <textarea name="text" type="text" placeholder="Add a comment" class="rounded-md px-4 text-left "></textarea>
-        <input name="comment_id" value="{{comment.id}}" hidden>
-        <input name="fid" value="{{forum.id}}" hidden>
-        <button type="submit" class="text-green-700 bg-green-300 px-3 rounded-lg">Comment</button>
-
-      </form>
-    </div>
 
 
     {% for reply in comment.reply_ordered.all %}

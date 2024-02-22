@@ -6,7 +6,7 @@ from .models import Profile
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required=True)
     grade = forms.IntegerField(required=True)
-
+    section = forms.CharField(required=True)
 
     class Meta:
         model = User
@@ -16,6 +16,7 @@ class RegisterForm(UserCreationForm):
             "password2",
             "email",
             "grade",
+            "section"
 
         ]
     error_messages = {
@@ -27,7 +28,7 @@ class RegisterForm(UserCreationForm):
         
         if commit:
             user.save()
-            profile = Profile(user=user, grade = self.cleaned_data["grade"])
+            profile = Profile(user=user, grade = self.cleaned_data["grade"], section=self.cleaned_data["section"])
             profile.email = user.email
             profile.save()
         return user

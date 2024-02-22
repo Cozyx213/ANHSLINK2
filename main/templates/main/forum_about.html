@@ -11,7 +11,8 @@
 <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
   <div class="md:flex">
     <div class="p-8">
-      <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{forum.author.username}}</div>
+      <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{forum.author.username}} </div>
+      <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{ forum.author.profile.grade }} {{ forum.author.profile.section }}</div>
       <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{forum.title}}</a>
       <p class="mt-2 text-gray-600 ">{{forum.description}}</p>
     </div>
@@ -41,7 +42,8 @@
       <div class="p-8 ">
         <div class="uppercase tracking-wide text-sm text-blue-500 font-semibold author">{{comment.author.username}}
         </div>
-
+        <div class="uppercase tracking-wide text-sm text-blue-500 font-semibold author">{{comment.author.profile.grade}} {{comment.author.profile.section}}
+        </div>
         <p class="mt-2 text-gray-500 size-fit ">{{comment.text}}</p>
       </div>
     </div>
@@ -74,7 +76,7 @@
         <div class="p-8 ">
           <div class="uppercase tracking-wide text-sm text-purple-500 font-semibold author">{{reply.author.username}}
           </div>
-
+          <div class=" tracking-wide text-sm text-blue-500 font-semibold author">{{reply.author.profile.grade}} {{reply.author.profile.section}}</div>
           <p class="mt-2 text-gray-500 size-fit ">{{ reply.text }}</p>
         </div>
       </div>

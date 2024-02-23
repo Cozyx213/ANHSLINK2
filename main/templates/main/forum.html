@@ -1,33 +1,36 @@
 {% extends "main/base.html" %}
 {% load static %}
 {% block body %}
-<div class="image_container">
-  <div class="bg-blue-500 rounded-xl px-3 text-8xl font-normal"><h1>Forum</h1></div>
-  <div class="image_text hidden">
-    FLATAPS: Make learning fun and easy.
-  </div>
+
+<div class="bg-gray-700 text-center text-8xl text-white p-4 font-normal">
+  Forum
 </div>
 {% for forum in forums %}
-<a href="{% url 'forum_comment'  forum.id %}">
-  <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
-    <div class="md:flex bg-gray-200">
-      <div class="p-8  ">
-        <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{forum.author.username}}</div>
-        <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{ forum.author.profile.grade }} {{ forum.author.profile.section }}</div>
-        <div class="block mt-1 text-lg leading-tight font-medium text-black ">{{forum.title}}</div>
-        
+<div class="bg-gray-700">
+  <a href="{% url 'forum_comment'  forum.id %}">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4">
+      <div class="md:flex bg-gray-100">
+        <div class="p-4 size-full  ">
+          <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{forum.author.username}}</div>
+          <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">{{ forum.author.profile.grade}} {{ forum.author.profile.section }}</div>
+          <div class="block mt-1 text-lg leading-tight font-medium text-black ">{{forum.title}}</div>
+        </div>
       </div>
-    </div>
-</a>
-<div class="px-4 py-2 bg-gray-200 flex justify-between">
-  <span class="text-sm text-gray-500 bg bg-gray-300 rounded-lg"><button
-      class="px-2 py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8593;
-    </button>{{forum.likes}}<button class="px-2  py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8595;
-    </button></span>
-    <a href="{% url 'forum_comment'  forum.id %}" class="flex items-center"><span class="text-sm text-gray-500 bg-gray-300 rounded-lg flex items-center px-2"><img src="{% static 'pictures/comment.png' %}" class="size-7">{{forum.comment_count}}</span></a>
+      
+  </a>
+  <div class="px-4 py-2 bg-gray-200 flex justify-between">
+    <span class="text-sm text-gray-500 bg bg-gray-300 rounded-lg">
+      <button class="px-2 py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8593;</button>
+      {{forum.likes}}
+      <button class="px-2  py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8595;</button>
+    </span>
+    <a href="{% url 'forum_comment'  forum.id %}" class="flex items-center"><span
+        class="text-sm text-gray-500 bg-gray-300 rounded-lg flex items-center px-2"><img
+          src="{% static 'pictures/comment.png' %}" class="size-7">{{forum.comment_count}}</span></a>
+
+    <span class="time text-sm text-gray-600 flex items-center px-2">{{forum.uploaded_at}}</span>
+  </div>
   
-  <span class="time text-sm text-gray-600 flex items-center px-2">{{forum.uploaded_at}}</span>
-</div>
 </div>
 
 {% empty %}
@@ -37,4 +40,4 @@
 
 
 <script src="{% static 'js/forum.js' %}"></script>
-{% endblock %}
+{% endblock %}</div>

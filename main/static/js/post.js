@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var charCounts = title.value.length;
         
         if (maxNumTitle - charCounts >= 0 ) {
-            countTitle.style.color = 'green';
+            countTitle.style.color = 'white';
             enableSubmit();
         
         } else if (maxNumTitle - charCounts < 0) {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
             countTitle.style.color = 'red';
             disableSubmit();
         }
-        countTitle.innerHTML = maxNumTitle - charCounts;
+        countTitle.innerHTML =`${charCounts} / 200` ;
 
     });
 
@@ -38,13 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
         var charCounts = description.value.length;
 
         if( maxNumDescription - charCounts >= 0){
-            countDescription.style.color = 'green';
+            countDescription.style.color = 'white';
         } else if (maxNumDescription - charCounts <0 ){
             countDescription.style.color = 'red';
         }
 
         console.log(charCounts)
-        countDescription.innerHTML = maxNumDescription - charCounts;
+        countDescription.innerHTML =`${ charCounts} / 400`;
 
     });
 });

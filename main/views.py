@@ -25,6 +25,12 @@ def home (request):
     posts = Post.objects.all().order_by('-created_at')
     return render(request,"main/home.html", {"posts":posts})
 
+@login_required(login_url="/anhs")
+def fetch (request):
+    posts = Post.objects.all().order_by('-created_at')
+    return  render(request,"main/home.html", {"posts":posts})
+
+
 
 @login_required(login_url="/login")
 def show_resource(request,grade,subject):

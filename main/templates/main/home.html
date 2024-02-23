@@ -10,14 +10,18 @@
 {% for post in posts %}
 <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
   <div class="md:flex">
-    <div class="p-8">
-      <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{post.author.username}}</div>
+    <div class="p-3">
+      <div class="flex justify-between"><span class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{post.author.username}}
+        </span>
+        <span class="text-sm text-gray-600">{{post.created_at}}</span>
+      </div>
+
       <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{post.title}}</a>
-      <p class="mt-2 text-gray-500">{{post.description}}</p>
+      <p class="mt-2 text-gray-500 font-extrabold">{{post.description}}</p>
     </div>
   </div>
   <div class="px-4 py-2 bg-gray-200 text-right">
-    <span class="text-sm text-gray-600">{{post.created_at}}</span>
+
   </div>
 </div>
 
@@ -27,5 +31,7 @@
 
 
 
-<script src="{% static 'js/flashcard.js' %}"></script>
+
+<script src="{% static 'js/home.js' %}"></script>
+<div id="table"></div>
 {% endblock %}

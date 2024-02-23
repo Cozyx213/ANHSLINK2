@@ -17,5 +17,6 @@ urlpatterns = [
     path("forum", views.forum, name="forum"),
     path("forum/<int:id>/", views.forum_comment, name="forum_comment"),
     path("comment/", views.comment, name="comment"),
-    path("reply/", views.reply, name="reply")
+    path("reply/", views.reply, name="reply"),
+    path("fetch/", views.fetch, name="fetch")
   ]

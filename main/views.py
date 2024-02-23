@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -15,7 +15,7 @@ from django.shortcuts import get_object_or_404
 from .models import Resources
 import os
 from django.conf import settings
-
+from django.core.serializers import serialize
 # Create your views here.
 
 
@@ -28,7 +28,8 @@ def home (request):
 @login_required(login_url="/anhs")
 def fetch (request):
     posts = Post.objects.all().order_by('-created_at')
-    return  render(request,"main/home.html", {"posts":posts})
+    posts_json = serialize('json', posts)
+    return  JsonResponse({"posts":posts_json})
 
 
 
@@ -73,18 +74,6 @@ def create_post(request):
         form = PostForm()
     return render(request,"main/create_post.html", {"form":form})
 
-@login_required(login_url="/login")
-def create_forum(request):
-    if request.method == 'POST':
-        form = ForumForm(request.POST)
-        if form.is_valid():
-            forum = form.save(commit=False)
-            forum.author = request.user
-            forum.save()
-            return redirect("/forum")
-    else:
-        form = PostForm()
-    return render(request,"main/create_forum.html", {"form":form})
 
 @login_required(login_url="/login")
 def comment(request):
@@ -126,9 +115,32 @@ def reply(request):
 
 @login_required(login_url="/login")
 def forum(request):
+    if request.method == 'POST':
+        form = ForumForm(request.POST)
+        if form.is_valid():
+            forum = form.save(commit=False)
+            forum.author = request.user
+            forum.save()
+            return redirect("/forum")
+    else:
+        form = PostForm()
+        
     forums = Forum.objects.all().order_by('-uploaded_at')
-    return render(request,"main/forum.html",{"forums":forums} )
+    return render(request,"main/forum.html",{"forums":forums,"form":form} )
 
+
+@login_required(login_url="/login")
+def create_forum(request):
+    if request.method == 'POST':
+        form = ForumForm(request.POST)
+        if form.is_valid():
+            forum = form.save(commit=False)
+            forum.author = request.user
+            forum.save()
+            return redirect("/forum")
+    else:
+        form = PostForm()
+    return render(request,"main/create_forum.html", {"form":form})
 
 def upload_view(request):
     if request.method=='POST':

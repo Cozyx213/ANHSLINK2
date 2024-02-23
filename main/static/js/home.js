@@ -1,20 +1,31 @@
-function update(){
-
-    fetch("{% url 'fetch'%")
+function update() {
+    fetch("/fetch")
         .then(response => response.json())
-        .then(data=>{
+        .then(data => {
 
-            data.forEach(post =>{
+            const postsList = JSON.parse(data.posts);
+            const table = document.getElementById('table');
+            
+            table.innerHTML = "";
 
-                const table = document.createElement('tr');
-                table.inertHTML = `
-                
-                <td>${post.description}</td>
-                `
+            postsList.forEach(post => {
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${post.fields.description}</td>
+                <td>asd</td>
+                `;
+                table.appendChild(row); 
+
+                console.log(post.fields.description)
 
             })
 
         })
+        .catch(error => console.error('Error fetching data:', error));
+
 }
+
+
 update();
-setInterval(update,5000);
+setInterval(update, 5000);

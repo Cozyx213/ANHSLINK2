@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const countTitle = document.getElementById("countTitle");
     const countDescription = document.getElementById("countDescription");
     const submit = document.getElementById("submit")
-    let maxNumTitle = 50;
-    let maxNumDescription = 240;
+    let maxNumTitle = 200;
+    let maxNumDescription =400;
 
     function disableSubmit(){
         submit.style.background='red';

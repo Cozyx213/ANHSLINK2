@@ -52,7 +52,7 @@ class Comment(models.Model):
     parent = models.ForeignKey("self", on_delete=models.CASCADE, null= True, blank=True, related_name ="replies")
     author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
     
-    text = models.CharField(max_length=200)
+    text = models.CharField(max_length=400)
     
     uploaded_at = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)

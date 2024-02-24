@@ -35,7 +35,7 @@ class Resources (models.Model):
 class Forum (models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="author")
     title = models.CharField(max_length=200, default="")
-    description = models.CharField(max_length=400, default="")
+    description = models.CharField(max_length=400, default="",blank=True)
     
     uploaded_at = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)

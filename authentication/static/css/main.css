@@ -697,6 +697,10 @@ video {
   max-width: 28rem;
 }
 
+.max-w-screen-lg {
+  max-width: 1024px;
+}
+
 .border-spacing-x-px {
   --tw-border-spacing-x: 1px;
   border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);

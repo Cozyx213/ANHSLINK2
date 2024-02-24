@@ -12,14 +12,11 @@ class Post(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
     def __str__ (self):
         return self.title + "\n" + self.description
     
-    
 def upload_to_function(instance, filename):
     return f'media/{instance.grade}/{instance.subject}/{filename}'
-
 
 class Resources (models.Model):
     name = models.CharField(max_length=100, default='Default Name')
@@ -36,7 +33,7 @@ class Resources (models.Model):
         return self.grade +''+ self.subject
     
 class Forum (models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="author")
     title = models.CharField(max_length=200, default="")
     description = models.CharField(max_length=400, default="")
     

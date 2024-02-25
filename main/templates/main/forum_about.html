@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="px-4  bg-white flex justify-between">
+    <div class="px-4  bg-white flex justify-between rounded-b-xl">
       <span class="text-sm text-gray-700 bg bg-gray-300 rounded-lg"><button
           class="px-2 py-1 text-lg font-extrabold bg-gray-300 rounded-full">&#8593;
         </button>{{forum.likes}}<button class="px-2  py-1 text-lg font-extrabold bg-gray-300 rounded-full">&#8595;
@@ -52,12 +52,12 @@
               <div class="uppercase  tracking-wide text-sm text-blue-500 font-semibold author">
                 {{comment.author.profile.grade}} {{comment.author.profile.section}}
               </div>
-              <p class="mt-2 text-gray-500 size-fit ">{{comment.text}}</p>
+              <p class="mt-2 text-gray-800 size-fit ">{{comment.text}}</p>
             </div>
           </div>
 
-          <div class="px-4 py-2 bg-gray-200 text-right  ">
-            <span class="text-sm text-gray-600  ">{{comment.uploaded_at}}</span>
+          <div class="px-4 py-2 bg-gray-200 text-right rounded-b-xl  ">
+            <span class="text-sm text-gray-800  ">{{comment.uploaded_at}}</span>
           </div>
         </div>
 
@@ -76,13 +76,13 @@
                   {{reply.author.profile.grade}} {{reply.author.profile.section}}
                 </div>
                 <!--<p class="mt-2 text-gray-400 size-fit ">reply to: {{ reply.parent}}</p>!-->
-                <p class="mt-2 text-gray-500 size-fit ">{{ reply.text }}</p>
+                <p class="mt-2 text-gray-800 size-fit ">{{ reply.text }}</p>
               </div>
             </div>
 
             <div class="px-4 py-2 bg-gray-200 text-right ">
 
-              <span class="text-sm text-gray-600  ">{{reply.uploaded_at}}</span>
+              <span class="text-sm text-gray-800  ">{{reply.uploaded_at}}</span>
             </div>
           </div>
         </div>

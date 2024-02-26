@@ -14,6 +14,7 @@ from django.http import FileResponse, Http404
 from django.shortcuts import get_object_or_404
 from .models import Resources
 import os
+from django.views.decorators.csrf import csrf_protect
 from django.conf import settings
 from django.core.serializers import serialize
 # Create your views here.
@@ -111,6 +112,7 @@ def reply(request):
     else:
         form = CommentForm()
     return render(request,"main/forum.html",{"form":form})
+
 
 
 @login_required(login_url="/login")

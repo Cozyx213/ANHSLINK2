@@ -18,7 +18,7 @@
     </div>
 
     <div class="flex justify-center items-center pt-5 pb-16 bg-gray-700">
-      <form method="POST" class="p-2 md:p-2 w-5/6 bg-gray-700 rounded-lg bottom-10 " action="{% url 'forum' %}">
+      <form method="POST" id="formFurom"class="p-2 md:p-2 w-5/6 bg-gray-700 rounded-lg bottom-10 " action="{% url 'forum' %}">
         <div class="mb-6">
           {% csrf_token %}
           <label for="title" class="block mb-1 text-md font-semibold text-white">Title </label>
@@ -44,6 +44,7 @@
     </div>
   </div>
 </div>
+<script src="{% static 'js/comment.js' %}"></script>
 <script src="{% static 'js/post.js' %}"></script>
 {% for forum in forums %}
 <div class="bg-gray-700">

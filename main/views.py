@@ -13,7 +13,7 @@ from django.conf import settings
 from django.http import FileResponse, Http404
 from django.shortcuts import get_object_or_404
 from .models import Resources
-import os
+import time
 from django.views.decorators.csrf import csrf_protect
 from django.conf import settings
 from django.core.serializers import serialize
@@ -130,19 +130,24 @@ def forum(request):
     forums = Forum.objects.all().order_by('-uploaded_at')
     return render(request,"main/forum.html",{"forums":forums,"form":form} )
 
-
 @login_required(login_url="/login")
 def create_forum(request):
+    form = ForumForm(request.POST or None)  # Initialize form for both GET and POST requests
     if request.method == 'POST':
-        form = ForumForm(request.POST)
-        if form.is_valid():
-            forum = form.save(commit=False)
-            forum.author = request.user
-            forum.save()
-            return redirect("/forum")
+        form_timestamp = request.POST.get('form_timestamp')
+        if form_timestamp != request.session.get('last_form_timestamp'):
+            request.session['last_form_timestamp'] = form_timestamp
+            if form.is_valid():
+                forum = form.save(commit=False)
+                forum.author = request.user
+                forum.save()
+                return redirect("/forum")
+        else:
+            # Redirect or display a message for duplicate submission
+            return redirect("/home")  # Example redirect, adjust as needed
     else:
-        form = PostForm()
-    return render(request,"main/create_forum.html", {"form":form})
+        form_timestamp = str(time.time())
+    return render(request, 'my_template.html', {'form': form, 'form_timestamp': form_timestamp})
 
 def upload_view(request):
     if request.method=='POST':

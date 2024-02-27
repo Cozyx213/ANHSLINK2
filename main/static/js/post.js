@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+
+    const submitButton = document.getElementById("submit")
+    const titleButton = document.getElementById("title")
+    const form = document.getElementById("formFurom")
     const title = document.getElementById("title");
     const description = document.getElementById("description");
     const countTitle = document.getElementById("countTitle");
@@ -46,5 +50,17 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(charCounts)
         countDescription.innerHTML =`${ charCounts} / 400`;
 
+    });
+
+    form.addEventListener('submit', function(event){
+        submitButton.disabled=true;// Disable the submit button
+        submitButton.value="Submitting...";// Optional: Change button text
+
+        // Optional: Add a timeout to re-enable the button after a certain time
+        setTimeout(function() {
+            submitButton.disabled = false;
+            
+            submitButton.innerHTML = 'Submit';
+        }, 5000); // Re-enable after 5 seconds
     });
 });

@@ -28,13 +28,14 @@
         </button></span>
       <span class="text-sm text-gray-600 flex items-center">{{forum.uploaded_at}}</span>
     </div>
-
+<script src="{% static 'js/comment.js' %}"></script>
     <div>
-      <form method="POST" class="px-4 py-2 bg-gray-700 flex justify-between" action="{% url 'comment'  %}">
+      <form method="POST" class="form px-4 py-2 bg-gray-700 flex justify-between" action="{% url 'comment'  %}">
         {% csrf_token %}
         <textarea name="text" type="text" placeholder="Add a comment" class="rounded-md px-2 text-left w-2/3 h-16 " maxlength="400"></textarea>
         <input name="id" value="{{forum.id}}" hidden>
-        <button type="submit" class="text-green-700 bg-white px-3 rounded-lg">Comment</button>
+        <input class="submitBTN">
+        <button type="submit" class="text-green-700 bg-white px-3 rounded-lg submitBTN">Comment</button>
 
       </form>
     </div>
@@ -93,13 +94,13 @@
         {% endfor %}
 
         <div>
-          <form method="POST" class="px-4 py-2 bg-gray-700 flex justify-between" action="{% url 'reply'  %}">
+          <form method="POST" class="form px-4 py-2 bg-gray-700 flex justify-between" action="{% url 'reply'  %}">
             {% csrf_token %}
             <textarea name="text" type="text" placeholder="Add a comment" class=" w-2/3 rounded-md px-4 text-left "
               maxlength="400"></textarea>
             <input name="comment_id" value="{{comment.id}}" hidden>
             <input name="fid" value="{{forum.id}}" hidden>
-            <button type="submit" class="text-white bg-gray-700 px-3 rounded-lg">Comment</button>
+            <button type="submit" class="text-white bg-gray-700 px-3 rounded-lg submitBTN">Comment</button>
 
           </form>
         </div>

@@ -52,15 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    form.addEventListener('submit', function(event){
+    form.addEventListener('submit',()=>{
+        
         submitButton.disabled=true;// Disable the submit button
         submitButton.value="Submitting...";// Optional: Change button text
 
         // Optional: Add a timeout to re-enable the button after a certain time
-        setTimeout(function() {
-            submitButton.disabled = false;
-            
-            submitButton.innerHTML = 'Submit';
-        }, 5000); // Re-enable after 5 seconds
+       // Re-enable after 5 seconds
     });
 });

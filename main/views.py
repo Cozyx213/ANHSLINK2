@@ -128,7 +128,12 @@ def forum(request):
         form = PostForm()
         
     forums = Forum.objects.all().order_by('-uploaded_at')
-    return render(request,"main/forum.html",{"forums":forums,"form":form} )
+    return render(request,"main/forum.html",{
+        "forums":forums,
+        "form":form,
+        "user":request.user.profile
+        
+        } )
 
 @login_required(login_url="/login")
 def create_forum(request):

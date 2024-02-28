@@ -14,7 +14,7 @@
       <p>·a website or web page where users can post comments about a particular issue or topic and reply to other
         users'
         postings.</p>
-
+        <p> What's on your mind, {{user}}? </p>
     </div>
 
     <div class="flex justify-center items-center pt-5 pb-16 bg-gray-700">
@@ -47,6 +47,7 @@
 </div>
 <script src="{% static 'js/comment.js' %}"></script>
 <script src="{% static 'js/post.js' %}"></script>
+
 {% for forum in forums %}
 <div class="bg-gray-700">
   <a href="{% url 'forum_comment'  forum.id %}">

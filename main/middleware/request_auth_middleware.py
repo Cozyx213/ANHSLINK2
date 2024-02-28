@@ -22,7 +22,7 @@ class RequestAuthMiddleware:
             
 
         if 'user_id' not in request.session and request.path not in EXEMPT_URLS and not any(request.path.startswith(url) for url in SPEC_URLS):
-            print(request.path, "wut")
+            print(request.path, "login")
             return redirect('/authentication/anhs/')
         # else:
         #     print("nont")

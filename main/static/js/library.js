@@ -1,15 +1,31 @@
 
 document.addEventListener('DOMContentLoaded', event => {
-    var grade9Options = [
+
+    var grade7Options = [
+        { text: "Subject", value: "Subject", disabled: "disabled", selected: "selected" },
+        { text: "Enhanced Science", value: "Enhanced Science" },
+        { text: "Esp", value: "Esp" },
+        { text: "Mapeh", value: "Mapeh" },
+        { text: "Creative Technology", value: "Creative Technology" },
+        { text: "Filipino", value: "Filipino" },
+        { text: "English", value: "English" },
+        { text: "Enhanced Math", value: "Enhanced Math" },
+        { text: "Science Research", value: "Science Research" },
+        { text: "AP", value: "AP" },  
+    ]
+    
+
+    var grade8Options = [
         { text: "Subject", value: "Subject", disabled: "disabled", selected: "selected" },
         { text: "Science", value: "Science" },
         { text: "Esp", value: "Esp" },
         { text: "Mapeh", value: "Mapeh" },
-        { text: "Research", value: "Research" },
+        { text: "ICT", value: "ICT" },
         { text: "Filipino", value: "Filipino" },
         { text: "English", value: "English" },
         { text: "Math", value: "Math" },
-        { text: "Consumer Chemistry", value: "Consumer Chemistry" },
+        { text: "Biotechnology", value: "Biotechnology" },
+        { text: "AP", value: "AP" },  
     ]
     var grade10Options = [
         { text: "Subject", value: "Subject", disabled: "disabled", selected: "selected" },
@@ -50,7 +66,18 @@ document.addEventListener('DOMContentLoaded', event => {
 
     grade.addEventListener("change", function (event) {
         var gradeVal = grade.value;
-        if (gradeVal === "Grade 9") {
+        
+        if (gradeVal === "Grade 7") {
+            changesub(grade7Options)
+            console.log("7");
+
+
+        }else if (gradeVal === "Grade 8") {
+            changesub(grade8Options)
+            console.log("8");
+
+
+        }else if (gradeVal === "Grade 9") {
             changesub(grade9Options)
             console.log("9");
 

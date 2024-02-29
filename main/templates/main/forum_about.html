@@ -28,7 +28,7 @@
         </button></span>
       <span class="text-sm text-gray-600 flex items-center">{{forum.uploaded_at}}</span>
     </div>
-<script src="{% static 'js/comment.js' %}"></script>
+
     <div>
       <form method="POST" class="form px-4 py-2 bg-gray-700 flex justify-between" action="{% url 'comment'  %}">
         {% csrf_token %}
@@ -134,7 +134,6 @@
 
 
   {% endfor %}
-
-  <script src="{% static 'js/flashcard.js' %}"></script>
+  <script src="{% static 'js/comment.js' %}"></script>
   {% endblock %}
 </div>

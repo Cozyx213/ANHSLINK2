@@ -30,8 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(day, DayNow)
             //const ago = minuteNow - minute;
 
-
-
             if (period === 'p.m.') {
                 hour += hour+ 12;
             }

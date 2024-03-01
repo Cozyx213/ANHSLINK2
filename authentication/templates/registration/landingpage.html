@@ -9,7 +9,7 @@
     <title>ANHSLink</title>
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="icon" href="{% static 'pictures/ANHSLink_logo.png' %}" type="image/x-icon" width="64" height="64">
+    <link rel="icon" href="{% static 'pictures/ANHSLink_logo.svg' %}" type="image/x-icon" width="64" height="64">
     <style>
         .hello {
             color: green;
@@ -25,7 +25,7 @@
             <!-- Profile Header -->
             <div class="flex items-center space-x-4 p-4 border-b-4 bg-green-100 border-green-200">
                 <!-- Profile Picture -->
-                <img class="h-24 w-24 rounded-full object-cover" src="{% static 'pictures/ANHSLink_logo.png' %}"
+                <img class="h-24 w-24 rounded-full object-cover" src="{% static 'pictures/ANHSLink_logo.svg' %}"
                     alt="ANHS LOGO">
                 <!-- Profile Info -->
                 <div>
@@ -53,14 +53,12 @@
             </div>
 
             <div class="border-red-200 rounded-lg bg-yellow-200">
-                <h1 class="text-center text-pretty font-bold text-lg">Strand Offerings</h1>
-                <div class="rounded-3xl"><img class="p-4 rounded-3xl"
-                        src="https://cit.edu/wp-content/uploads/2023/08/SHS-Cover-Photo-1.png">
-                </div>
-                <div class="strandsDiv">
+                <button id="left" class="size-40" > &#10094;</button>
+                <button id ="right" class="size-40"> &#10095; </button>
+                <div class="strandsDiv flex justify-center">
 
-                    <button id="left" class="size-40" > &#10094;</button>
-                    <button id ="right" class="size-40"> &#10095; </button>
+                    
+                   
                     
                     <img class="rounded-3xl strands" src="{% static 'pictures/stem2.jpg' %}">
                     <img class="rounded-3xl strands" src="{% static 'pictures/abm.png' %}">
@@ -68,7 +66,7 @@
                     
                 </div>
 
-                <div><a href="admin">Admin</a></div>
+               
                 <!-- Add here any additional content or links you want to include -->
             </div>
         </div>

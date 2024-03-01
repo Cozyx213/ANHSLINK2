@@ -784,10 +784,6 @@ video {
   white-space: nowrap;
 }
 
-.text-pretty {
-  text-wrap: pretty;
-}
-
 .rounded {
   border-radius: 0.25rem;
 }
@@ -980,6 +976,10 @@ video {
 
 .to-white {
   --tw-gradient-to: #fff var(--tw-gradient-to-position);
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
 }
 
 .object-cover {

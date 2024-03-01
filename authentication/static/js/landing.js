@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", event => {
         if (n < 1) { slideIndex = x.length };
         for (i = 0; i < x.length; i++) {
             x[i].style.display = "none";
-            console.log(x[i])
+            //console.log(x[i])
         }
-        console.log(slideIndex);
+        //console.log(slideIndex);
         x[slideIndex - 1].style.display = "block";
     }
 });

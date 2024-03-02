@@ -423,7 +423,7 @@ a {
     }
 
     .head_container {
-        justify-content: space-between;
+        justify-content: center;
         display: flex;
         width: 100%;
         padding: 10px 0;
@@ -643,7 +643,7 @@ footer {
     display: flex;
     padding: 20px;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
 
 }
 

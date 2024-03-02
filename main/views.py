@@ -132,9 +132,23 @@ def forum(request):
         "forums":forums,
         "form":form,
         "user":request.user.profile
-        
         } )
+    
+@login_required(login_url="/login")
+def get_forums(request):
+    start = int(request.GET.get("index") or 0)
+    
+    forumList =[]
+    for i in range(10):
+        
+        forum = Forum.objects.all().order_by('-uploaded_at')[start:start+i]
+        forumList.append(forum)
+    form_json = serialize('json', forum)
+    return JsonResponse({"forums":form_json})
+    
 
+
+    
 @login_required(login_url="/login")
 def create_forum(request):
     form = ForumForm(request.POST or None)  # Initialize form for both GET and POST requests

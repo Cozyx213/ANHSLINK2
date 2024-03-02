@@ -69,13 +69,6 @@ class Like(models.Model):
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, default="", related_name='Likes',null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default="", null=True)
     
-    like = models.BooleanField()
-class Dislike(models.Model):
-    forum = models.ForeignKey(Forum, on_delete=models.CASCADE, default="", related_name='Dislikes', null=True)
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, default="", related_name='Dislikes',null=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
     
-    Dislike = models.BooleanField()
-
     
 # Create your models here.

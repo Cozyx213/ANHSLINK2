@@ -15,32 +15,75 @@ function load() {
     fetch(`/get_forums?index=${current}`)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
 
-            const forumList = JSON.parse(data.forums);
-            forumList.forEach(add_post)
+
+            data.forums.forEach(add_post)
         })
 
 }
 
-//content.fields.title
-//content.fields.author
-//content.fields.id
-//content.fields.description
-//${content.fields.title}
-//${content.fields.author.username}
-//${content.fields.id}
+//content.title
+//content.author
+//content.id
+//content.description
+//${content.title}
+//${content.author.username}
+//${content.id}
 //$content.fields.description}
+function getTime(time) {
+    const timeString = time;
+
+    // Parse the timestamp and create a Date object
+    const pastDate = new Date(timeString);
+
+    // Get the current time as a Date object
+    const currentDate = new Date();
+
+    // Calculate the difference in milliseconds
+    const timeElapsed = currentDate - pastDate;
+
+    // Convert milliseconds to seconds
+    const secondsElapsed = timeElapsed / 1000;
+
+    var mins = secondsElapsed / 60;
+    var hours = mins / 60;
+    var days = hours / 24;
+    mins = Math.round(mins)
+    hours = Math.round(hours)
+    days  = Math.round(days)
+    if (days >= 1) {
+        if (days >=2){
+            return days + "days ago"
+        }
+        return days + "day ago"
+    } else if (hours >= 1) {
+        if (hours >=2){
+            return hours + "hrs ago"
+        }
+        return (hours) + "hr ago"
+    } else if (mins>=1){
+        if (mins >=2){
+            return mins + "mins ago"
+        }
+        return mins + "min ago"
+    }else{
+        return secondsElapsed + "secs ago"
+    }
+}
 function add_post(content) {
     const forumDiv = document.getElementById("forums");
     const news = document.createElement("div");
     news.innerHTML = `<div class="bg-gray-700">
-    <a href="{% url 'forum_comment'  ${content.fields.id} %}">
+    <a  href="/forum/${content.id}">
       <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4">
         <div class="md:flex bg-gray-100">
           <div class="p-4 size-full  ">
-            <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">${content.fields.author.username}
+            <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">${content.author.user.username}
             </div>
-            <div class="block mt-1 text-lg leading-tight font-medium text-black ">${content.fields.title}</div>
+            <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">
+            ${content.author.grade} ${content.author.section}</div>
+            <div class="block mt-1 text-lg leading-tight font-medium text-black ">${content.title}</div>
           </div>
         </div>
   
@@ -50,15 +93,15 @@ function add_post(content) {
         <button class="px-2 py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8593;</button>
         {{forum.likes}}
         <button class="px-2  py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8595;</button>
-      </span>
-      <a href="{% url 'forum_comment'  forum.id %}" class="flex items-center"><span
+      </span> 
+      <a href="/forum/${content.id}" class="flex items-center"><span
           class="text-sm text-gray-500 bg-gray-300 rounded-lg flex items-center px-2"><img
             src="{% static 'pictures/comment.png' %}" class="size-7">{{forum.comment_count}}</span></a>
   
-      <span class="time text-sm text-gray-600 flex items-center px-2">{{forum.uploaded_at}}</span>
+      <span class="time text-sm text-gray-600 flex items-center px-2">${getTime(content.uploaded_at)}</span>
     </div>
   
   </div>`;
     forumDiv.appendChild(news)
-    console.log("here")
+    console.log(content)
 }

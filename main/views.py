@@ -17,6 +17,9 @@ import time
 from django.views.decorators.csrf import csrf_protect
 from django.conf import settings
 from django.core.serializers import serialize
+from .serializers import ForumSerializer
+from rest_framework.renderers import JSONRenderer
+from authentication.models import Profile
 # Create your views here.
 
 
@@ -118,19 +121,26 @@ def reply(request):
 @login_required(login_url="/login")
 def forum(request):
     if request.method == 'POST':
-        form = ForumForm(request.POST)
-        if form.is_valid():
-            forum = form.save(commit=False)
-            forum.author = request.user
-            forum.save()
-            return redirect("/forum")
+       new_forum = Forum(
+            title=request.POST.get('title'),
+            description=request.POST.get('description'),
+            # ... other fields ...
+        )  
+        # Assuming that there is a one-to-one relationship between User and Profile
+       try:
+           user_profile = Profile.objects.get(user=request.user)
+           new_forum.author = user_profile
+       except Profile.DoesNotExist:
+           # Handle the case where the Profile does not exist for the User
+           # You might want to create a Profile instance or return an error
+           pass
+        
+       new_forum.save()
     else:
         form = PostForm()
         
-    forums = Forum.objects.all().order_by('-uploaded_at')
     return render(request,"main/forum.html",{
-        "forums":forums,
-        "form":form,
+       
         "user":request.user.profile
         } )
     
@@ -138,35 +148,16 @@ def forum(request):
 def get_forums(request):
     start = int(request.GET.get("index") or 0)
     
-    forumList =[]
-    for i in range(10):
-        
-        forum = Forum.objects.all().order_by('-uploaded_at')[start:start+i]
-        forumList.append(forum)
-    form_json = serialize('json', forum)
-    return JsonResponse({"forums":form_json})
+   
+    forums = Forum.objects.all().order_by('-uploaded_at')[start:start+10]
+    
+    serializer = ForumSerializer(forums, many=True)
+    return JsonResponse({"forums": serializer.data})
+   #return JsonResponse({"forums":form_json})
     
 
 
     
-@login_required(login_url="/login")
-def create_forum(request):
-    form = ForumForm(request.POST or None)  # Initialize form for both GET and POST requests
-    if request.method == 'POST':
-        form_timestamp = request.POST.get('form_timestamp')
-        if form_timestamp != request.session.get('last_form_timestamp'):
-            request.session['last_form_timestamp'] = form_timestamp
-            if form.is_valid():
-                forum = form.save(commit=False)
-                forum.author = request.user
-                forum.save()
-                return redirect("/forum")
-        else:
-            # Redirect or display a message for duplicate submission
-            return redirect("/home")  # Example redirect, adjust as needed
-    else:
-        form_timestamp = str(time.time())
-    return render(request, 'my_template.html', {'form': form, 'form_timestamp': form_timestamp})
 
 def upload_view(request):
     if request.method=='POST':

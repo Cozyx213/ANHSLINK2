@@ -5,7 +5,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_delete
 from django.utils.text import slugify
 from django.utils.timezone import timezone
-
+from authentication.models import Profile
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField (max_length=200)
@@ -31,14 +31,14 @@ class Resources (models.Model):
     
     def __str__(self):
         return self.grade +''+ self.subject
-    
+
 class Forum (models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="author")
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="author")
     title = models.CharField(max_length=200, default="")
     description = models.CharField(max_length=400, default="",blank=True)
     
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    likes = models.IntegerField(default=0)
+    
     def __str__(self):
         return self.title
     

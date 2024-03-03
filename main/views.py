@@ -120,6 +120,7 @@ def reply(request):
 
 @login_required(login_url="/login")
 def forum(request):
+    form = "blew"
     if request.method == 'POST':
        new_forum = Forum(
             title=request.POST.get('title'),
@@ -136,11 +137,12 @@ def forum(request):
            pass
         
        new_forum.save()
+       return redirect("forum")
     else:
         form = PostForm()
         
     return render(request,"main/forum.html",{
-       
+       "form":form,
         "user":request.user.profile
         } )
     

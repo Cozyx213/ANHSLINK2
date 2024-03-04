@@ -137,7 +137,7 @@ def forum(request):
            pass
         
        new_forum.save()
-       return redirect("forum")
+       return redirect(f"/forum/{new_forum.id}")
     else:
         form = PostForm()
         

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANHSLink</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="icon" href="{% static 'pictures/ANHSLink_logo.svg' %}" type="image/x-icon" width="64" height="64">
+    <style>
+        .hello {
+            color: green;
+        }
+    </style>
+    <script src="{% static 'js/landing.js' %}"></script>
+</head>
+
+<body>
+
+    <div class="flex justify-center items-center min-h-1/2-screen bg-gray-200">
+        <div class="w-full max-w-2xl mx-auto p-2 bg-white shadow-lg rounded-lg">
+            <!-- Profile Header -->
+            <div class="flex items-center space-x-4 p-4 border-b-4 bg-green-100 border-green-200">
+                <!-- Profile Picture -->
+                <img class="h-24 w-24 rounded-full object-cover" src="{% static 'pictures/ANHSLink_logo.svg' %}"
+                    alt="ANHS LOGO">
+                <!-- Profile Info -->
+                <div>
+                    <h2 class="text-xl font-semibold">ANHSLINK</h2>
+                    <p class="text-gray-600 hello">Hello Nationalistas! Welcome to ANHSLINK</p>
+                </div>
+            </div>
+
+            <!-- Background Image -->
+            <div class="mt-4">
+                <img class="w-full h-48 object-cover rounded-lg" src="{% static 'pictures/login_page.png' %}"
+                    alt="Background">
+            </div>
+
+            <!-- Additional Content or Links -->
+            <div class="flex justify-center "></div>
+            <a href="login_view">
+                <div
+                    class="text justify-center font-bold align-middle  p-4 m-8 text-center  rounded-xl text-white bg-orange-500 border-b-8 border-orange-500 ">
+                    <p>New student</p>
+
+                </div>
+            </a>
+
+            <div class="flex justify-center ">
+                New student
+            </div>
+
+            
+        </div>
+
+
+</body>
+
+
+
+</html>

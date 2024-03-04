@@ -54,17 +54,17 @@ function getTime(time) {
         if (days >=2){
             return Math.round(days) + " days ago"
         }
-        return days + " day ago"
+        return Math.round(days) + " day ago"
     } else if (hours >= 1) {
         if (hours >=2){
             return Math.round(hours) + " hours ago"
         }
-        return (hours) + " hour ago"
+        return Math.round(hours) + " hour ago"
     } else if (mins>=1){
         if (mins >=2){
             return Math.round(mins) + " minutes ago"
         }
-        return mins + " minute ago"
+        return Math.round(mins) + " minute ago"
     }else{
         return Math.round(secondsElapsed) + " seconds ago"
     }
@@ -94,7 +94,7 @@ function add_post(content) {
       </span> 
       <a href="/forum/${content.id}" class="flex items-center"><span
           class="text-sm text-gray-500 bg-gray-300 rounded-lg flex items-center px-2"><img
-            src="{% static 'pictures/comment.png' %}" class="size-7">{{forum.comment_count}}</span></a>
+            src="/static/pictures/comment.png" class="size-7">{{forum.comment_count}}</span></a>
   
       <span class="time text-sm text-gray-600 flex items-center px-2">${getTime(content.uploaded_at)}</span>
     </div>

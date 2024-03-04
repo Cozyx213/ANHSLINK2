@@ -7,4 +7,5 @@ urlpatterns = [
     path('anhs',views.anhs, name="anhs"),
     path('sign_up', views.signup_view, name="sign_up"),
     path("login_view", views.login_view, name="login_view"),
+    path("enroll", views.enroll_view, name="enroll")
 ]

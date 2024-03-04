@@ -14,7 +14,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 class ForumSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(read_only=True)
-
     class Meta:
         model = Forum
         fields = ['id', 'title', 'description', 'author',"uploaded_at"]
+

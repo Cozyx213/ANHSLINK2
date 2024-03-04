@@ -15,9 +15,9 @@ def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
-        user = authenticate(request, username = username, password= password)
+        user = authenticate(request, username = username, password= password )
         if user is not None:
-            login(request,user)
+            login(request, user, backend= 'authentication.backends.EmailOrUsernameModelBackend')
             return HttpResponseRedirect(reverse('home'))
         else:
             return render(request, "registration/login.html",{
@@ -33,7 +33,7 @@ def signup_view(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()  # This assumes the RegisterForm saves the user upon validation.
-            login(request, user)
+            login(request,user , backend= 'authentication.backends.EmailOrUsernameModelBackend')
             return HttpResponseRedirect(reverse('login'))  # Redirect to the home page after sign-up.
     
     else:
@@ -42,3 +42,5 @@ def signup_view(request):
     return render(request, "registration/sign_up.html", {
         "form": form
     })
+def enroll_view(request):
+    return render(request, "registration/enroll.html")

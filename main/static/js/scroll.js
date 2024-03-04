@@ -49,26 +49,24 @@ function getTime(time) {
     var mins = secondsElapsed / 60;
     var hours = mins / 60;
     var days = hours / 24;
-    mins = Math.round(mins)
-    hours = Math.round(hours)
-    days  = Math.round(days)
+   
     if (days >= 1) {
         if (days >=2){
-            return days + "days ago"
+            return Math.round(days) + " days ago"
         }
-        return days + "day ago"
+        return days + " day ago"
     } else if (hours >= 1) {
         if (hours >=2){
-            return hours + "hrs ago"
+            return Math.round(hours) + " hours ago"
         }
-        return (hours) + "hr ago"
+        return (hours) + " hour ago"
     } else if (mins>=1){
         if (mins >=2){
-            return mins + "mins ago"
+            return Math.round(mins) + " minutes ago"
         }
-        return mins + "min ago"
+        return mins + " minute ago"
     }else{
-        return secondsElapsed + "secs ago"
+        return Math.round(secondsElapsed) + " seconds ago"
     }
 }
 function add_post(content) {

@@ -37,7 +37,7 @@
             <div class="text-center">
                 <form action="{% url 'sign_up' %}" method="post">
                     {% csrf_token %}
-                    <input type="text" name="username" placeholder="Username"
+                    <input autofocus type="text" name="username" placeholder="Username"
                         class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <input type="password" name="password1" placeholder="Password"
                         class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">

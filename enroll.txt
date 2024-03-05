@@ -1,0 +1,38 @@
+enroll:
+lrn, name of last school, 
+
+are you upcoming:
+	jhs:
+		new:
+			Transferee:
+					Last:
+						7,8,9,10
+			Freshman
+					7
+		old
+			Returnee:
+					7
+					8
+					9
+					10
+			Continuing:
+					8
+					9
+					10
+				
+	shs:
+		New:	
+			
+			Freshmen:
+					11
+			Transferee:
+					11/12
+
+		old:
+			Returnee:
+				11
+				12
+			Continuing:
+					
+				12
+	

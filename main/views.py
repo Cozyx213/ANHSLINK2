@@ -17,7 +17,7 @@ import time
 from django.views.decorators.csrf import csrf_protect
 from django.conf import settings
 from django.core.serializers import serialize
-from .serializers import ForumSerializer
+from .serializers import ForumSerializer, PostSerializer
 from rest_framework.renderers import JSONRenderer
 from authentication.models import Profile
 # Create your views here.
@@ -29,11 +29,12 @@ def home (request):
     posts = Post.objects.all().order_by('-created_at')
     return render(request,"main/home.html", {"posts":posts})
 
-@login_required(login_url="/anhs")
+
 def fetch (request):
     posts = Post.objects.all().order_by('-created_at')
-    posts_json = serialize('json', posts)
-    return  JsonResponse({"posts":posts_json})
+    serializer = PostSerializer(posts, many=True)
+    
+    return  JsonResponse({"posts":serializer.data})
 
 
 

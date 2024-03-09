@@ -15,6 +15,14 @@
 <body>
     <div class="page">
         <div class="head_container">
+            
+            <div class="information flex justify-center space-x-"><a href="{% url 'map' %}">
+                <p>Map</p>
+            </a>
+            <a href="{% url 'history' %}">
+                <p>History</p>
+            </a></div>
+
             <div class="branding">
                 <img class="logo" src="{% static 'pictures/ANHSLink_logo.png' %}" alt="ANHS LOGO" width="7%">
                 <div class="site-identity">
@@ -23,15 +31,8 @@
                 </div>
             </div>
             <div class="information flex justify-center space-x-">
-                <a class="" href="{% url 'home' %}">
-                    <p>News</p>
-                </a>
-                <a href="{% url 'map' %}">
-                    <p>Map</p>
-                </a>
-                <a href="{% url 'history' %}">
-                    <p>History</p>
-                </a>
+                
+                
                 <a href="{% url 'library' %}">
                     <p>Library</p>
                 </a>
@@ -39,6 +40,7 @@
                 <a href="{% url 'forum' %}">
                     <p>Forum</p>
                 </a>
+                
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
                     <button type="submit"><p>Log Out</p></button>

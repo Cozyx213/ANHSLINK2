@@ -36,17 +36,19 @@ class Forum (models.Model):
     author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="author")
     title = models.CharField(max_length=200, default="")
     description = models.CharField(max_length=400, default="",blank=True)
-    
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    
+    likes = models.ManyToManyField(User, related_name ='liked_comments')
+    dislikes = models.ManyToManyField(User,related_name ='disliked_comments')
     def __str__(self):
         return self.title
-    
     def comment_count(self):
         return self.comments.count()
     def comments_ordered(self):
         return self.comments.all().order_by('-uploaded_at')
     
+    @property
+    def like_count(self):
+        return (self.likes.count() - self.dislikes.count())
 class Comment(models.Model):
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE, null=True, blank=True, default="", related_name='comments')
     parent = models.ForeignKey("self", on_delete=models.CASCADE, null= True, blank=True, related_name ="replies")
@@ -55,20 +57,16 @@ class Comment(models.Model):
     text = models.CharField(max_length=400)
     
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    likes = models.IntegerField(default=0)
+    
  
-
+    
     def __str__(self):
         return self.text
     def reply_ordered(self):
         return self.replies.all().order_by('-uploaded_at')
     
     
-class Like(models.Model):
-    forum = models.ForeignKey(Forum, on_delete=models.CASCADE, default="", related_name='Likes',null=True)
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, default="", related_name='Likes',null=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default="", null=True)
-    
+
     
     
 # Create your models here.

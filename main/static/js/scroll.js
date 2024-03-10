@@ -89,12 +89,12 @@ function add_post(content) {
     <div class="px-4 py-2 bg-gray-200 flex justify-between">
       <span class="text-sm text-gray-500 bg bg-gray-300 rounded-lg">
         <button class="px-2 py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8593;</button>
-        {{forum.likes}}
+        ${content.like_count}
         <button class="px-2  py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8595;</button>
       </span> 
       <a href="/forum/${content.id}" class="flex items-center"><span
           class="text-sm text-gray-500 bg-gray-300 rounded-lg flex items-center px-2"><img
-            src="/static/pictures/comment.png" class="size-7">{{forum.comment_count}}</span></a>
+            src="/static/pictures/comment.png" class="size-7">${content.comment_count}</span></a>
   
       <span class="time text-sm text-gray-600 flex items-center px-2">${getTime(content.uploaded_at)}</span>
     </div>

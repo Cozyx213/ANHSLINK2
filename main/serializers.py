@@ -14,12 +14,15 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 class ForumSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(read_only=True)
+    like_count = serializers.IntegerField( read_only=True)
+    comment_count = serializers.IntegerField( read_only=True)
     class Meta:
         model = Forum
-        fields = ['id', 'title', 'description', 'author',"uploaded_at"]
+        fields = ['id', 'title', 'description', 'author',"uploaded_at",'like_count','comment_count']
 
 class PostSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
+    
     class Meta:
         model = Post
         fields = ['id', 'title','description', 'created_at','author']

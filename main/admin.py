@@ -27,8 +27,8 @@ class ResourcesAdmin(admin.ModelAdmin):
     approve_posts.short_description = "Mark selected posts is approved"
     
 @admin.register(Forum)
-class ResourcesAdmin(admin.ModelAdmin):
-    list_display = ("title","author", "uploaded_at")
+class ForumAdmin(admin.ModelAdmin):
+    list_display = ("title","author", "uploaded_at","like_count")
     actions = ["approve_posts"]
     
 @admin.register(Comment)

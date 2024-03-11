@@ -38,7 +38,8 @@ ALLOWED_HOSTS = [
     "192.168.227.117",
     '192.168.0.102',
     '169.254.121.74',
-    'pixelonlyplz.pythonanywhere.com'
+    'pixelonlyplz.pythonanywhere.com',
+    'anhslink.pythonanywhere.com'
 ]
 
 

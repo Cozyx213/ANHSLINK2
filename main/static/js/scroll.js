@@ -87,11 +87,11 @@ function add_post(content) {
   
     </a>
     <div class="px-4 py-2 bg-gray-200 flex justify-between">
-      <span class="text-sm text-gray-500 bg bg-gray-300 rounded-lg">
+      <!--<span class="text-sm text-gray-500 bg bg-gray-300 rounded-lg">
         <button class="px-2 py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8593;</button>
         ${content.like_count}
         <button class="px-2  py-0.5 text-lg font-extrabold bg-gray-300 rounded-full">&#8595;</button>
-      </span> 
+      </span> -->
       <a href="/forum/${content.id}" class="flex items-center"><span
           class="text-sm text-gray-500 bg-gray-300 rounded-lg flex items-center px-2"><img
             src="/static/pictures/comment.png" class="size-7">${content.comment_count}</span></a>

@@ -1,6 +1,11 @@
 {% extends "main/base.html" %}
 {% load static %}
 {% block body %}
+<style>
+  footer{
+    display: none;
+  }
+</style>
 <div class="image_container">
 
   <div class="image_text hidden">
@@ -8,11 +13,12 @@
   </div>
 </div>
 {% for forum in forums%}
-<div class="bg-gray-700">
+<div class="bg-gray-700 h-screen">
   <div class="max-w-md mx-auto bg-gray-700 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
     <div class="md:flex">
       <div class="p-4 bg-gray-700 text-white w-full">
-        <div class="uppercase tracking-wide text-sm  font-semibold author text-green-500">{{forum.author.user.username}}</div>
+        <div class="uppercase tracking-wide text-sm  font-semibold author text-green-500">{{forum.author.user.username}}
+        </div>
         <div class="uppercase tracking-wide text-sm  font-semibold author text-green-500">{{ forum.author.grade}}
           {{ forum.author.section }}</div>
         <a href="#"
@@ -32,9 +38,10 @@
     <div>
       <form method="POST" class="form px-4 py-2 bg-gray-700 flex justify-between" action="{% url 'comment'  %}">
         {% csrf_token %}
-        <textarea required name="text" type="text" placeholder="Add a comment" class="rounded-md px-2 text-left w-2/3 h-16 " maxlength="400"></textarea>
+        <textarea required name="text" type="text" placeholder="Add a comment"
+          class="rounded-md px-2 text-left w-2/3 h-16 " maxlength="400"></textarea>
         <input name="id" value="{{forum.id}}" hidden>
-        
+
         <button type="submit" class="text-green-700 bg-white px-3 rounded-lg submitBTN">Comment</button>
 
       </form>
@@ -96,8 +103,8 @@
         <div>
           <form method="POST" class="form px-4 py-2 bg-gray-700 flex justify-between" action="{% url 'reply'  %}">
             {% csrf_token %}
-            <textarea required name="text" type="text" placeholder="Add a comment" class=" w-2/3 rounded-md px-4 text-left "
-              maxlength="400"></textarea>
+            <textarea required name="text" type="text" placeholder="Add a comment"
+              class=" w-2/3 rounded-md px-4 text-left " maxlength="400"></textarea>
             <input name="comment_id" value="{{comment.id}}" hidden>
             <input name="fid" value="{{forum.id}}" hidden>
             <button type="submit" class="text-white bg-gray-700 px-3 rounded-lg submitBTN">Comment</button>
@@ -123,9 +130,7 @@
         </div>
   !-->
 
-
     </div>
-
     {%empty%}
     <p class="m-3 text-center text-gray-500">No comments</p>
     {% endfor%}

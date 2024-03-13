@@ -713,6 +713,14 @@ video {
   max-width: 1024px;
 }
 
+.max-w-screen-md {
+  max-width: 768px;
+}
+
+.max-w-screen-sm {
+  max-width: 640px;
+}
+
 .border-spacing-x-px {
   --tw-border-spacing-x: 1px;
   border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
@@ -1289,11 +1297,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-green-300 {
-  --tw-text-opacity: 1;
-  color: rgb(134 239 172 / var(--tw-text-opacity));
 }
 
 .shadow-2xl {

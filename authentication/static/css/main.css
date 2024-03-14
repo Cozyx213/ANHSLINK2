@@ -664,6 +664,10 @@ video {
   height: 12rem;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -711,10 +715,6 @@ video {
 
 .max-w-screen-lg {
   max-width: 1024px;
-}
-
-.max-w-screen-md {
-  max-width: 768px;
 }
 
 .max-w-screen-sm {

@@ -1,4 +1,4 @@
 myenv/
 node_modules
 tailwind.config.js
-*.sqlite3
+db.sqlite3

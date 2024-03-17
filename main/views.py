@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from .forms import PostForm
 from .models import Post, Comment
 from .forms import ResourceForm, CommentForm, ForumForm
-from .models import Resources, Forum
+from .models import Resources, Forum, Classroom
 import os
 from django.conf import settings
 from django.http import FileResponse, Http404
@@ -17,7 +17,7 @@ import time
 from django.views.decorators.csrf import csrf_protect
 from django.conf import settings
 from django.core.serializers import serialize
-from .serializers import ForumSerializer, PostSerializer
+from .serializers import ForumSerializer, PostSerializer, ClassroomSerializer
 from rest_framework.renderers import JSONRenderer
 from authentication.models import Profile
 # Create your views here.
@@ -158,7 +158,11 @@ def get_forums(request):
     return JsonResponse({"forums": serializer.data})
    #return JsonResponse({"forums":form_json})
     
-
+@login_required(login_url="/login")
+def room(request):
+    rooms = Classroom.objects.all()
+    serializedRoom = ClassroomSerializer(rooms, many =True)
+    return JsonResponse({"rooms":serializedRoom.data})
 
     
 
@@ -172,7 +176,7 @@ def upload_view(request):
             return redirect("/library")
 
         
-            
+@login_required(login_url="/login")
 def download(request,uuid):
    resource = get_object_or_404(Resources, uuid=uuid)
    file_path = os.path.join(settings.MEDIA_ROOT, resource.file.name)
@@ -186,4 +190,8 @@ def download(request,uuid):
         # Return 404 if the file does not exist
         raise Http404("File does not exist")
 
-        
+
+
+@login_required(login_url="/login")
+def classroom(request):
+    return render(request,"main/classroom.html")

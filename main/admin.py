@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import Post, Resources, Forum, Comment
+from .models import Post, Resources, Forum, Comment, Classroom
 from django.urls import reverse
 from django.utils.html import format_html
 @admin.register(Post)
@@ -35,5 +35,9 @@ class ForumAdmin(admin.ModelAdmin):
 class CommentsAdmin(admin.ModelAdmin):
     list_display = ("text","author","parent", "forum", "uploaded_at")
     list_filter = ("parent","forum","uploaded_at")
+    
+@admin.register(Classroom)
+class ClassroomAdmin(admin.ModelAdmin):
+    list_display= ("teacher",  "name")
 # Register your models here.
  

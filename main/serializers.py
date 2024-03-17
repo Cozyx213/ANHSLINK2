@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Forum, Post
+from .models import Forum, Post, Classroom
 from authentication.models import Profile
 from django.contrib.auth.models import User
 class UserSerializer(serializers.ModelSerializer):
@@ -26,3 +26,9 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ['id', 'title','description', 'created_at','author']
+class ClassroomSerializer(serializers.ModelSerializer):
+    teacher = AuthorSerializer(read_only=True)
+    students = AuthorSerializer(read_only=True)
+    class Meta:
+        model =Classroom
+        fields= ['id','name','teacher','students', 'student_count']

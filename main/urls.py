@@ -19,5 +19,7 @@ urlpatterns = [
     path("comment/", views.comment, name="comment"),
     path("reply/", views.reply, name="reply"),
     path("fetch/", views.fetch, name="fetch"),
-    path("get_forums", views.get_forums, name="get_forums")
+    path("get_forums", views.get_forums, name="get_forums"),
+    path("classroom", views.classroom, name="classroom"),
+    path("room", views.room, name="room"),
   ]

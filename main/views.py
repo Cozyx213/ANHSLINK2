@@ -10,16 +10,17 @@ from .forms import ResourceForm, CommentForm, ForumForm
 from .models import Resources, Forum, Classroom
 import os
 from django.conf import settings
-from django.http import FileResponse, Http404
+from django.http import FileResponse, Http404, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404
 from .models import Resources
 import time
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.conf import settings
 from django.core.serializers import serialize
 from .serializers import ForumSerializer, PostSerializer, ClassroomSerializer
 from rest_framework.renderers import JSONRenderer
 from authentication.models import Profile
+
 # Create your views here.
 
 
@@ -36,7 +37,15 @@ def fetch (request):
     
     return  JsonResponse({"posts":serializer.data})
 
-
+@login_required(login_url="/login")
+def logs(request):
+    user  = request.user
+    profile = Profile.objects.get(user=user.id)
+    posts = Forum.objects.filter(author=profile.id)
+    
+    serialized = ForumSerializer(posts,many=True)
+    
+    return JsonResponse({"posts": serialized.data})
 
 @login_required(login_url="/login")
 def show_resource(request,grade,subject):
@@ -141,6 +150,11 @@ def forum(request):
        return redirect(f"/forum/{new_forum.id}")
     else:
         form = PostForm()
+        user_profile= None
+        try:
+            user_profile = request.user
+        except Profile.DoesNotExist:
+            return render(request,"/sign_up")
         
     return render(request,"main/forum.html",{
        "form":form,
@@ -195,3 +209,21 @@ def download(request,uuid):
 @login_required(login_url="/login")
 def classroom(request):
     return render(request,"main/classroom.html")
+
+@login_required(login_url="/login")
+def logs_view(request):
+    return render(request,"main/logs.html")
+
+
+
+@login_required(login_url="/login")
+def deletePost(request, forumID):
+    if request.method == "DELETE":
+        try:
+            forum = Forum.objects.get(id = forumID)
+            forum.delete()
+            return JsonResponse({"mesasge": "message deleted"})
+        except Forum.DoesNotExist:
+            return JsonResponse({"error": "Forum not found"})
+    else:
+        return HttpResponseNotAllowed(['DELETE'])

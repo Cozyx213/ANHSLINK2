@@ -48,7 +48,9 @@ function display(content) {
   <div class="bg-white p-4 sm:p-6">
 
     <div class="flex justify-between"> 
-    <button class="delete-btn" data-id="${content.id}"> Delete </button>
+    <button class="delete-btn rounded hover:bg-red-400" data-id="${
+      content.id
+    }"> Delete </button>
     <div></div>
     <time class=" block text-xs text-gray-500">
     ${getTime(content.uploaded_at)}

@@ -54,6 +54,7 @@ class Forum (models.Model):
     @property
     def like_count(self):
         return (self.likes.count() - self.dislikes.count())
+    
 class Comment(models.Model):
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE, null=True, blank=True, default="", related_name='comments')
     parent = models.ForeignKey("self", on_delete=models.CASCADE, null= True, blank=True, related_name ="replies")

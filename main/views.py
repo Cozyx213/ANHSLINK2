@@ -41,7 +41,7 @@ def fetch (request):
 def logs(request):
     user  = request.user
     profile = Profile.objects.get(user=user.id)
-    posts = Forum.objects.filter(author=profile.id)
+    posts = Forum.objects.filter(author=profile.id).order_by('-uploaded_at')
     
     serialized = ForumSerializer(posts,many=True)
     

@@ -29,7 +29,7 @@ function load() {
 //${content.author.username}
 //${content.id}
 //$content.fields.description}
-function getTime(time) {
+export function getTime(time) {
   const timeString = time;
 
   // Parse the timestamp and create a Date object
@@ -67,6 +67,8 @@ function getTime(time) {
     return Math.round(secondsElapsed) + " seconds ago";
   }
 }
+
+
 function add_post(content) {
   const forumDiv = document.getElementById("forums");
   const news = document.createElement("div");

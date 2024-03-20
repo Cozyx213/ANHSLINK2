@@ -3,7 +3,7 @@ import { getTime } from "./scroll.js";
 function load() {
   const logsDiv = document.getElementById("logs");
   logsDiv.innerHTML = "";
-  fetch("forumLogs")
+  fetch("commentLogs")
     .then((response) => response.json())
     .then((data) => {
       data.posts.forEach(display);
@@ -62,10 +62,10 @@ function display(content) {
   
     <a  href="/forum/${content.id}">
       <h3 class="mt-0.5 text-lg text-gray-900">
-      ${content.title}
+      ${content.text}
       </h3>
-      <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">Comments:
-    ${content.comment_count}
+      <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">Replies:
+    ${content.reply_count}
     </p>
     </a>
 

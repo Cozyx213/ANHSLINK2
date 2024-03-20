@@ -22,7 +22,9 @@ urlpatterns = [
     path("get_forums", views.get_forums, name="get_forums"),
     path("classroom", views.classroom, name="classroom"),
     path("room", views.room, name="room"),
-    path("logs", views.logs, name="logs"),
+    path("forumLogs", views.forumLogs, name="forumLogs"),
+    path("commentLogs", views.commentLogs, name="commentLogs"),
     path("logs_view", views.logs_view, name="logs_view"),
-    path("deletePost/<int:forumID>", views.deletePost, name="deletePost"),
+    path("deleteForum/<int:forumID>", views.deleteForum, name="deleteForum"),
+    path("deleteComment/<int:commentID>",views.deleteComment, name="deleteComment")
   ]

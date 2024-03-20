@@ -58,7 +58,7 @@ class Forum (models.Model):
 class Comment(models.Model):
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE, null=True, blank=True, default="", related_name='comments')
     parent = models.ForeignKey("self", on_delete=models.CASCADE, null= True, blank=True, related_name ="replies")
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE, default="")
     
     text = models.CharField(max_length=400)
     
@@ -68,6 +68,8 @@ class Comment(models.Model):
     
     def __str__(self):
         return self.text
+    def reply_count(self):
+        return self.replies.count()
     def reply_ordered(self):
         return self.replies.all().order_by('-uploaded_at')
     

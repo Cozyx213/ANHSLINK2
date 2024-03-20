@@ -17,7 +17,7 @@ import time
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.conf import settings
 from django.core.serializers import serialize
-from .serializers import ForumSerializer, PostSerializer, ClassroomSerializer
+from .serializers import ForumSerializer, PostSerializer, ClassroomSerializer, CommentSerializer
 from rest_framework.renderers import JSONRenderer
 from authentication.models import Profile
 
@@ -38,7 +38,7 @@ def fetch (request):
     return  JsonResponse({"posts":serializer.data})
 
 @login_required(login_url="/login")
-def logs(request):
+def forumLogs(request):
     user  = request.user
     profile = Profile.objects.get(user=user.id)
     posts = Forum.objects.filter(author=profile.id).order_by('-uploaded_at')
@@ -46,6 +46,18 @@ def logs(request):
     serialized = ForumSerializer(posts,many=True)
     
     return JsonResponse({"posts": serialized.data})
+
+
+@login_required(login_url="/login")
+def commentLogs(request):
+    user  = request.user
+    profile = Profile.objects.get(user=user.id)
+    comments = Comment.objects.filter(author=profile.id).order_by('-uploaded_at')
+    
+    serialized = CommentSerializer(comments,many=True)
+    
+    return JsonResponse({"posts": serialized.data})
+
 
 @login_required(login_url="/login")
 def show_resource(request,grade,subject):
@@ -97,7 +109,7 @@ def comment(request):
             id = request.POST.get("id")
             comment = form.save(commit=False)
             comment.forum = Forum.objects.get(id=id)
-            comment.author = request.user
+            comment.author =  Profile.objects.get(user=request.user)
             comment.save()
             return redirect(f"/forum/{id}")
         else:
@@ -111,13 +123,23 @@ def comment(request):
 def reply(request):
     if request.method == "POST":
         form = CommentForm(request.POST)
+        
+    
         if form.is_valid():
+            
+     
+            user_profile = Profile.objects.get(user=request.user)
+            
             id = request.POST.get("comment_id")
             fid =request.POST.get("fid")
+            
             comment = form.save(commit=False)
+            
+            comment.author =  user_profile
             comment.parent = Comment.objects.get(id=id)
             
-            comment.author = request.user
+           
+            
             comment.save()
             return redirect(f"/forum/{fid}")
         else:
@@ -217,7 +239,7 @@ def logs_view(request):
 
 
 @login_required(login_url="/login")
-def deletePost(request, forumID):
+def deleteForum(request, forumID):
     if request.method == "DELETE":
         try:
             forum = Forum.objects.get(id = forumID)
@@ -227,3 +249,16 @@ def deletePost(request, forumID):
             return JsonResponse({"error": "Forum not found"})
     else:
         return HttpResponseNotAllowed(['DELETE'])
+
+@login_required(login_url="/login")
+def deleteComment(request, commentID):
+    if request.method == "DELETE":
+        try:
+            comment = Comment.objects.get(id = commentID)
+            comment.delete()
+            return JsonResponse({"mesasge": "message deleted"})
+        except Forum.DoesNotExist:
+            return JsonResponse({"error": "Comment  not found"})
+    else:
+        return HttpResponseNotAllowed(['DELETE'])
+

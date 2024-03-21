@@ -16,7 +16,7 @@ async function deleteLog(element, id) {
     .getAttribute("content");
 
   try {
-    const response = await fetch(`deletePost/${id}`, {
+    const response = await fetch(`deleteComment/${id}`, {
       method: "DELETE",
       headers: {
         "X-CSRFToken": csrftoken,

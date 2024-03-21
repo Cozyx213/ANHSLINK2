@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", load);
 import { getTime } from "./scroll.js";
+
 function load() {
   const logsDiv = document.getElementById("logs");
   logsDiv.innerHTML = "";
@@ -16,7 +17,7 @@ async function deleteLog(element, id) {
     .getAttribute("content");
 
   try {
-    const response = await fetch(`deletePost/${id}`, {
+    const response = await fetch(`deleteForum/${id}`, {
       method: "DELETE",
       headers: {
         "X-CSRFToken": csrftoken,

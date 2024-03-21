@@ -6,6 +6,11 @@ from django.db.models.signals import post_delete
 from django.utils.text import slugify
 from django.utils.timezone import timezone
 from authentication.models import Profile
+import random
+
+def generate_code():
+    length = 6
+    
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField (max_length=200)
@@ -49,10 +54,11 @@ class Forum (models.Model):
     @property
     def like_count(self):
         return (self.likes.count() - self.dislikes.count())
+    
 class Comment(models.Model):
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE, null=True, blank=True, default="", related_name='comments')
     parent = models.ForeignKey("self", on_delete=models.CASCADE, null= True, blank=True, related_name ="replies")
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE, default="")
     
     text = models.CharField(max_length=400)
     
@@ -62,11 +68,19 @@ class Comment(models.Model):
     
     def __str__(self):
         return self.text
+    def reply_count(self):
+        return self.replies.count()
     def reply_ordered(self):
         return self.replies.all().order_by('-uploaded_at')
     
     
-
+class Classroom(models.Model):
+    name = models.CharField(max_length=12)
+    teacher = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="teacher")
+    students = models.ManyToManyField(Profile, related_name="students")
     
     
+    @property
+    def student_count(self):
+        return self.students.count()
 # Create your models here.

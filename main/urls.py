@@ -19,5 +19,12 @@ urlpatterns = [
     path("comment/", views.comment, name="comment"),
     path("reply/", views.reply, name="reply"),
     path("fetch/", views.fetch, name="fetch"),
-    path("get_forums", views.get_forums, name="get_forums")
+    path("get_forums", views.get_forums, name="get_forums"),
+    path("classroom", views.classroom, name="classroom"),
+    path("room", views.room, name="room"),
+    path("forumLogs", views.forumLogs, name="forumLogs"),
+    path("commentLogs", views.commentLogs, name="commentLogs"),
+    path("logs_view", views.logs_view, name="logs_view"),
+    path("deleteForum/<int:forumID>", views.deleteForum, name="deleteForum"),
+    path("deleteComment/<int:commentID>",views.deleteComment, name="deleteComment")
   ]

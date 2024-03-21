@@ -7,19 +7,20 @@ from django.shortcuts import redirect
 from .forms import PostForm
 from .models import Post, Comment
 from .forms import ResourceForm, CommentForm, ForumForm
-from .models import Resources, Forum
+from .models import Resources, Forum, Classroom
 import os
 from django.conf import settings
-from django.http import FileResponse, Http404
+from django.http import FileResponse, Http404, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404
 from .models import Resources
 import time
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.conf import settings
 from django.core.serializers import serialize
-from .serializers import ForumSerializer, PostSerializer
+from .serializers import ForumSerializer, PostSerializer, ClassroomSerializer, CommentSerializer
 from rest_framework.renderers import JSONRenderer
 from authentication.models import Profile
+
 # Create your views here.
 
 
@@ -36,6 +37,26 @@ def fetch (request):
     
     return  JsonResponse({"posts":serializer.data})
 
+@login_required(login_url="/login")
+def forumLogs(request):
+    user  = request.user
+    profile = Profile.objects.get(user=user.id)
+    posts = Forum.objects.filter(author=profile.id).order_by('-uploaded_at')
+    
+    serialized = ForumSerializer(posts,many=True)
+    
+    return JsonResponse({"posts": serialized.data})
+
+
+@login_required(login_url="/login")
+def commentLogs(request):
+    user  = request.user
+    profile = Profile.objects.get(user=user.id)
+    comments = Comment.objects.filter(author=profile.id).order_by('-uploaded_at')
+    
+    serialized = CommentSerializer(comments,many=True)
+    
+    return JsonResponse({"posts": serialized.data})
 
 
 @login_required(login_url="/login")
@@ -88,7 +109,7 @@ def comment(request):
             id = request.POST.get("id")
             comment = form.save(commit=False)
             comment.forum = Forum.objects.get(id=id)
-            comment.author = request.user
+            comment.author =  Profile.objects.get(user=request.user)
             comment.save()
             return redirect(f"/forum/{id}")
         else:
@@ -102,13 +123,23 @@ def comment(request):
 def reply(request):
     if request.method == "POST":
         form = CommentForm(request.POST)
+        
+    
         if form.is_valid():
+            
+     
+            user_profile = Profile.objects.get(user=request.user)
+            
             id = request.POST.get("comment_id")
             fid =request.POST.get("fid")
+            
             comment = form.save(commit=False)
+            
+            comment.author =  user_profile
             comment.parent = Comment.objects.get(id=id)
             
-            comment.author = request.user
+           
+            
             comment.save()
             return redirect(f"/forum/{fid}")
         else:
@@ -141,6 +172,11 @@ def forum(request):
        return redirect(f"/forum/{new_forum.id}")
     else:
         form = PostForm()
+        user_profile= None
+        try:
+            user_profile = request.user
+        except Profile.DoesNotExist:
+            return render(request,"/sign_up")
         
     return render(request,"main/forum.html",{
        "form":form,
@@ -158,7 +194,11 @@ def get_forums(request):
     return JsonResponse({"forums": serializer.data})
    #return JsonResponse({"forums":form_json})
     
-
+@login_required(login_url="/login")
+def room(request):
+    rooms = Classroom.objects.all()
+    serializedRoom = ClassroomSerializer(rooms, many =True)
+    return JsonResponse({"rooms":serializedRoom.data})
 
     
 
@@ -172,7 +212,7 @@ def upload_view(request):
             return redirect("/library")
 
         
-            
+@login_required(login_url="/login")
 def download(request,uuid):
    resource = get_object_or_404(Resources, uuid=uuid)
    file_path = os.path.join(settings.MEDIA_ROOT, resource.file.name)
@@ -186,4 +226,39 @@ def download(request,uuid):
         # Return 404 if the file does not exist
         raise Http404("File does not exist")
 
-        
+
+
+@login_required(login_url="/login")
+def classroom(request):
+    return render(request,"main/classroom.html")
+
+@login_required(login_url="/login")
+def logs_view(request):
+    return render(request,"main/logs.html")
+
+
+
+@login_required(login_url="/login")
+def deleteForum(request, forumID):
+    if request.method == "DELETE":
+        try:
+            forum = Forum.objects.get(id = forumID)
+            forum.delete()
+            return JsonResponse({"mesasge": "message deleted"})
+        except Forum.DoesNotExist:
+            return JsonResponse({"error": "Forum not found"})
+    else:
+        return HttpResponseNotAllowed(['DELETE'])
+
+@login_required(login_url="/login")
+def deleteComment(request, commentID):
+    if request.method == "DELETE":
+        try:
+            comment = Comment.objects.get(id = commentID)
+            comment.delete()
+            return JsonResponse({"mesasge": "message deleted"})
+        except Forum.DoesNotExist:
+            return JsonResponse({"error": "Comment  not found"})
+    else:
+        return HttpResponseNotAllowed(['DELETE'])
+

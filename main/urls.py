@@ -8,7 +8,7 @@ urlpatterns = [
     path("map", views.map, name="map"),
     path('history', views.history, name="history"),
     path('create_post', views.create_post, name='create_post'),
-    
+    path("post_detail/<slug:slug>",views.post_detail, name="post_detail"),
     path('logout', LogoutView.as_view(), name='logout'),
     path("library", views.library, name="library"),
     path("show_resource/<grade>/<subject>/",views.show_resource, name="show_resource" ),

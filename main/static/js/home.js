@@ -46,7 +46,9 @@ function post(data) {
 
   data.posts.forEach((content) => {
     const news = document.createElement("div");
+    console.log(content);
     news.innerHTML = `
+    <a href="/post_detail/${content.slug}">
     <article class="overflow-hidden floored-lg shadow transition hover:shadow-lg">
     
   
@@ -56,18 +58,28 @@ function post(data) {
       content.created_at
     )} </time>
 
-    <a href="#">
+   
       <h3 class="mt-0.5 text-lg text-gray-900">${content.title}</h3>
-    </a>
+    
 
     <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
     ${content.description}
     </p>
+
+
+    <div class="flex justify-center"><div class="flex justify-center group inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+    Read more
+    <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+      &rarr;
+    </span>
+  </div>
+  </div>
+    
   </div>
 </article>
     
    
-</div>`;
+</div></a>`;
     update.appendChild(news);
   });
 }

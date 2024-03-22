@@ -6,7 +6,7 @@ from django.utils.html import format_html
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     
-    list_display = ('title', 'author', 'created_at', 'updated_at')
+    list_display = ('title', 'author', 'created_at', 'updated_at','slug')
     search_fields = ('title', 'description')
     list_filter = ('created_at', 'author')
     date_hierarchy = 'created_at'

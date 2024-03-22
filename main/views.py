@@ -48,6 +48,11 @@ def forumLogs(request):
     return JsonResponse({"posts": serialized.data})
 
 
+def post_detail(request,slug):
+    post = get_object_or_404(Post,slug=slug)
+    
+    return render(request, 'registration/post_detail.html',{'post':post})
+
 @login_required(login_url="/login")
 def commentLogs(request):
     user  = request.user

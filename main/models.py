@@ -8,8 +8,9 @@ from django.utils.timezone import timezone
 from authentication.models import Profile
 import random
 
-def generate_code():
-    length = 6
+def generate_unique_slug():
+    
+    return slugify(str(uuid.uuid4()))
     
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -17,6 +18,12 @@ class Post(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    slug = models.SlugField(max_length=200, default=uuid.uuid1)
+    
+    def save(self,*args,**kwargs):
+        self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
+        
     def __str__ (self):
         return self.title + "\n" + self.description
     

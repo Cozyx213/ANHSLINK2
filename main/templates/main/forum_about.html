@@ -84,7 +84,9 @@
               >
                 {{comment.author.grade}} {{comment.author.section}}
               </div>
-              <p class="mt-2 text-gray-800 size-fit">{{comment.text}}</p>
+              <div class="mt-2 text-gray-800 size-fit">
+                {{comment.text|linebreaksbr}}
+              </div>
             </div>
           </div>
 
@@ -111,7 +113,9 @@
                   {{reply.author.grade}} {{reply.author.section}}
                 </div>
                 <!--<p class="mt-2 text-gray-400 size-fit ">reply to: {{ reply.parent}}</p>!-->
-                <p class="mt-2 text-gray-800 size-fit">{{ reply.text }}</p>
+                <div class="mt-4 text-gray-800 size-fit">
+                  {{ reply.text|linebreaksbr }}
+                </div>
               </div>
             </div>
 

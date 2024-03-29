@@ -3,11 +3,10 @@
 <div id="article-data" data-article="{{ post|escapejs }}"></div>
 
 <div class="mt-8 flex justify-center">
-  <div class="w-full md:w-3/4 lg:w-2/3  px-4">
+  <div class="w-full md:w-3/4 lg:w-2/3 px-4">
     <div class="text-2xl">{{post.title}}</div>
-    
-    <div>{{post.description}}</div>
-    
+
+    <p>{{post.description|linebreaksbr}}</p>
   </div>
 </div>
 {% endblock%}

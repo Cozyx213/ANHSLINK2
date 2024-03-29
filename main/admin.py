@@ -3,9 +3,22 @@ from django.contrib import admin
 from .models import Post, Resources, Forum, Comment, Classroom
 from django.urls import reverse
 from django.utils.html import format_html
+from django import forms
+from django.contrib import admin
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 5, 'cols': 40}),
+        }
+        fields = '__all__'
+
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    
+    form = PostForm
     list_display = ('title', 'author', 'created_at', 'updated_at','slug')
     search_fields = ('title', 'description')
     list_filter = ('created_at', 'author')

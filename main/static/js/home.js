@@ -36,6 +36,10 @@ function getTime(time) {
     return Math.floor(secondsElapsed) + " seconds ago";
   }
 }
+
+function convertLineBreaks(text){
+  return text.replace(/\n/g,'<br>');
+}
 function post(data) {
   const update = document.getElementById("update");
 
@@ -63,7 +67,7 @@ function post(data) {
     
 
     <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-    ${content.description}
+    ${convertLineBreaks(content.description)}
     </p>
 
 

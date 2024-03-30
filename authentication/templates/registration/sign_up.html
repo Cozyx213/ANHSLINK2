@@ -1,124 +1,168 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ANHSLink</title>
-    <link rel="icon" href="{% static 'pictures/ANHSLink_logo.png' %}" type="image/x-icon" width="64" height="64">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link
+      rel="icon"
+      href="{% static 'pictures/ANHSLink_logo.png' %}"
+      type="image/x-icon"
+      width="64"
+      height="64"
+    />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
     <style>
-        .picture {
-            display: block;
-            filter: brightness(80%);
-        }
+      .picture {
+        display: block;
+        filter: brightness(80%);
+      }
     </style>
-</head>
+  </head>
 
-
-<body>
+  <body>
     <div class="head_container bg-green-100 flex justify-center">
-        <div class="branding">
-            <img class="logo" src="{% static 'pictures/ANHSLink_logo.png' %}" alt="ANHS LOGO" width="7%">
-            <div class="site-identity">
-                <p class="site-title">ANHSLink</p>
-                <p class="site-description">"Linking Education Through Innovative Web Solutions"</p>
-            </div>
+      <div class="branding">
+        <img
+          class="logo"
+          src="{% static 'pictures/ANHSLink_logo.png' %}"
+          alt="ANHS LOGO"
+          width="7%"
+        />
+        <div class="site-identity">
+          <p class="site-title">ANHSLink</p>
+          <p class="site-description">
+            "Linking Education Through Innovative Web Solutions"
+          </p>
         </div>
+      </div>
     </div>
-
-
 
     <div class="h-1/2-screen flex items-center justify-center bg-gray-100">
-        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mx-auto">
-            <img class="w-full mb-4" src="{% static 'pictures/login_page.png' %}" alt="Pic of ANHS">
-            <div class="text-center">
-                <form action="{% url 'sign_up' %}" method="post">
-                    {% csrf_token %}
-                    <input autofocus type="text" name="username" placeholder="Username"
-                        class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <input type="password" name="password1" placeholder="Password"
-                        class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <input type="password" name="password2" placeholder="Confirm Password"
-                        class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <input type="email" name="email" placeholder="Email"
-                        class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <select name="grade"
-                        class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                       <option value="" selected disabled>Select a Grade</option>
-                       <option value="7">Grade 7</option>
-                       <option value="8">Grade 8</option>
-                        <option value="9">Grade 9</option>
-                        <option value="10">Grade 10</option>
-                        
-                    </select>
-                    <select name="section"
-                        class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                       <option value="" selected disabled>Section</option>
-                        <option >Jobs</option>
-                        <option >Gates</option>
-                        <option >Milkyway</option>
-                        <option >Andromeda</option>
-                        <option >Bernoulli</option>
-                        <option >Selene</option>
-                        <option >Pasteur</option>
-                    </select>
+      <div class="bg-white p-2 rounded-lg shadow-lg mx-auto w-full max-w-4xl">
+        <img
+          class="w-full mb-4"
+          src="{% static 'pictures/login_page.png' %}"
+          alt="Pic of ANHS"
+        />
+        <div class="text-center">
+          <form action="{% url 'sign_up' %}" method="post">
+            {% csrf_token %}
+            <input
+              autofocus
+              type="text"
+              name="username"
+              placeholder="Username"
+              class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <input
+              type="password"
+              name="password1"
+              placeholder="Password"
+              class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <input
+              type="password"
+              name="password2"
+              placeholder="Confirm Password"
+              class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <select
+              name="grade"
+              class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="" selected disabled>Select a Grade</option>
+              <option value="7">Grade 7</option>
+              <option value="8">Grade 8</option>
+              <option value="9">Grade 9</option>
+              <option value="10">Grade 10</option>
+            </select>
+            <select
+              name="section"
+              class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="" selected disabled>Section</option>
+              <option>Jobs</option>
+              <option>Gates</option>
+              <option>Milkyway</option>
+              <option>Andromeda</option>
+              <option>Bernoulli</option>
+              <option>Selene</option>
+              <option>Pasteur</option>
+            </select>
 
-                    {% if form.password2.errors %}
-                    <ul class="list-disc list-inside text-red-500 text-left mb-4">
-                        {% for error in form.password2.errors %}
-                        <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
+            {% if form.password2.errors %}
+            <ul class="list-disc list-inside text-red-500 text-left mb-4">
+              {% for error in form.password2.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
 
-                    <button type="submit"
-                        class="w-full py-2 mb-4 text-white bg-green-600 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-                        Sign up
-                    </button>
-                </form>
+            <button
+              type="submit"
+              class="w-full py-2 mb-4 text-white bg-green-600 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+            >
+              Sign up
+            </button>
+          </form>
 
-                <p class="text-sm text-gray-600">
-                    Already have an account?
-                    <a href="/login" class="text-green-600 hover:text-green-800 hover:underline">
-                        <strong>Log in here</strong>
-                    </a>
-                </p>
-            </div>
+          <p class="text-sm text-gray-600">
+            Already have an account?
+            <a
+              href="/login"
+              class="text-green-600 hover:text-green-800 hover:underline"
+            >
+              <strong>Log in here</strong>
+            </a>
+          </p>
         </div>
+      </div>
     </div>
-
-
-</body>
-<footer>
+  </body>
+  <footer>
     <div class="footer_container">
-        <div class="branding_footer_whole">
-            <div class="branding_footer">
-                <img class="logo" src="{% static 'pictures/ANHSLink_logo.png' %}" alt="ANHS LOGO" width="5%"
-                    height="10%">
-                <div class="site-identity_footer">
-                    <p class="site-title_footer">ANHSLink</p>
-                    <p class="site-description_footer">"Linking Education Through Innovative Web Solutions"</p>
-                </div>
-            </div>
-            <div class="branding_footer_motto">
-                Dream it. Believe it. Achieve it.
-            </div>
-            <div class="socials_footer">
-                <div class="heading">
-                    <div class="quick_email">
-                        <img class="contact_logo" src="{% static 'pictures/GMAIL_LOGO.png' %}" alt="gmail_logo"
-                            width="1rem">
-                        <p class="contacts">302985argaonhs@gmail.com</p>
-                    </div>
-                </div>
-
-            </div>
+      <div class="branding_footer_whole">
+        <div class="branding_footer">
+          <img
+            class="logo"
+            src="{% static 'pictures/ANHSLink_logo.png' %}"
+            alt="ANHS LOGO"
+            width="5%"
+            height="10%"
+          />
+          <div class="site-identity_footer">
+            <p class="site-title_footer">ANHSLink</p>
+            <p class="site-description_footer">
+              "Linking Education Through Innovative Web Solutions"
+            </p>
+          </div>
         </div>
+        <div class="branding_footer_motto">
+          Dream it. Believe it. Achieve it.
+        </div>
+        <div class="socials_footer">
+          <div class="heading">
+            <div class="quick_email">
+              <img
+                class="contact_logo"
+                src="{% static 'pictures/GMAIL_LOGO.png' %}"
+                alt="gmail_logo"
+                width="1rem"
+              />
+              <p class="contacts">302985argaonhs@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</footer>
-
-
+  </footer>
 </html>

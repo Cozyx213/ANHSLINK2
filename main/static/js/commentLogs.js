@@ -1,5 +1,42 @@
 document.addEventListener("DOMContentLoaded", load);
-import { getTime } from "./scroll.js";
+function getTime(time) {
+  const timeString = time;
+
+  // Parse the timestamp and create a Date object
+  const pastDate = new Date(timeString);
+
+  // Get the current time as a Date object
+  const currentDate = new Date();
+
+  // Calculate the difference in milliseconds
+  const timeElapsed = currentDate - pastDate;
+
+  // Convert milliseconds to seconds
+  const secondsElapsed = timeElapsed / 1000;
+
+  var mins = secondsElapsed / 60;
+  var hours = mins / 60;
+  var days = hours / 24;
+
+  if (days >= 1) {
+    if (days >= 2) {
+      return Math.floor(days) + " days ago";
+    }
+    return Math.floor(days) + " day ago";
+  } else if (hours >= 1) {
+    if (hours >= 2) {
+      return Math.floor(hours) + " hours ago";
+    }
+    return Math.floor(hours) + " hour ago";
+  } else if (mins >= 1) {
+    if (mins >= 2) {
+      return Math.floor(mins) + " minutes ago";
+    }
+    return Math.floor(mins) + " minute ago";
+  } else {
+    return Math.floor(secondsElapsed) + " seconds ago";
+  }
+}
 function load() {
   const logsDiv = document.getElementById("logs");
   logsDiv.innerHTML = "";
@@ -40,6 +77,8 @@ async function deleteLog(element, id) {
 }
 
 function display(content) {
+  console.log(content);
+  console.log(content.forum);
   const logsDiv = document.getElementById("logs");
   const news = document.createElement("div");
   news.innerHTML = `
@@ -60,7 +99,9 @@ function display(content) {
     
    </div>
   
-    <a  href="/forum/${content.id}">
+    <a  href="/forum/${
+      content.forum == null ? content.parent.forum.id : content.forum.id
+    }">
       <h3 class="mt-0.5 text-lg text-gray-900">
       ${content.text}
       </h3>

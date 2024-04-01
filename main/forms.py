@@ -12,7 +12,7 @@ class ResourceForm (forms.ModelForm):
     
     class Meta:
         model = Resources
-        fields = ["grade", "subject", "file","name"]
+        fields = ["grade", "subject", "file","description"]
 class ForumForm(forms.ModelForm):
     class Meta:
         model = Forum

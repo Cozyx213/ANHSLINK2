@@ -67,7 +67,7 @@ def commentLogs(request):
 @login_required(login_url="/login")
 def show_resource(request,grade,subject):
     resources = Resources.objects.filter(grade=grade,subject=subject, is_approved=True).order_by('-uploaded_at')
-    return render(request,"main/resource.html",{"resources":resources,"subject":subject,"grade":grade,})
+    return render(request,"main/resource.html",{"resources":resources,"subject":subject,"grade":grade})
 
 @login_required(login_url="/login")
 def forum_comment(request, id):
@@ -213,6 +213,7 @@ def upload_view(request):
         if form.is_valid():
             file = form.save(commit=False)
             file.author = request.user
+            file.name = request.FILES['file'].name
             file.save()
             return redirect("/library")
 

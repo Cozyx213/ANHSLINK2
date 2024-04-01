@@ -31,19 +31,20 @@ def upload_to_function(instance, filename):
     return f'media/{instance.grade}/{instance.subject}/{filename}'
 
 class Resources (models.Model):
-    name = models.CharField(max_length=100, default='Default Name')
+    description = models.CharField(max_length=100, default='A file')
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     subject = models.CharField(max_length=100)
     grade = models.CharField(max_length=100)
     file = models.FileField(upload_to= upload_to_function)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     uploaded_at = models.DateTimeField(auto_now_add=True)
-
+    name = models.CharField(max_length=100, default='Default Name')
     is_approved = models.BooleanField(default=False)
     
     def __str__(self):
         return self.grade +''+ self.subject
-
+    def name_file(self):
+        return self.file
 class Forum (models.Model):
     author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="author")
     title = models.CharField(max_length=200, default="")

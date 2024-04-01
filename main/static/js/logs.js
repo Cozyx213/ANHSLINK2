@@ -1,3 +1,5 @@
+import commentload from "./commentLogs.js";
+
 document.addEventListener("DOMContentLoaded", load);
 
 
@@ -40,7 +42,7 @@ function getTime(time) {
   }
 }
 
-function load() {
+export default function load() {
   const logsDiv = document.getElementById("logs");
   logsDiv.innerHTML = "";
   fetch("forumLogs")
@@ -68,6 +70,8 @@ async function deleteLog(element, id) {
       const articleElement = element.closest("article");
       if (articleElement) {
         articleElement.remove();
+        load();
+        commentload();
       }
 
       console.log(element);
@@ -77,6 +81,7 @@ async function deleteLog(element, id) {
   } catch (error) {
     console.error("Error", error);
   }
+  
 }
 
 function display(content) {

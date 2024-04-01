@@ -11,7 +11,7 @@ let current = 0;
 const quantity = 9;
 
 document.addEventListener("DOMContentLoaded", load);
-function load() {
+export function load() {
   fetch(`/get_forums?index=${current}`)
     .then((response) => response.json())
     .then((data) => {

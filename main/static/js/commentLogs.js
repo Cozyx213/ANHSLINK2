@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", load);
+import load  from './logs.js'
+document.addEventListener("DOMContentLoaded", commentload);
 function getTime(time) {
   const timeString = time;
 
@@ -37,8 +38,8 @@ function getTime(time) {
     return Math.floor(secondsElapsed) + " seconds ago";
   }
 }
-function load() {
-  const logsDiv = document.getElementById("logs");
+export default function commentload() {
+  const logsDiv = document.getElementById("commentLogs");
   logsDiv.innerHTML = "";
   fetch("commentLogs")
     .then((response) => response.json())
@@ -65,6 +66,8 @@ async function deleteLog(element, id) {
       const articleElement = element.closest("article");
       if (articleElement) {
         articleElement.remove();
+        load();
+        commentload();
       }
 
       console.log(element);
@@ -79,7 +82,7 @@ async function deleteLog(element, id) {
 function display(content) {
   console.log(content);
   console.log(content.forum);
-  const logsDiv = document.getElementById("logs");
+  const logsDiv = document.getElementById("commentLogs");
   const news = document.createElement("div");
   news.innerHTML = `
   

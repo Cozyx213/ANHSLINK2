@@ -2,7 +2,6 @@ import commentload from "./commentLogs.js";
 
 document.addEventListener("DOMContentLoaded", load);
 
-
 function getTime(time) {
   const timeString = time;
 
@@ -81,7 +80,6 @@ async function deleteLog(element, id) {
   } catch (error) {
     console.error("Error", error);
   }
-  
 }
 
 function display(content) {
@@ -93,13 +91,13 @@ function display(content) {
   <div class="bg-white p-4 sm:p-6">
 
     <div class="flex justify-between"> 
-    <button class="delete-btn rounded hover:bg-red-400" data-id="${
+    <button class="delete-btn rounded text-red-500" data-id="${
       content.id
     }"> Delete </button>
 
     <div></div>
 
-    <div class="flex items-center"><time class=" block text-xs text-gray-500">
+    <div class="flex items-center"><time class="ml-2 block text-xs text-gray-500">
     ${getTime(content.uploaded_at)}
     </time>
     </div>

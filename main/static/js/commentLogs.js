@@ -1,4 +1,4 @@
-import load  from './logs.js'
+import load from "./logs.js";
 document.addEventListener("DOMContentLoaded", commentload);
 function getTime(time) {
   const timeString = time;
@@ -90,7 +90,7 @@ function display(content) {
   <div class="bg-white p-4 sm:p-6">
 
     <div class="flex justify-between"> 
-    <button class="delete-btn rounded hover:bg-red-400" data-id="${
+    <button class="delete-btn rounded text-red-500" data-id="${
       content.id
     }"> Delete </button>
     <div></div>

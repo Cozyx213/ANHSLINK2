@@ -1,47 +1,9 @@
 {% extends "main/base.html" %} {% load static %} {% block body %}
 
 <div id="rooms" class="bg-slate-200">
-
-  Rooms:
   <script src="{% static 'js/rooms.js' %}"></script>
 </div>
 
-<div id="weather-info"></div>
-
-    <script>
-        const apiUrl = 'https://api.open-meteo.com/v1/forecast';
-        const parameters = {
-            latitude: 9.8794,
-            longitude: 123.5956,
-            current_weather: true,
-            hourly: 'temperature_2m,relative_humidity_2m,rain',
-            timezone: 'auto'
-        };
-
-        function fetchWeather() {
-            const queryString = new URLSearchParams(parameters).toString();
-            const url = `${apiUrl}?${queryString}`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    displayWeather(data);
-                })
-                .catch(error => console.error('Error fetching weather data:', error));
-        }
-
-        function displayWeather(data) {
-            const weatherInfoDiv = document.getElementById('weather-info');
-            console.log(data)
-            weatherInfoDiv.innerHTML = `
-                <h2>Current Weather</h2>
-                <p>Temperature: ${data.current_weather.temperature}°C</p>
-                
-            `;
-        }
-
-        fetchWeather();
-    </script>
 <!--
 <article
   class="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6 md:w-1/2"

@@ -1,20 +1,25 @@
 {% extends "main/base.html" %} {%load static%} {% block body %}
+<style>
+  time {
+    margin-left: 10px;
+  }
+</style>
 
-<h1 class="flex justify-center">Logs:</h1>
-
-<div class="flex justify-evenly">
+<div class="flex justify-evenly mt-2">
   <div>
-    <p class="text-center">forums:</p>
-    <div id="logs" class="h-auto w-7/8 min-h-36   mx-auto w-full max-w-4xl">No forum</div>
+    <p class="text-center">Forums:</p>
+    <div id="logs" class="h-auto w-7/8 min-h-36 mx-auto w-full max-w-4xl">
+      No forum
+    </div>
   </div>
 
-  
-
   <div>
-    <p class="text-center">comments:</p>
-    <div id="commentLogs" class="h-auto w-7/8 min-h-36   mx-auto w-full max-w-4xl"></div>
+    <p class="text-center">Comments:</p>
+    <div
+      id="commentLogs"
+      class="h-auto w-7/8 min-h-36 mx-auto w-full max-w-4xl"
+    ></div>
   </div>
-
 </div>
 <script type="module" src="{% static 'js/commentLogs.js' %}"></script>
 <script type="module" src="{% static 'js/logs.js' %}"></script>

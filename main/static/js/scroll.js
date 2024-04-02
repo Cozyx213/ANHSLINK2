@@ -68,13 +68,12 @@ export function getTime(time) {
   }
 }
 
-
 function add_post(content) {
   const forumDiv = document.getElementById("forums");
   const news = document.createElement("div");
   news.innerHTML = `<div class="bg-gray-700">
     <a  href="/forum/${content.id}">
-      <div class="max-w-md mx-auto bg-white floored-xl shadow-md overflow-hidden md:max-w-2xl mb-4">
+      <div class="max-w-md mx-auto bg-white floored-xl shadow-md overflow-hidden md:max-w-2xl mb-4 rounded-3xl">
         <div class="md:flex bg-gray-100">
           <div class="p-4 size-full  ">
             <div class="uppercase tracking-wide text-sm text-green-500 font-semibold author">${
@@ -97,7 +96,7 @@ function add_post(content) {
         <button class="px-2  py-0.5 text-lg font-extrabold bg-gray-300 floored-full">&#8595;</button>
       </span> -->
       <a href="/forum/${content.id}" class="flex items-center"><span
-          class="text-sm text-gray-500 bg-gray-300 floored-lg flex items-center px-2"><img
+          class="text-sm text-gray-500 bg-gray-300 floored-lg flex items-center px-2 rounded-xl"><img
             src="/static/pictures/comment.png" class="size-7">${
               content.comment_count
             }</span></a>

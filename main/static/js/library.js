@@ -85,6 +85,44 @@ document.addEventListener("DOMContentLoaded", (event) => {
       text: "Creative Writing, Malikhaing Pagsulat",
       value: "Creative Writing, Malikhaing Pagsulat",
     },
+    
+  ];
+  var grade12Options = [
+    {
+      text: "Subject",
+      value: "Subject",
+      disabled: "disabled",
+      selected: "selected",
+    },
+    { text: "Reading and Writing", value: "Reading and Writing" },
+    { text: "Pagbasa at Pagsusuri..", value: "Pagbasa at Pagsusuri.." },
+    {
+      text: "Disaster and Risk Reduction",
+      value: "Disaster and Risk Reduction",
+    },
+    {
+      text: "Physical Education and Health 1",
+      value: "Physical Education and Health 1",
+    },
+    { text: "Statistics and Probability", value: "Statistics and Probability" },
+    { text: "Practical Research 1", value: "Practical Research 1" },
+    {
+      text: "Understanding Culture, Society, and Politics",
+      value: "Understanding Culture, Society, and Politics",
+    },
+    { text: "Applied Economics", value: "Applied Economics" },
+    { text: "Fundamentals of ABM", value: "Fundamentals of ABM" },
+    { text: "Basic Calculus", value: "Basic Calculus" },
+    { text: "Gen Biology 2", value: "Gen Biology 2" },
+    {
+      text: "Disciplines and Ideas in Applied Social Sciences",
+      value: "Discipline and Ideas in Applied Social Sciences",
+    },
+    {
+      text: "Creative Writing, Malikhaing Pagsulat",
+      value: "Creative Writing, Malikhaing Pagsulat",
+    },
+    
   ];
 
   const form = document.getElementById("upload");
@@ -110,6 +148,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
     } else if (gradeVal === "Grade 11") {
       changesub(grade11Options);
       console.log("11");
+    } else if (gradeVal === "Grade 12") {
+      changesub(grade12Options);
+      console.log("12");
     }
   });
   file.addEventListener("change", function (event) {

@@ -53,14 +53,15 @@
           <a href="{% url 'library' %}">
             <p>Library</p>
           </a>
-          <a href="{% url 'logs_view' %}">
-            <p>Logs</p>
-          </a>
+         
           <a href="{% url 'forum' %}">
             <p class="font-sans">Forum</p>
           </a>
         </div>
         <div class="information flex justify-center space-x-">
+          <a href="{% url 'logs_view' %}">
+            <p>Logs</p>
+          </a>
           <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit"><p>Log Out</p></button>

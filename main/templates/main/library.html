@@ -4,6 +4,7 @@
 {% block body %}
 
 <style>
+    
     @keyframes appear {
         0% {
             font-size: 0px;
@@ -71,6 +72,7 @@
                             <option value="Grade 9">Grade 9</option>
                             <option value="Grade 10">Grade 10</option>
                             <option value="Grade 11">Grade 11</option>
+                            <option value="Grade 12">Grade 12</option>
                         </select>
 
 
@@ -129,7 +131,7 @@
                     <!-- Grade 7 Button -->
                     <button
                         class=" grade-button nine w-full h-48 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg "
-                        data-grade="Grade 7"> <img src="{% static 'pictures/gred7.jpg' %}">
+                        data-grade="Grade 7"> <img class="rounded-3xl   " src="{% static 'pictures/gred7.jpg' %}">
                     </button>
                     <div id="Grade 7" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
 
@@ -168,7 +170,7 @@
                     <!-- Grade 8 Button -->
                     <button
                         class=" grade-button nine w-full h-48 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl "
-                        data-grade="Grade 8"> <img src="{% static 'pictures/gred8.jpg' %}">
+                        data-grade="Grade 8"> <img class="rounded-3xl" src="{% static 'pictures/gred8.jpg' %}">
                     </button>
                     <!-- Grade 8 Subjects -->
                     <div id="Grade 8" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
@@ -208,7 +210,7 @@
 
                     <button
                         class=" grade-button nine w-full h-48 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl"
-                        data-grade="Grade 9"> <img src="{% static 'pictures/gred9.jpg' %}">
+                        data-grade="Grade 9"> <img class="rounded-3xl" src="{% static 'pictures/gred9.jpg' %}">
                     </button>
                     <!-- Grade 9 Subjects -->
                     <div id="Grade 9" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
@@ -247,7 +249,7 @@
                     </div>
                     <button
                         class="grade-button ten  w-full h-48    bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl"
-                        data-grade="Grade 10"><img src="{% static 'pictures/gred10.jpg' %}"></button>
+                        data-grade="Grade 10"><img class="rounded-3xl" src="{% static 'pictures/gred10.jpg' %}"></button>
                     <!-- Grade 9 Subjects -->
                     <div id="Grade 10" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
                         <div class="sub">
@@ -325,7 +327,7 @@
                         <!-- STEM BUTTON -->
                         <button
                             class="grade-button stem w-full h-48  bg-gradient-to-r from-pink-500 to-pink-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-pink-600 hover:to-pink-800 transition duration-300 ease-in-out transform"
-                            data-grade="STEM"><img src="{% static 'pictures/picker2.jpg' %}"></button>
+                            data-grade="STEM"><img class="rounded-3xl" src="{% static 'pictures/picker2.jpg' %}"></button>
                         <!-- STEM SUBS -->
                         <div id="STEM" class="grade-subjects w-full h-48 p-4 hidden space-y-4  ">
 

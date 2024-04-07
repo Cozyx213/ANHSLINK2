@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
       text: "Creative Writing, Malikhaing Pagsulat",
       value: "Creative Writing, Malikhaing Pagsulat",
     },
-    
   ];
   var grade12Options = [
     {
@@ -94,35 +93,37 @@ document.addEventListener("DOMContentLoaded", (event) => {
       disabled: "disabled",
       selected: "selected",
     },
-    { text: "Reading and Writing", value: "Reading and Writing" },
-    { text: "Pagbasa at Pagsusuri..", value: "Pagbasa at Pagsusuri.." },
+    { text: "MIL", value: "MIL" },
+    { text: "PerDev", value: "PerDev" },
     {
-      text: "Disaster and Risk Reduction",
-      value: "Disaster and Risk Reduction",
+      text: "CPAR",
+      value: "CPAR",
     },
     {
-      text: "Physical Education and Health 1",
-      value: "Physical Education and Health 1",
+      text: "Physical Education and Health 3",
+      value: "Physical Education and Health 3",
     },
-    { text: "Statistics and Probability", value: "Statistics and Probability" },
-    { text: "Practical Research 1", value: "Practical Research 1" },
+    { text: "Piling Larangan..", value: "Piling Larangan.." },
+    { text: "Practical Research 2", value: "Practical Research 2" },
     {
-      text: "Understanding Culture, Society, and Politics",
-      value: "Understanding Culture, Society, and Politics",
+      text: "EAP",
+      value: "EAP",
     },
-    { text: "Applied Economics", value: "Applied Economics" },
-    { text: "Fundamentals of ABM", value: "Fundamentals of ABM" },
-    { text: "Basic Calculus", value: "Basic Calculus" },
-    { text: "Gen Biology 2", value: "Gen Biology 2" },
+    { text: "Gen Chem 2", value: "Gen Chem 2" },
+    { text: "Gen Physics 2", value: "Gen Physics 2" },
     {
-      text: "Disciplines and Ideas in Applied Social Sciences",
-      value: "Discipline and Ideas in Applied Social Sciences",
+      text: "Physical Education and Health 3",
+      value: "Physical Education and Health 3",
+    },
+    { text: "Inquiries, Investigations and Immersion", value: "Inquiries, Investigations and Immersion" },
+    {
+      text: "Entrepreneurship",
+      value: "Entrepreneurship",
     },
     {
-      text: "Creative Writing, Malikhaing Pagsulat",
-      value: "Creative Writing, Malikhaing Pagsulat",
+      text: "Empowerment Technology",
+      value: "Empowerment Technology",
     },
-    
   ];
 
   const form = document.getElementById("upload");

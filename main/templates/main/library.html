@@ -24,16 +24,8 @@
         }
     }
 
-    .nine {
-        background: rgb(255, 121, 121);
-    }
-
-    .ten {
-        background: rgb(152, 200, 255);
-    }
-
-    .eleven {
-        background: rgb(255, 165, 81);
+    button{
+        background: white;
     }
 
     .hidden {
@@ -130,7 +122,7 @@
                 <div class="grades-container text-xl flex-wrap text-center">
                     <!-- Grade 7 Button -->
                     <button
-                        class=" grade-button nine w-full h-48 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl rounded-lg "
+                        class=" grade-button nine w-full h-48 bg-gradient-to-r  text-white font-bold text-4xl rounded-lg "
                         data-grade="Grade 7"> <img class="rounded-3xl   " src="{% static 'pictures/gred7.jpg' %}">
                     </button>
                     <div id="Grade 7" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
@@ -169,7 +161,7 @@
                     </div>
                     <!-- Grade 8 Button -->
                     <button
-                        class=" grade-button nine w-full h-48 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl "
+                        class=" grade-button nine w-full h-48 bg-gradient-to-r  text-white font-bold text-4xl "
                         data-grade="Grade 8"> <img class="rounded-3xl" src="{% static 'pictures/gred8.jpg' %}">
                     </button>
                     <!-- Grade 8 Subjects -->
@@ -209,7 +201,7 @@
                     </div>
 
                     <button
-                        class=" grade-button nine w-full h-48 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl"
+                        class=" grade-button nine w-full h-48 bg-gradient-to-r  text-white font-bold text-4xl"
                         data-grade="Grade 9"> <img class="rounded-3xl" src="{% static 'pictures/gred9.jpg' %}">
                     </button>
                     <!-- Grade 9 Subjects -->
@@ -248,7 +240,7 @@
                         </div>
                     </div>
                     <button
-                        class="grade-button ten  w-full h-48    bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl"
+                        class="grade-button ten  w-full h-48    bg-gradient-to-r  text-white font-bold text-4xl"
                         data-grade="Grade 10"><img class="rounded-3xl" src="{% static 'pictures/gred10.jpg' %}"></button>
                     <!-- Grade 9 Subjects -->
                     <div id="Grade 10" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
@@ -283,16 +275,16 @@
                     </div>
 
 
-                    <!--<button
-                    class="grade-button eleven  w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl"
-                    data-grade="Grade 11">Grade 11</button> --->
+                    <button
+                    class="grade-button ten  w-full h-48    bg-gradient-to-r  text-white font-bold text-4xl"
+                    data-grade="Grade 11"><img class="rounded-3xl" src="{% static 'pictures/gred11.jpg' %}"></button> 
 
                     <div id="Grade 11" class="grade-subjects w-full h-48 p-4 hidden">
 
                         <!-- ABM BUTTON -->
                         <button
-                            class="grade-button abm w-full h-48 p-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-4xl"
-                            data-grade="ABM">ABM</button>
+                            class="grade-button abm w-full h-48 p-4 bg-gradient-to-r  text-white font-bold text-4xl"
+                            data-grade="ABM"><img class="rounded-3xl" src="{% static 'pictures/abm.jpg' %}"></button>
                         <!-- ABM SUBS -->
                         <div id="ABM" class="grade-subjects w-full h-48 p-5 hidden space-y-5">
                             <a href="show_resource/Grade 11/Applied Economics" class="block">
@@ -326,10 +318,10 @@
 
                         <!-- STEM BUTTON -->
                         <button
-                            class="grade-button stem w-full h-48  bg-gradient-to-r from-pink-500 to-pink-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-pink-600 hover:to-pink-800 transition duration-300 ease-in-out transform"
-                            data-grade="STEM"><img class="rounded-3xl" src="{% static 'pictures/picker2.jpg' %}"></button>
+                        class="grade-button abm w-full h-48 p-4 bg-gradient-to-r  text-white font-bold text-4xl"
+                            data-grade="STEM11"><img class="rounded-3xl" src="{% static 'pictures/stem.jpg' %}"></button>
                         <!-- STEM SUBS -->
-                        <div id="STEM" class="grade-subjects w-full h-48 p-4 hidden space-y-4  ">
+                        <div id="STEM11" class="grade-subjects w-full h-48 p-4 hidden space-y-4  ">
 
                             <a href="show_resource/Grade 11/Basic Calculus">
                                 <p>Basic Calculus</p>
@@ -362,8 +354,8 @@
                         <!-- HUMSS BUTTON -->
 
                         <button
-                            class="grade-button humss w-full h-48 p-4 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-bold text-4xl rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:from-purple-600 hover:to-purple-800 transition duration-300 ease-in-out transform"
-                            data-grade="HUMSS">HUMSS</button>
+                        class="grade-button abm w-full h-48 p-4 bg-gradient-to-r  text-white font-bold text-4xl"
+                            data-grade="HUMSS"><img class="rounded-3xl" src="{% static 'pictures/humss.jpg' %}"></button>
                         <!-- HUMSS SUBS -->
                         <div id="HUMSS" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
                             <a href="show_resource/Grade 11/Creative Writing, Malikhaing Pagsulat">
@@ -395,6 +387,49 @@
 
 
                         </div>
+
+
+
+                    </div>
+                    <button
+                    class="grade-button ten  w-full h-48    bg-gradient-to-r  text-white font-bold text-4xl"
+                   
+                    data-grade="Grade 12"><img class="rounded-3xl" src="{% static 'pictures/gred12.jpg' %}"></button> 
+
+                    <div id="Grade 12" class="grade-subjects w-full h-48 p-4 hidden">
+
+                        
+
+                        <!-- STEM BUTTON -->
+                        <button
+                        class="grade-button abm w-full h-48 p-4 bg-gradient-to-r  text-white font-bold text-4xl"
+                            data-grade="STEM12"><img class="rounded-3xl" src="{% static 'pictures/stem.jpg' %}"></button>
+                        <!-- STEM SUBS -->
+                        <div id="STEM12" class="grade-subjects w-full h-48 p-4 hidden space-y-4  ">
+
+                            <a href="show_resource/Grade 12/Gen Physics 2">
+                                <p>Gen Physics 2</p>
+                            </a>
+                            <a href="show_resource/Grade 12/Gen Chem 2">
+                                <p>Gen Chem 2</p>
+                            </a>
+                            <a href="show_resource/Grade 12/Physical Education and Health 3">
+                                <p>Physical Education and Health 3</p>
+                            </a>
+                            <a href="show_resource/Grade 12/Entrepreneurship">
+                                <p>Entrepreneurship</p>
+                            </a>
+                            
+                            <a href="show_resource/Grade 12/Empowerment Technology">
+                                <p>Empowerment Technology</p>
+                            </a>
+                            <a href="show_resource/Grade 12/Inquiries, Investigations and Immersion">
+                                <p>Inquiries, Investigations and Immersion</p>
+                            </a>
+                            
+                        </div>
+
+                        
 
 
 

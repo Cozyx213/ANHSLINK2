@@ -11,7 +11,7 @@ import random
 def generate_unique_slug():
     
     return slugify(str(uuid.uuid4()))
-    
+
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField (max_length=200)
@@ -30,11 +30,30 @@ class Post(models.Model):
 def upload_to_function(instance, filename):
     return f'media/{instance.grade}/{instance.subject}/{filename}'
 
+
+class Grade(models.Model):
+    level = models.IntegerField(default = 9)
+    
+    def __str__(self):
+        return str(self.level)
+class Section(models.Model):
+    name = models.CharField(max_length=50, default="Apple")
+    grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.name
+class Subject(models.Model):
+    name = models.CharField(max_length=50, default="A subject")
+    grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
+    
+    
+    def __str__(self):
+        return self.name
 class Resources (models.Model):
     description = models.CharField(max_length=100, default='A file')
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-    subject = models.CharField(max_length=100)
-    grade = models.CharField(max_length=100)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
     file = models.FileField(upload_to= upload_to_function)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     uploaded_at = models.DateTimeField(auto_now_add=True)
@@ -42,7 +61,7 @@ class Resources (models.Model):
     is_approved = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.grade +''+ self.subject
+        return str(self.grade) +''+ str(self.subject)
     def name_file(self):
         return self.file
 class Forum (models.Model):

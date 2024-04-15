@@ -11,7 +11,7 @@ urlpatterns = [
     path("post_detail/<slug:slug>",views.post_detail, name="post_detail"),
     path('logout', LogoutView.as_view(), name='logout'),
     path("library", views.library, name="library"),
-    path("show_resource/<grade>/<subject>/",views.show_resource, name="show_resource" ),
+    path("show_resource/<int:grade>/<str:subject>/",views.show_resource, name="show_resource" ),
     path("upload_view", views.upload_view, name="upload_view"),
     path("download/<uuid:uuid>/", views.download, name = "download"),
     path("forum", views.forum, name="forum"),
@@ -26,5 +26,8 @@ urlpatterns = [
     path("commentLogs", views.commentLogs, name="commentLogs"),
     path("logs_view", views.logs_view, name="logs_view"),
     path("deleteForum/<int:forumID>", views.deleteForum, name="deleteForum"),
-    path("deleteComment/<int:commentID>",views.deleteComment, name="deleteComment")
+    path("deleteComment/<int:commentID>",views.deleteComment, name="deleteComment"),
+   
+    path("subjects", views.subjects),
+    
   ]

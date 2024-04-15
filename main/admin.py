@@ -1,12 +1,24 @@
 
 from django.contrib import admin
-from .models import Post, Resources, Forum, Comment, Classroom
+from .models import Post, Resources, Forum, Comment, Classroom, Grade, Section, Subject
 from django.urls import reverse
 from django.utils.html import format_html
 from django import forms
 from django.contrib import admin
 
 
+@admin.register(Grade)
+class GradeAdmin(admin.ModelAdmin):
+    list_display=["level","id"]
+    
+@admin.register(Section)
+class SectionAdmin(admin.ModelAdmin):
+    list_display= ["name","grade","id"]
+    list_filter=["grade"]
+    
+@admin.register(Subject)
+class SubjectAdmin(admin.ModelAdmin):
+    list_display=["name","grade","id"]
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -27,7 +39,7 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Resources)
 class ResourcesAdmin(admin.ModelAdmin):
     
-    list_display = ('file', 'name', 'author', 'uploaded_at','uuid',"is_approved","download_link")
+    list_display = ('file', 'name', 'author', 'uploaded_at','uuid',"is_approved","download_link","description")
     search_fields = ('subject', 'grade')
     list_filter = ('uploaded_at', 'author','grade','subject')
     date_hierarchy = 'uploaded_at'

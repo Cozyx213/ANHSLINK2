@@ -1,7 +1,33 @@
 from rest_framework import serializers
-from .models import Forum, Post, Classroom, Comment
+from .models import Forum, Post, Classroom, Comment, Grade, Section, Subject
 from authentication.models import Profile
 from django.contrib.auth.models import User
+
+
+
+
+class GradeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Grade
+        fields = ['level','id']
+
+
+
+
+class SectionSerializer(serializers.ModelSerializer):
+    grade = GradeSerializer(read_only=True)
+    class Meta:
+        model = Section
+        fields = ['name','grade','id']
+
+
+class SubjectSerializer(serializers.ModelSerializer):
+    grade = GradeSerializer(read_only=True)
+    class Meta:
+        model = Subject
+        fields = ['name','grade','id']
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

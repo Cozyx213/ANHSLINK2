@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.shortcuts import redirect
 from .forms import PostForm
-from .models import Post, Comment
+from .models import Post, Comment, Subject, Grade, Subject
 from .forms import ResourceForm, CommentForm, ForumForm
 from .models import Resources, Forum, Classroom
 import os
@@ -17,13 +17,16 @@ import time
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.conf import settings
 from django.core.serializers import serialize
-from .serializers import ForumSerializer, PostSerializer, ClassroomSerializer, CommentSerializer
+from .serializers import ForumSerializer, PostSerializer, ClassroomSerializer, CommentSerializer, SubjectSerializer
 from rest_framework.renderers import JSONRenderer
 from authentication.models import Profile
 
 # Create your views here.
 
-
+def subjects(request):
+    grade = Subject.objects.all()
+    serializer = SubjectSerializer(grade, many=True)
+    return JsonResponse({"subjects":serializer.data})
 
 @login_required(login_url="/anhs")
 def home (request):
@@ -66,6 +69,9 @@ def commentLogs(request):
 
 @login_required(login_url="/login")
 def show_resource(request,grade,subject):
+    grade = int(grade)-6
+    subject = Subject.objects.get(grade = grade, name=subject)
+    
     resources = Resources.objects.filter(grade=grade,subject=subject, is_approved=True).order_by('-uploaded_at')
     return render(request,"main/resource.html",{"resources":resources,"subject":subject,"grade":grade})
 

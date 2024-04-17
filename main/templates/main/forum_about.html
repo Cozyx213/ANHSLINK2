@@ -1,18 +1,12 @@
 {% extends "main/base.html" %} {% load static %} {% block body %}
-<style>
-  footer {
-    display: none;
-  }
-</style>
-<div class="image_container">
-  <div class="image_text hidden">FLATAPS: Make learning fun and easy.</div>
-</div>
+
+
 {% for forum in forums%}
 <div class="bg-gray-700 min-h-screen h-auto">
   <div
-    class="max-w-md mx-auto bg-gray-700 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3"
+    class=" mx-auto  rounded-xl overflow-hidden md:max-w-2xl"
   >
-    <div class="md:flex">
+    <div class="md:flex bg-gray-700">
       <div class="p-4 bg-gray-700 text-white w-full">
         <div
           class="uppercase tracking-wide text-sm font-semibold author text-green-500"
@@ -166,6 +160,7 @@
         </div>
   !-->
     </div>
+
     {%empty%}
     <p class="m-3 text-center text-gray-500">No comments</p>
     {% endfor%}

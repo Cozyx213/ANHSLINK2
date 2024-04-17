@@ -22,100 +22,217 @@
       type="text/css"
     />
   </head>
+  <style>
+    .header-user-menu {
+      position: relative;
+    }
 
-  <body>
-    <div class="page">
-      <div class="head_container flex">
-        <div class="branding">
-          <img
-            class="logo"
-            src="{% static 'pictures/ANHSLink_logo.png' %}"
-            alt="ANHS LOGO"
-            width="7%"
-          />
-          <div class="site-identity">
-            <p class="site-title">ANHSLINK</p>
-            <p class="site-description">
-              "Linking Nationalistas Through Innovative Web Solutions"
-            </p>
+    /* Dropdown Menu styling */
+    #user-dropdown {
+      position: absolute;
+      top: 100%; /* Position it right below the button */
+      right: 0;
+      z-index: 1000; /* High z-index to float above other content */
+      width: 200px; /* or any appropriate width */
+      display: none; /* Start hidden */
+      background-color: #fff;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+    }
+
+    /* Add some hover styles for buttons within the dropdown for better UX */
+    #user-dropdown a:hover {
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <body class="flex justify-center">
+    <div class="min-h-screen">
+      <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div
+          class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+        >
+          <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img
+              src="{% static 'pictures/ANHSLink_logo.svg' %}"
+              class="h-12"
+              alt="Flowbite Logo"
+            />
+            <span
+              class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+              >ANHSLINK</span
+            >
+          </a>
+          <div
+            class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse header-user-menu"
+          >
+            <button
+              type="button"
+              class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 user-menu-btn"
+              id="user-menu-button"
+              aria-expanded="false"
+              data-dropdown-toggle="user-dropdown"
+              data-dropdown-placement="bottom"
+            >
+              <span class="sr-only">Open user menu</span>
+              <img
+                class="w-8 h-8 rounded-full"
+                src="{% static 'pictures/user.png' %}"
+                alt="user photo"
+              />
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              class="z-50 hidden my-4 text-base list-none bg-gray-800 divide-y  rounded-lg shadow  dropdown-menu"
+              id="user-dropdown"
+            >
+              <div class="px-4 py-3">
+                <span class="block text-sm text-gray-900"
+                  >{{user}}</span
+                >
+                <span
+                  class="block text-sm text-gray-500 truncate "
+                  >{{user.email}}</span
+                >
+              </div>
+              <ul class="py-2" aria-labelledby="user-menu-button">
+                
+
+                <li>
+                  <a
+                    href="{% url 'logs_view' %}"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    >Logs</a
+                  >
+                </li>
+                <li>
+                  <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+                      type="submit"
+                    >
+                      <p>Log Out</p>
+                    </button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <button
+              data-collapse-toggle="navbar-user"
+              type="button"
+              class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              aria-controls="navbar-user"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="w-5 h-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+            id="navbar-user"
+          >
+            <ul
+              class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+            >
+              <li>
+                <a
+                  href="{% url 'map' %}"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >Map</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'history' %}"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >History</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'library' %}"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >Library</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'forum' %}"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >Forum</a
+                >
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="information flex justify-center space-x-">
-          <a href="{% url 'map' %}">
-            <p>Map</p>
-          </a>
-          <a href="{% url 'history' %}">
-            <p>History</p>
-          </a>
-          <!--<a href="{% url 'classroom' %}">
-            <p>Classroom</p>
-          </a>-->
-          <a href="{% url 'library' %}">
-            <p>Library</p>
-          </a>
-         
-          <a href="{% url 'forum' %}">
-            <p class="font-sans">Forum</p>
-          </a>
-        </div>
-        <div class="information flex justify-center space-x-">
-          <a href="{% url 'logs_view' %}">
-            <p>Logs</p>
-          </a>
-          <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit"><p>Log Out</p></button>
-          </form>
-        </div>
-      </div>
+      </nav>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Toggle dropdown
+          const userMenuButton = document.getElementById("user-menu-button");
+          const userDropdown = document.getElementById("user-dropdown");
+
+          userMenuButton.addEventListener("click", function () {
+            const isExpanded = this.getAttribute("aria-expanded") === "true";
+            this.setAttribute("aria-expanded", !isExpanded);
+            userDropdown.style.display = isExpanded ? "none" : "block"; // Toggle display
+          });
+
+          // Toggle mobile navbar
+          const navbarToggle = document.querySelector(
+            '[data-collapse-toggle="navbar-user"]'
+          );
+          const navbarMenu = document.getElementById("navbar-user");
+
+          navbarToggle.addEventListener("click", function () {
+            const isExpanded = this.getAttribute("aria-expanded") === "true";
+            this.setAttribute("aria-expanded", !isExpanded);
+            navbarMenu.classList.toggle("hidden");
+          });
+        });
+      </script>
       {% block body %} {% endblock %}
 
-      <footer>
-        <div class="footer_container">
-          <div class="branding_footer_whole">
-            <div class="branding_footer">
-              <img
-                class="logo"
-                src="{% static 'pictures/ANHSLink_logo.png' %}"
-                alt="ANHS LOGO"
-                width="5%"
-                height="10%"
-              />
-              <div class="site-identity_footer">
-                <p class="site-title_footer">ANHSLink</p>
-                <p class="site-description_footer">
-                  Linking Education Through Innovative Web Solutions
-                </p>
-              </div>
-            </div>
-            <div class="branding_footer_motto">
-              Dream it. Believe it. Achieve it.
-            </div>
-            <div class="socials_footer">
-              <div class="heading">
-                <div class="quick_email">
-                  <img
-                    class="contact_logo"
-                    src="{% static 'pictures/GMAIL_LOGO.png' %}"
-                    alt="gmail_logo"
-                    width="1rem"
-                  />
-                  <p class="contacts">302985argaonhs@gmail.com</p>
-                </div>
-              </div>
-              <a
-                href="https://www.facebook.com/profile.php?id=100063811972895"
-                target="_blank"
-              >
-                <img
-                  src="{% static 'pictures/FB_LOGO.png' %}"
-                  alt="fb_logo"
-                  width="30vw"
-                  height="30vh"
-                />
-              </a>
-            </div>
+      <footer class="bg-gray-100">
+        <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+          <div class="flex justify-center text-teal-600">
+            <img
+              src="{% static 'pictures/ANHSLink_logo.svg' %}"
+              class="h-16"
+              alt="Flowbite Logo"
+            />
+            <span
+              class="self-center text-2xl font-semibold whitespace-nowrap text-green-700"
+              >ANHSLINK</span
+            >
           </div>
+
+          <p
+            class="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500"
+          >
+            "Linking Education Through Innovative Web Solutions"
+          </p>
+          <p
+            class="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500"
+          >
+            Dream it. Believe it. Achieve it.
+          </p>
         </div>
       </footer>
     </div>

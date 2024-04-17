@@ -1,11 +1,12 @@
 {% extends "main/base.html" %}
+
 {% load static %}
 
 {% block body %}
 
 <style>
     
-    @keyframes appear {
+    @keyframes appears {
         0% {
             font-size: 0px;
             padding: 0;
@@ -28,8 +29,8 @@
         background: white;
     }
 
-    .hidden {
-        animation-name: appear;
+    .hiddenButton {
+        animation-name: appears;
         animation-duration: .5s;
         animation-fill-mode: forwards;
 
@@ -47,7 +48,7 @@
 
 </style>
 <div class="flex items-center justify-center">
-    <div class="max-w-screen-sm">
+    <div class="max-w-screen-lg">
         <div id="upload" class="bg-green-300 text-center p-5 font-extrabold rounded-3xl mt-10">
             <p class="text-3xl pb-4 text-green-800">Upload</p>
 
@@ -111,7 +112,7 @@
                         class=" grade-button nine w-full h-48 bg-gradient-to-r  text-white font-bold text-4xl rounded-lg "
                         data-grade="Grade 7"> <img class="rounded-3xl   " src="{% static 'pictures/gred7.jpg' %}">
                     </button>
-                    <div id="Grade 7" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
+                    <div id="Grade 7" class="grade-subjects w-full h-48 p-4 hiddenButton space-y-4">
 
                         <div class="sub border-t-4 7 " id="7">
                         
@@ -123,7 +124,7 @@
                         data-grade="Grade 8"> <img class="rounded-3xl" src="{% static 'pictures/gred8.jpg' %}">
                     </button>
                     <!-- Grade 8 Subjects -->
-                    <div id="Grade 8" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
+                    <div id="Grade 8" class="grade-subjects w-full h-48 p-4 hiddenButton space-y-4">
 
                         <div class="sub border-t-4 7" id="8">
                             
@@ -135,7 +136,7 @@
                         data-grade="Grade 9"> <img class="rounded-3xl" src="{% static 'pictures/gred9.jpg' %}">
                     </button>
                     <!-- Grade 9 Subjects -->
-                    <div id="Grade 9" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
+                    <div id="Grade 9" class="grade-subjects w-full h-48 p-4 hiddenButton space-y-4">
 
                         <div class="sub border-t-4" id="9">
 
@@ -145,7 +146,7 @@
                         class="grade-button ten  w-full h-48    bg-gradient-to-r  text-white font-bold text-4xl"
                         data-grade="Grade 10"><img class="rounded-3xl" src="{% static 'pictures/gred10.jpg' %}"></button>
                     <!-- Grade 9 Subjects -->
-                    <div id="Grade 10" class="grade-subjects w-full h-48 p-4 hidden space-y-4">
+                    <div id="Grade 10" class="grade-subjects w-full h-48 p-4 hiddenButton space-y-4">
                         <div class="sub" id="10">
                            
                         </div>
@@ -155,14 +156,14 @@
                     class="grade-button ten  w-full h-48    bg-gradient-to-r  text-white font-bold text-4xl"
                     data-grade="11"><img class="rounded-3xl" src="{% static 'pictures/gred11.jpg' %}"></button> 
                   
-                    <div id="11" class="grade-subjects w-full h-48 p-4 hidden">
+                    <div id="11" class="grade-subjects w-full h-48 p-4 hiddenButton">
                     </div>
                    
                     <button
                     class="grade-button ten  w-full h-48    bg-gradient-to-r  text-white font-bold text-4xl"
                     data-grade="12"><img class="rounded-3xl" src="{% static 'pictures/gred12.jpg' %}"></button> 
                   
-                    <div id="12" class="grade-subjects w-full h-48 p-4 hidden">
+                    <div id="12" class="grade-subjects w-full h-48 p-4 hiddenButton">
 
                     </div>
                     

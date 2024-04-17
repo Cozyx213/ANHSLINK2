@@ -1,3 +1,6 @@
 myenv/
 node_modules
 tailwind.config.js
+db.sqlite3
+__pycache__/
+*.pyc

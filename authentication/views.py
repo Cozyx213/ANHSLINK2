@@ -20,7 +20,7 @@ def login_view(request):
             login(request, user, backend= 'authentication.backends.EmailOrUsernameModelBackend')
             return HttpResponseRedirect(reverse('home'))
         else:
-            return render(request, "registration/login.html",{
+            return render(request, "registration/`log`in.html",{
                 "message": "Wrong Credentials"
             })
     return render(request, "registration/login.html")

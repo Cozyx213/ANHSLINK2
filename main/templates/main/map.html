@@ -1,20 +1,20 @@
-{% extends "main/base.html" %}
-{%load static%}
-{% block body %}
-<div class="compilation_container">
+{% extends "main/base.html" %} {%load static%} {% block body %}
 
-    <div class="flex flex-wrap justify-center items-center gap-4 p-4 bg-white text-center">
-        <div>
-            <h1 class="font-bold text-2x1 mb-4">Street View</h1>
-            <img src="{% static 'pictures/googlestreet.png' %}" alt="ANHS street">
-        </div>
-        <div>
-            <h1 class="font-bold text-2x1 mb-4">Map</h1>
-            <img src="{% static 'pictures/googlemap.png' %}" alt="ANHS map">
-        </div>
-
-
+<div class="min-w-full">
+  <div class="compilation_container">
+    <div
+      class="flex flex-wrap justify-center items-center gap-4 p-4 bg-white text-center"
+    >
+      <div>
+        <h1 class="font-bold text-2x1 mb-4">Street View</h1>
+        <img src="{% static 'pictures/googlestreet.png' %}" alt="ANHS street" />
+      </div>
+      <div>
+        <h1 class="font-bold text-2x1 mb-4">Map</h1>
+        <img src="{% static 'pictures/googlemap.png' %}" alt="ANHS map" />
+      </div>
     </div>
+  </div>
 </div>
 
 {% endblock%}

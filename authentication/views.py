@@ -1,14 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
-
+from .models import Profile
 
 # Create your views here.
 
 def anhs(request):
+    
     if request.method == "GET":
         return render(request, "registration/landingpage.html")
 def login_view(request):

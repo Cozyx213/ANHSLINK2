@@ -46,7 +46,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,6 +59,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,6 +71,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://192.168.1.6:3000",
+    "http://localhost:3000",
+    "https://anhslink.netlify.app/",
+]
 
 TEMPLATES = [
     {
@@ -95,13 +103,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-       
-        'NAME': 'flask',     # The name of your MySQL database
-        'USER': 'jake',        # The MySQL user (e.g., 'root' or another user)
-        'PASSWORD': 'Panasonic',# The password for the MySQL user
-        'HOST': 'localhost',              # The host where your MySQL server is running
-        'PORT': '3306',  
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        #'ENGINE': 'django.db.backends.mysql',
+        #'NAME': 'flask',     # The name of your MySQL database
+        #'USER': 'jake',        # The MySQL user (e.g., 'root' or another user)
+        #'PASSWORD': 'Panasonic',# The password for the MySQL user
+        #'HOST': 'localhost',              # The host where your MySQL server is running
+        #'PORT': '3306',  
     }
 }
 

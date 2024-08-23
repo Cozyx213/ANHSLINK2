@@ -37,8 +37,8 @@ function getTime(time) {
   }
 }
 
-function convertLineBreaks(text){
-  return text.replace(/\n/g,'<br>');
+function convertLineBreaks(text) {
+  return text.replace(/\n/g, "<br>");
 }
 function post(data) {
   const update = document.getElementById("update");
@@ -71,15 +71,12 @@ function post(data) {
     </p>
 
 
-    <div class="flex justify-center"><div class="flex justify-center group inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+    <div class="flex justify-center"><div class="justify-center group inline-flex items-center gap-1 text-sm font-medium text-blue-600">
     Read more
     <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
       &rarr;
     </span>
-  </div>
-  </div>
-    
-  </div>
+  
 </article>
     
    

@@ -7,3 +7,5 @@ if you want to edit tailwind css. NOTE: dont download another python
 
 cd to the folder and then in your terminal ,
 python manage.py runserver <ipconfig>
+
+A react frontend is found at https://anhslink.netlify.app/
